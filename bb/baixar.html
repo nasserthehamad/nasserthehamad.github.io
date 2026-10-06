@@ -6,8 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Silkscreen&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
 <script>
 /* ===== CONFIGURAÇÃO (edite só aqui) =====
-   FASE: "teste" enquanto o app está no teste fechado; "loja" depois do lançamento (a página vira um redirecionamento direto para a Play Store). */
-const FASE  = "teste";
+   FASE: "espera" antes de o teste fechado ser aprovado (só o botão do grupo funciona; os outros ficam como "em breve");
+         "teste" enquanto o app está no teste fechado; "loja" depois do lançamento (a página vira um redirecionamento direto para a Play Store). */
+const FASE  = "espera";
 const GRUPO = "https://groups.google.com/g/testadores-bb";
 const APP   = "br.com.barrasebatalhas.app";
 /* ======================================== */
@@ -31,6 +32,9 @@ li b{display:block;font-weight:800;margin-bottom:2px}
 li p{margin:0 0 10px;color:var(--dim);font-size:15px}
 a.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:8px;background:var(--gold);color:#1A1030;font:400 15px Silkscreen,monospace;text-decoration:none;border-bottom:4px solid #B9800B}
 a.btn.alt{background:transparent;color:var(--txt);border:3px solid var(--line)}
+a.btn.off{background:transparent;color:var(--dim);border:3px dashed var(--dim);border-bottom-width:3px;pointer-events:none;cursor:default}
+.aviso{background:var(--win2);border:2px solid var(--gold);border-radius:8px;padding:12px 14px;margin:0 0 14px;font-size:15px}
+.aviso b{color:var(--gold)}
 .note{font-size:14px;color:var(--dim)}
 .note b{color:var(--txt)}
 </style></head>
@@ -40,7 +44,8 @@ a.btn.alt{background:transparent;color:var(--txt);border:3px solid var(--line)}
 
 <section class="win">
   <span class="tag">Seja testador</span>
-  <p style="margin:0 0 14px">O app está em <b>teste fechado</b> na Play Store. Leva 2 minutos, é grátis e você usa sua conta Google do celular Android.</p>
+  <p class="aviso" id="aviso" hidden><b>O teste ainda não abriu.</b> Entre no grupo agora para garantir sua vaga. Assim que o Google liberar, os passos 2 e 3 passam a funcionar e a gente avisa no grupo.</p>
+  <p style="margin:0 0 14px" id="intro">O app está em <b>teste fechado</b> na Play Store. Leva 2 minutos, é grátis e você usa sua conta Google do celular Android.</p>
   <ol>
     <li><div><b>Entre no grupo de testadores</b><p>Toque em "Participar do grupo". É assim que o Google libera o app para você.</p><a class="btn" id="l-grupo" href="#">Entrar no grupo</a></div></li>
     <li><div><b>Aceite o convite de teste</b><p>Toque em "Torne-se um testador".</p><a class="btn" id="l-teste" href="#">Aceitar convite</a></div></li>
@@ -54,5 +59,10 @@ a.btn.alt{background:transparent;color:var(--txt);border:3px solid var(--line)}
 document.getElementById("l-grupo").href=GRUPO;
 document.getElementById("l-teste").href=TESTE;
 document.getElementById("l-loja").href=LOJA;
+if(FASE==="espera"){
+  document.getElementById("aviso").hidden=false;
+  document.getElementById("intro").innerHTML="O app vai entrar em <b>teste fechado</b> na Play Store. É grátis e você usa sua conta Google do celular Android.";
+  ["l-teste","l-loja"].forEach(function(id){ var a=document.getElementById(id); a.removeAttribute("href"); a.classList.remove("alt"); a.classList.add("off"); a.setAttribute("aria-disabled","true"); a.textContent="Em breve"; });
+}
 </script>
 </body></html>
