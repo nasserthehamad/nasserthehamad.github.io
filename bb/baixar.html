@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Baixar B&amp;B Barras e Batalhas</title>
 <meta property="og:title" content="B&amp;B Barras e Batalhas · Treino RPG">
-<meta property="og:description" content="Treine em casa e derrote 100 monstros. Venha testar!">
+<meta property="og:description" content="Faça parte do seleto grupo que joga o B&amp;B antes de todo mundo.">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Silkscreen&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
 <script>
 /* ===== CONFIGURAÇÃO (edite só aqui) =====
@@ -43,17 +43,17 @@ a.btn.off{background:transparent;color:var(--dim);border:3px dashed var(--dim);b
 <p class="sub">Barras e Batalhas · treine em casa e derrote 100 monstros.</p>
 
 <section class="win">
-  <span class="tag">Seja testador</span>
-  <p class="aviso" id="aviso" hidden><b>O teste ainda não abriu.</b> Entre no grupo agora para garantir sua vaga. Assim que o Google liberar, os passos 2 e 3 passam a funcionar e a gente avisa no grupo.</p>
-  <p style="margin:0 0 14px" id="intro">O app está em <b>teste fechado</b> na Play Store. Leva 2 minutos, é grátis e você usa sua conta Google do celular Android.</p>
+  <span class="tag">Primeiros testadores</span>
+  <p class="aviso" id="aviso" hidden><b>Estamos quase lá.</b> O teste abre assim que o Google liberar. Entre no grupo agora e garanta seu lugar: quando abrir, você recebe o aviso e os passos 2 e 3 acendem.</p>
+  <p style="margin:0 0 14px" id="intro">Faça parte do <b>seleto grupo</b> que joga o B&amp;B antes de todo mundo. Sua opinião ajuda a decidir como o app chega ao lançamento. É grátis, leva 2 minutos e você usa a conta Google do seu celular Android.</p>
   <ol>
-    <li><div><b>Entre no grupo de testadores</b><p>Toque em "Participar do grupo". É assim que o Google libera o app para você.</p><a class="btn" id="l-grupo" href="#">Entrar no grupo</a></div></li>
-    <li><div><b>Aceite o convite de teste</b><p>Toque em "Torne-se um testador".</p><a class="btn" id="l-teste" href="#">Aceitar convite</a></div></li>
-    <li><div><b>Instale pela Play Store</b><p>Se aparecer "item não encontrado", espere alguns minutos e tente de novo.</p><a class="btn alt" id="l-loja" href="#">Abrir na Play Store</a></div></li>
+    <li><div><b>Entre para o grupo</b><p>Toque em "Participar do grupo". É o passe que libera o app para a sua conta.</p><a class="btn" id="l-grupo" href="#">Entrar no grupo</a></div></li>
+    <li><div><b>Aceite o convite</b><p>Toque em "Torne-se um testador" e pronto: você está dentro.</p><a class="btn" id="l-teste" href="#">Aceitar convite</a></div></li>
+    <li><div><b>Instale e comece a batalha</b><p>Se aparecer "item não encontrado", espere alguns minutos e tente de novo.</p><a class="btn alt" id="l-loja" href="#">Abrir na Play Store</a></div></li>
   </ol>
 </section>
 
-<p class="note"><b>Importante:</b> fique com o app instalado por pelo menos 14 dias. Isso ajuda muito o lançamento. Achou um problema? Use o botão "Enviar feedback" dentro do app.</p>
+<p class="note"><b>Um pedido de herói para herói:</b> fique com o app instalado por pelo menos 14 dias. É isso que libera o lançamento para todo mundo. Achou um problema ou teve uma ideia? Conte em "Fale com o desenvolvedor", dentro do app: a mensagem chega direto para quem faz o jogo.</p>
 </main>
 <script>
 document.getElementById("l-grupo").href=GRUPO;
@@ -61,7 +61,7 @@ document.getElementById("l-teste").href=TESTE;
 document.getElementById("l-loja").href=LOJA;
 if(FASE==="espera"){
   document.getElementById("aviso").hidden=false;
-  document.getElementById("intro").innerHTML="O app vai entrar em <b>teste fechado</b> na Play Store. É grátis e você usa sua conta Google do celular Android.";
+  document.getElementById("intro").innerHTML="Faça parte do <b>seleto grupo</b> que vai jogar o B&amp;B antes de todo mundo. Sua opinião ajuda a decidir como o app chega ao lançamento. É grátis e você usa a conta Google do seu celular Android.";
   ["l-teste","l-loja"].forEach(function(id){ var a=document.getElementById(id); a.removeAttribute("href"); a.classList.remove("alt"); a.classList.add("off"); a.setAttribute("aria-disabled","true"); a.textContent="Em breve"; });
 }
 </script>
