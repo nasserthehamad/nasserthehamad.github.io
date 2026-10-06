@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baixar B&amp;B Barras e Batalhas</title>
+<meta property="og:title" content="B&amp;B Barras e Batalhas · Treino RPG">
+<meta property="og:description" content="Treine em casa e derrote 100 monstros. Venha testar!">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Silkscreen&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
+<script>
+/* ===== CONFIGURAÇÃO (edite só aqui) =====
+   FASE: "teste" enquanto o app está no teste fechado; "loja" depois do lançamento (a página vira um redirecionamento direto para a Play Store). */
+const FASE  = "teste";
+const GRUPO = "https://groups.google.com/g/SEU-GRUPO-DE-TESTADORES";
+const APP   = "br.com.barrasebatalhas.app";
+/* ======================================== */
+const LOJA="https://play.google.com/store/apps/details?id="+APP, TESTE="https://play.google.com/apps/testing/"+APP;
+if(FASE==="loja") location.replace(LOJA);
+</script>
+<style>
+:root{--bg:#070A1F;--win:#0C1356;--win2:#141C6B;--line:#EDEBFF;--txt:#EDEBFF;--dim:#A9B0E8;--gold:#FFC93C;--green:#6CD65A;--red:#FF4F64}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:400 17px/1.5 Nunito,system-ui,sans-serif}
+main{max-width:520px;margin:0 auto;padding:28px 16px 40px}
+h1{font:700 44px/1 'Pixelify Sans',monospace;color:var(--gold);margin:0 0 6px;text-shadow:3px 3px 0 #000}
+.sub{color:var(--dim);margin:0 0 24px}
+.win{position:relative;background:var(--win);border:3px solid var(--line);border-radius:10px;padding:26px 18px 18px;margin:0 0 22px}
+.tag{position:absolute;top:-14px;left:14px;background:var(--win);border:3px solid var(--line);border-radius:6px;padding:2px 10px;font:400 13px Silkscreen,monospace}
+ol{list-style:none;margin:0;padding:0;counter-reset:s}
+li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:14px 0;border-top:1px dashed rgba(237,235,255,.25)}
+li:first-child{border-top:0;padding-top:0}
+li::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;background:var(--win2);border:2px solid var(--gold);color:var(--gold);font:400 20px Silkscreen,monospace;border-radius:6px}
+li b{display:block;font-weight:800;margin-bottom:2px}
+li p{margin:0 0 10px;color:var(--dim);font-size:15px}
+a.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:8px;background:var(--gold);color:#1A1030;font:400 15px Silkscreen,monospace;text-decoration:none;border-bottom:4px solid #B9800B}
+a.btn.alt{background:transparent;color:var(--txt);border:3px solid var(--line)}
+.note{font-size:14px;color:var(--dim)}
+.note b{color:var(--txt)}
+</style></head>
+<body><main>
+<h1>B&amp;B</h1>
+<p class="sub">Barras e Batalhas · treine em casa e derrote 100 monstros.</p>
+
+<section class="win">
+  <span class="tag">Seja testador</span>
+  <p style="margin:0 0 14px">O app está em <b>teste fechado</b> na Play Store. Leva 2 minutos, é grátis e você usa sua conta Google do celular Android.</p>
+  <ol>
+    <li><div><b>Entre no grupo de testadores</b><p>Toque em "Participar do grupo". É assim que o Google libera o app para você.</p><a class="btn" id="l-grupo" href="#">Entrar no grupo</a></div></li>
+    <li><div><b>Aceite o convite de teste</b><p>Toque em "Torne-se um testador".</p><a class="btn" id="l-teste" href="#">Aceitar convite</a></div></li>
+    <li><div><b>Instale pela Play Store</b><p>Se aparecer "item não encontrado", espere alguns minutos e tente de novo.</p><a class="btn alt" id="l-loja" href="#">Abrir na Play Store</a></div></li>
+  </ol>
+</section>
+
+<p class="note"><b>Importante:</b> fique com o app instalado por pelo menos 14 dias. Isso ajuda muito o lançamento. Achou um problema? Use o botão "Enviar feedback" dentro do app.</p>
+</main>
+<script>
+document.getElementById("l-grupo").href=GRUPO;
+document.getElementById("l-teste").href=TESTE;
+document.getElementById("l-loja").href=LOJA;
+</script>
+</body></html>
