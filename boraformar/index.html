@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bora Formar</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0f1220">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: coluna única de celular, faixa da semana no topo, quatro abas fixas embaixo. */
+:root{
+  --bg:#f3f4f8; --surface:#ffffff; --sunk:#e8eaf1; --line:#d5d8e3;
+  --fg:#161a2b; --muted:#5d6480; --accent:#2f3fbf; --on-accent:#ffffff;
+  --ok:#1f7a4d; --warn:#a15c00; --bad:#b3261e;
+  --s-ia:#6a3fc4; --s-es:#0d7a80; --s-al:#b0481f; --s-ml:#a3246f; --s-ed:#3f6f1c;
+  --display:"Bricolage Grotesque","Figtree",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1220; --surface:#191d30; --sunk:#141829; --line:#2c3250;
+  --fg:#eceefa; --muted:#9aa1c0; --accent:#93a0ff; --on-accent:#0f1220;
+  --ok:#6fd39c; --warn:#f0b35a; --bad:#ff8a80;
+  --s-ia:#b79bff; --s-es:#5fd0d6; --s-al:#ff9d73; --s-ml:#ff8cc6; --s-ed:#a5d86f;
+  color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0f1220; --surface:#191d30; --sunk:#141829; --line:#2c3250;
+  --fg:#eceefa; --muted:#9aa1c0; --accent:#93a0ff; --on-accent:#0f1220;
+  --ok:#6fd39c; --warn:#f0b35a; --bad:#ff8a80;
+  --s-ia:#b79bff; --s-es:#5fd0d6; --s-al:#ff9d73; --s-ml:#ff8cc6; --s-ed:#a5d86f;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+html{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font:400 15px/1.45 var(--body)}
+.app{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:18px 96px;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
+h1{font-size:26px;font-weight:700}
+h2{font-size:18px;font-weight:700}
+h3{font-size:16px;font-weight:500}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.status{font-size:12px;color:var(--warn)}
+
+.week{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.day{background:var(--sunk);border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;gap:4px;min-width:0;border:1.5px solid transparent}
+.day .dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.day b{font-size:12px;font-weight:600;overflow-wrap:anywhere;line-height:1.2}
+.day.today{background:var(--surface);border-color:var(--c)}
+
+.stack{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:10px;align-items:center}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.grow{flex:1;min-width:0}
+
+.aula{background:var(--surface);border-radius:14px;padding:16px;border-top:4px solid var(--c);display:flex;flex-direction:column;gap:8px}
+.aula .meta{display:flex;flex-wrap:wrap;gap:6px 16px}
+
+.list{background:var(--surface);border-radius:14px;overflow:hidden}
+.item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .t{font-weight:500;overflow-wrap:anywhere}
+.item.done .t{text-decoration:line-through;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted)}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--c);display:inline-block}
+.chip{font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.chip.bad{color:var(--bad)} .chip.warn{color:var(--warn)} .chip.ok{color:var(--ok)}
+.check{appearance:none;width:22px;height:22px;border:2px solid var(--muted);border-radius:7px;margin:1px 0 0;flex:none;cursor:pointer;display:grid;place-content:center;background:transparent}
+.check:checked{background:var(--ok);border-color:var(--ok)}
+.check:checked::after{content:"";width:10px;height:5px;border-left:2.5px solid var(--surface);border-bottom:2.5px solid var(--surface);transform:rotate(-45deg) translateY(-1px)}
+.empty{background:var(--sunk);border-radius:14px;padding:18px;color:var(--muted);text-align:left}
+
+button,select,input{font:inherit;color:inherit}
+.btn{background:var(--accent);color:var(--on-accent);border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);padding:6px 8px}
+.btn.quiet{background:var(--sunk);color:var(--fg)}
+.btn.danger{background:transparent;color:var(--bad);padding:6px 8px}
+.icon{background:none;border:0;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:6px;font-size:13px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.filters button{flex:none;border:1px solid var(--line);background:transparent;border-radius:99px;padding:5px 12px;cursor:pointer;font-size:13px;color:var(--muted)}
+.filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+.subj{background:var(--surface);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;border-left:4px solid var(--c)}
+.big{font-family:var(--mono);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.bar{height:8px;border-radius:99px;background:var(--sunk);position:relative;overflow:hidden}
+.bar span{position:absolute;inset:0 auto 0 0;background:var(--c);border-radius:99px}
+.bar em{position:absolute;top:0;bottom:0;width:2px;background:var(--fg)}
+.grades{display:flex;flex-direction:column;gap:4px}
+.grades div{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+a{color:var(--accent)}
+.link{overflow-wrap:anywhere;font-weight:500}
+
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center}
+nav.tabs div{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;width:100%;max-width:560px}
+nav.tabs button{background:none;border:0;padding:10px 2px;border-radius:10px;cursor:pointer;color:var(--muted);font-weight:600;font-size:12.5px}
+.datas{display:flex;flex-wrap:wrap;gap:6px}
+.datas button{border:1px solid var(--line);background:transparent;border-radius:99px;padding:3px 10px;font-size:12px;cursor:pointer;font-family:var(--mono)}
+.num{width:64px;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+nav.tabs button[aria-current="page"]{background:var(--sunk);color:var(--fg)}
+
+dialog{border:0;border-radius:16px;background:var(--surface);color:var(--fg);padding:18px;width:min(480px,calc(100% - 32px));max-height:90%}
+dialog::backdrop{background:rgba(8,10,20,.55)}
+form.f{display:flex;flex-direction:column;gap:12px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field input,.field select{background:var(--sunk);border:1px solid var(--line);border-radius:9px;padding:9px 10px;width:100%;min-width:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.err{color:var(--bad);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.bar span{transition:width .3s}}
+</style>
+</head>
+<body>
+
+
+<div class="app">
+  <header class="top">
+    <div>
+      <div class="label" id="hoje-data"></div>
+      <h1>Bora Formar</h1>
+    </div>
+    <div class="stack" style="gap:2px;align-items:flex-end"><button class="icon" id="sair" hidden>Sair</button><div class="status" id="status" hidden></div></div>
+  </header>
+  <section id="login" class="aula" style="--c:var(--accent)" hidden>
+    <h2>Entrar</h2>
+    <p class="muted small" style="margin:0">Seus dados da faculdade ficam protegidos por login. Na primeira vez, toque em “Criar conta” e confirme pelo link que chega no seu e-mail.</p>
+    <form class="f" id="form-login">
+      <label class="field"><span class="label">E-mail</span><input id="l-email" type="email" required autocomplete="email"></label>
+      <label class="field"><span class="label">Senha</span><input id="l-senha" type="password" required minlength="8" autocomplete="current-password"></label>
+      <div class="err" id="l-err" hidden></div>
+      <div class="row"><button class="btn" id="l-entrar">Entrar</button><button type="button" class="btn quiet" id="l-criar">Criar conta</button></div>
+    </form>
+  </section>
+  <div class="week" id="week" hidden></div>
+  <main id="view" class="stack" hidden></main>
+</div>
+
+<nav class="tabs" aria-label="Seções" hidden><div>
+  <button data-tab="hoje">Hoje</button>
+  <button data-tab="tarefas">Tarefas</button>
+  <button data-tab="notas">Notas</button>
+  <button data-tab="faltas">Faltas</button>
+  <button data-tab="materiais">Materiais</button>
+</div></nav>
+
+<dialog id="dlg-item">
+  <form class="f" id="form-item">
+    <h2 id="item-titulo-dlg">Nova tarefa</h2>
+    <label class="field"><span class="label">Título</span><input id="i-titulo" required maxlength="120" placeholder="Ex.: Lista 1 de busca em grafos"></label>
+    <div class="two">
+      <label class="field"><span class="label">Matéria</span><select id="i-materia"></select></label>
+      <label class="field"><span class="label">Tipo</span><select id="i-tipo"><option>Atividade</option><option>Trabalho</option><option>Prova</option></select></label>
+    </div>
+    <div class="two">
+      <label class="field"><span class="label">Data</span><input id="i-data" type="date"></label>
+      <label class="field"><span class="label">Peso na média</span><input id="i-peso" type="number" min="0" step="0.1" inputmode="decimal" placeholder="1"></label>
+    </div>
+    <label class="field"><span class="label">Nota (0 a 10, se já saiu)</span><input id="i-nota" type="number" min="0" max="10" step="0.01" inputmode="decimal"></label>
+    <div class="err" id="i-err" hidden></div>
+    <div class="spread">
+      <button type="button" class="btn danger" id="i-del" hidden>Excluir</button>
+      <span class="row"><button type="button" class="btn quiet" data-close>Cancelar</button><button class="btn">Salvar</button></span>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-falta">
+  <form class="f" id="form-falta">
+    <h2>Registrar falta</h2>
+    <label class="field"><span class="label">Matéria</span><select id="f-materia"></select></label>
+    <div class="two"><label class="field"><span class="label">Dia da aula</span><input id="f-data" type="date" required></label>
+    <label class="field"><span class="label">Quanto perdeu</span><select id="f-horas"><option value="4">Noite inteira (4)</option><option value="3">3 aulas</option><option value="2">2 aulas</option><option value="1">1 aula</option></select></label></div>
+    <div class="err" id="f-err" hidden></div>
+    <div class="spread"><span></span><span class="row"><button type="button" class="btn quiet" data-close>Cancelar</button><button class="btn">Registrar</button></span></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-mat">
+  <form class="f" id="form-mat">
+    <h2>Novo material</h2>
+    <label class="field"><span class="label">Título</span><input id="m-titulo" required maxlength="120" placeholder="Ex.: Slides da aula 1"></label>
+    <label class="field"><span class="label">Matéria</span><select id="m-materia"></select></label>
+    <label class="field"><span class="label">Link</span><input id="m-url" required inputmode="url" placeholder="Cole o link do Classroom ou do Drive"></label>
+    <div class="err" id="m-err" hidden></div>
+    <div class="spread"><span></span><span class="row"><button type="button" class="btn quiet" data-close>Cancelar</button><button class="btn">Salvar</button></span></div>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const SB_URL = "https://ajfzucubsmfbfukrullv.supabase.co";
+const SB_KEY = "sb_publishable_MbeaDh5p2sxGnmxrCs6Pmg_2da5ep8u"; // chave pública; o acesso é controlado pelas regras do banco
+const sb = window.supabase.createClient(SB_URL, SB_KEY);
+const MAT = [
+  {id:"ia", nome:"Inteligência Artificial", curto:"IA", dia:1, sala:"006A", cod:"0004750A"},
+  {id:"es", nome:"Engenharia de Software I", curto:"Eng. Software", dia:2, sala:"005A", cod:"0004717A"},
+  {id:"al", nome:"Álgebra Linear", curto:"Álgebra", dia:3, sala:"007", cod:"0004739A"},
+  {id:"ml", nome:"Aprendizado de Máquina Aplicado", curto:"Apr. Máquina", dia:4, sala:"005A", cod:"0049225A"},
+  {id:"ed", nome:"Estruturas de Dados II", curto:"Estr. Dados II", dia:5, sala:"005A", cod:"0004715A"},
+];
+const DIAS = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+const byId = Object.fromEntries(MAT.map(m => [m.id, m]));
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const cor = id => `--c:var(--s-${id})`;
+const fmt = n => n.toLocaleString("pt-BR", {minimumFractionDigits:1, maximumFractionDigits:2});
+
+let db = null, itens = [], mats = [], faltas = [], aulas = {}, meta = 5, filtro = "todas", editId = null, delArmado = false;
+let tab = "hoje";
+try { tab = localStorage.getItem("tab") || "hoje"; } catch (e) {}
+const mem = {n:0};
+
+const hoje0 = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
+const parseD = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+const dias = s => Math.round((parseD(s) - hoje0()) / 864e5);
+function prazo(it){
+  if (!it.data) return `<span class="chip">sem data</span>`;
+  const n = dias(it.data), dm = parseD(it.data).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"});
+  if (it.feito) return `<span class="chip">${dm}</span>`;
+  if (n < 0) return `<span class="chip bad">atrasado · ${dm}</span>`;
+  if (n === 0) return `<span class="chip bad">hoje</span>`;
+  if (n === 1) return `<span class="chip warn">amanhã</span>`;
+  if (n <= 7) return `<span class="chip warn">em ${n} dias</span>`;
+  return `<span class="chip">${dm}</span>`;
+}
+const ordena = a => a.slice().sort((x,y) => (x.feito - y.feito) || (x.data||"9999").localeCompare(y.data||"9999") || x.titulo.localeCompare(y.titulo));
+
+function itemHTML(it){
+  const m = byId[it.materia] || MAT[0];
+  return `<div class="item ${it.feito?"done":""}">
+    <input type="checkbox" class="check" data-feito="${esc(it.id)}" ${it.feito?"checked":""} aria-label="Marcar como feito: ${esc(it.titulo)}">
+    <div class="grow stack" style="gap:3px">
+      <div class="t">${esc(it.titulo)}</div>
+      <div class="row" style="flex-wrap:wrap;gap:4px 10px">
+        <span class="tag" style="${cor(m.id)}"><i></i>${esc(m.curto)}</span>
+        <span class="tag">${esc(it.tipo||"Atividade")}${it.peso!=null?` · peso ${fmt(it.peso)}`:""}</span>
+        ${it.nota!=null?`<span class="tag mono">nota ${fmt(it.nota)}</span>`:""}
+      </div>
+    </div>
+    <div class="stack" style="gap:4px;align-items:flex-end">${prazo(it)}<button class="icon" data-edit="${esc(it.id)}">Editar</button></div>
+  </div>`;
+}
+
+function renderWeek(){
+  const d = new Date().getDay();
+  $("#week").innerHTML = MAT.map(m => `<div class="day ${m.dia===d?"today":""}" style="${cor(m.id)}">
+    <span class="row" style="gap:5px"><span class="dot"></span><span class="label">${DIAS[m.dia]}</span></span><b>${esc(m.curto)}</b></div>`).join("");
+  $("#hoje-data").textContent = new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"});
+}
+
+function viewHoje(){
+  const d = new Date().getDay(), m = MAT.find(x => x.dia === d);
+  const pend = ordena(itens.filter(i => !i.feito)).slice(0, 6);
+  const aula = m ? `<section class="aula" style="${cor(m.id)}">
+      <span class="label">Aula de hoje</span><h2>${esc(m.nome)}</h2>
+      <div class="meta"><span class="mono">19:00–23:00</span><span>Sala <b class="mono">${m.sala}</b></span><span class="muted mono small">${m.cod}</span></div>
+      <div class="spread"><span class="small">Faltas: <b class="mono">${nFaltas(m.id)}</b> de <b class="mono">${limite(m.id)}</b> permitidas</span><button class="btn ghost" data-falta="${m.id}">Faltei hoje</button></div>
+    </section>` : `<section class="empty">Sem aula hoje. Bom dia para adiantar o que vence na semana.</section>`;
+  return aula + `<section class="stack">
+    <div class="spread"><h3>Próximos prazos</h3><button class="btn ghost" data-novo>+ Tarefa</button></div>
+    ${pend.length ? `<div class="list">${pend.map(itemHTML).join("")}</div>` :
+      `<div class="empty">Nada pendente. Quando o professor postar algo no Classroom, cadastre aqui com a data de entrega e ela aparece nesta lista.</div>`}
+  </section>`;
+}
+
+function viewTarefas(){
+  const l = ordena(itens.filter(i => filtro === "todas" || i.materia === filtro));
+  return `<div class="spread"><h3>Tarefas e provas</h3><button class="btn" data-novo>+ Nova</button></div>
+    <div class="filters">${[{id:"todas",curto:"Todas"},...MAT].map(m => `<button data-filtro="${m.id}" aria-pressed="${filtro===m.id}">${esc(m.curto)}</button>`).join("")}</div>
+    ${l.length ? `<div class="list">${l.map(itemHTML).join("")}</div>` :
+      `<div class="empty">Nenhuma tarefa ${filtro==="todas"?"cadastrada":"nessa matéria"}. Toque em “+ Nova” para lançar atividades, trabalhos e provas.</div>`}`;
+}
+
+function calc(id){
+  const av = itens.filter(i => i.materia === id);
+  const g = av.filter(i => i.nota != null), r = av.filter(i => i.nota == null);
+  const w = i => i.peso != null ? i.peso : 1;
+  const wG = g.reduce((s,i) => s + w(i), 0), soma = g.reduce((s,i) => s + i.nota * w(i), 0), wR = r.reduce((s,i) => s + w(i), 0);
+  const media = wG > 0 ? soma / wG : null;
+  const precisa = wR > 0 && wG > 0 ? (meta * (wG + wR) - soma) / wR : null;
+  return {g, media, precisa, wR};
+}
+function viewNotas(){
+  return `<div class="spread"><h3>Notas</h3>
+      <label class="row small muted">Média para passar <input id="meta" class="mono" type="number" min="0" max="10" step="0.5" value="${meta}" style="width:68px;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:5px 8px"></label></div>
+    ${MAT.map(m => { const c = calc(m.id); let msg;
+      if (c.media == null) msg = `<span class="muted small">Sem notas lançadas. Abra uma tarefa e preencha a nota quando sair.</span>`;
+      else if (c.precisa == null) msg = c.media >= meta ? `<span class="chip ok">acima da média</span>` : `<span class="chip bad">abaixo da média</span>`;
+      else if (c.precisa <= 0) msg = `<span class="chip ok">já garante ${fmt(meta)} com o que falta</span>`;
+      else if (c.precisa > 10) msg = `<span class="chip bad">precisa de ${fmt(c.precisa)} no que falta</span>`;
+      else msg = `<span class="chip ${c.precisa>7?"warn":"ok"}">precisa de ${fmt(c.precisa)} no que falta</span>`;
+      return `<section class="subj" style="${cor(m.id)}">
+        <div class="spread"><div class="grow"><h3>${esc(m.nome)}</h3></div><div class="big">${c.media==null?"–":fmt(c.media)}</div></div>
+        <div class="bar" role="img" aria-label="Média ${c.media==null?"sem notas":fmt(c.media)} de 10, meta ${fmt(meta)}"><span style="width:${c.media==null?0:Math.min(100,c.media*10)}%"></span><em style="left:${meta*10}%"></em></div>
+        <div>${msg}</div>
+        ${c.g.length?`<div class="grades">${c.g.map(i => `<div><span>${esc(i.titulo)} <span class="muted">· peso ${fmt(i.peso!=null?i.peso:1)}</span></span><b class="mono">${fmt(i.nota)}</b></div>`).join("")}</div>`:""}
+      </section>`; }).join("")}
+    <p class="muted small">A média é ponderada pelo peso de cada avaliação. Tarefas sem nota contam como “o que falta”.</p>`;
+}
+
+const nAulas = id => aulas[id] > 0 ? aulas[id] : 60;
+const limite = id => Math.floor(nAulas(id) * 0.3);
+const hs = f => f.horas > 0 ? f.horas : 4;
+const nFaltas = id => faltas.filter(f => f.materia === id).reduce((t, f) => t + hs(f), 0);
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+function ultimaAula(m){ const d = hoje0(); while (d.getDay() !== m.dia) d.setDate(d.getDate() - 1); return iso(d); }
+function viewFaltas(){
+  return `<div class="spread"><h3>Faltas</h3><button class="btn" data-falta="">+ Falta</button></div>
+    ${MAT.map(m => { const n = nFaltas(m.id), lim = limite(m.id), resta = lim - n;
+      const l = faltas.filter(f => f.materia === m.id).sort((a,b) => a.data.localeCompare(b.data));
+      const noites = Math.floor(resta / 4);
+      const chip = resta < 0 ? `<span class="chip bad">estourou o limite em ${-resta}</span>` : resta === 0 ? `<span class="chip bad">não pode mais faltar</span>` : resta < 4 ? `<span class="chip bad">restam ${resta}: não dá para perder uma noite inteira</span>` : `<span class="chip ${noites === 1 ? "warn" : "ok"}">restam ${resta} faltas (${noites} ${noites === 1 ? "noite inteira" : "noites inteiras"})</span>`;
+      return `<section class="subj" style="${cor(m.id)}">
+        <div class="spread"><div class="grow"><h3>${esc(m.nome)}</h3></div><div class="big">${n}<span class="muted" style="font-size:15px"> / ${lim}</span></div></div>
+        <div class="bar" role="img" aria-label="${n} faltas de ${lim} permitidas"><span style="width:${lim ? Math.min(100, n / lim * 100) : (n ? 100 : 0)}%"></span></div>
+        <div class="spread" style="flex-wrap:wrap"><span>${chip}</span>
+          <label class="row small muted">Carga horária <input class="num mono" data-aulas="${m.id}" id="aulas-${m.id}" type="number" min="4" max="300" step="1" value="${nAulas(m.id)}"></label></div>
+        ${l.length ? `<div class="datas">${l.map(f => `<button data-delfalta="${esc(f.id)}" title="Remover falta">${parseD(f.data).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})} · ${hs(f)} ×</button>`).join("")}</div>` : ""}
+      </section>`; }).join("")}
+    <p class="muted small">A chamada é por hora-aula: uma noite inteira conta 4 faltas. O limite é 30% da carga horária, já que a frequência mínima é 70% (60 horas dão 18 faltas). Ajuste a carga horária se alguma matéria não for de 60 horas. Toque numa data para remover.</p>`;
+}
+async function addFalta(materia, data, horas){
+  const id = novoId(); faltas.push({id, materia, data, horas}); render();
+  if (!db) return;
+  const {error} = await sb.from("faltas").insert({id, materia, data, horas});
+  aviso(error ? "Não deu para salvar a falta. Tente de novo." : "");
+}
+async function delFalta(id){
+  faltas = faltas.filter(f => f.id !== id); render();
+  if (!db) return;
+  const {error} = await sb.from("faltas").delete().eq("id", id);
+  if (error) aviso("Não deu para remover. Tente de novo.");
+}
+function abrirFalta(id){
+  const m = byId[id] || MAT.find(x => x.dia === new Date().getDay()) || MAT[0];
+  $("#f-materia").value = m.id; $("#f-horas").value = "4"; $("#f-data").value = ultimaAula(m); $("#f-err").hidden = true;
+  $("#dlg-falta").showModal();
+}
+const salvaCfg = async () => { if (!db) return; const {error} = await sb.from("config").upsert({id: 1, meta, carga: aulas}); if (error) aviso("Não deu para salvar a configuração."); };
+
+function viewMateriais(){
+  const blocos = MAT.map(m => { const l = mats.filter(x => x.materia === m.id).sort((a,b) => a.titulo.localeCompare(b.titulo));
+    return l.length ? `<section class="stack" style="gap:6px"><span class="tag" style="${cor(m.id)}"><i></i>${esc(m.nome)}</span>
+      <div class="list">${l.map(x => `<div class="item"><div class="grow"><a class="link" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.titulo)}</a></div><button class="icon" data-delmat="${esc(x.id)}">Remover</button></div>`).join("")}</div></section>` : ""; }).join("");
+  return `<div class="spread"><h3>Materiais</h3><button class="btn" data-novomat>+ Link</button></div>
+    ${blocos || `<div class="empty">Nenhum link salvo. Guarde aqui slides, listas e o plano de ensino de cada matéria para achar rápido antes da prova.</div>`}`;
+}
+
+function render(){
+  const v = {hoje:viewHoje, tarefas:viewTarefas, notas:viewNotas, faltas:viewFaltas, materiais:viewMateriais}[tab] || viewHoje;
+  const a = document.activeElement, keep = a && (a.id === "meta" || (a.dataset && a.dataset.aulas));
+  if (!keep) $("#view").innerHTML = v();
+  document.querySelectorAll("nav.tabs button").forEach(b => b.dataset.tab === tab ? b.setAttribute("aria-current","page") : b.removeAttribute("aria-current"));
+}
+
+/* ---------- gravação ---------- */
+const novoId = () => "x" + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+function aviso(t){ const s = $("#status"); s.textContent = t || ""; s.hidden = !t; }
+async function salvar(col, id, body){
+  const arr = col === "itens" ? itens : mats, k = arr.findIndex(x => x.id === id);
+  if (k >= 0) arr[k] = {id, ...body}; else arr.push({id, ...body});
+  render();
+  if (!db) return;
+  const {error} = await sb.from(col).upsert({id, ...body});
+  aviso(error ? "Não deu para salvar. Tente de novo." : "");
+}
+async function apagar(col, id){
+  if (col === "itens") itens = itens.filter(x => x.id !== id); else mats = mats.filter(x => x.id !== id);
+  render();
+  if (!db) return;
+  const {error} = await sb.from(col).delete().eq("id", id);
+  if (error) aviso("Não deu para excluir. Tente de novo.");
+}
+const limpo = it => { const {id, criado_em, ...b} = it; return b; };
+
+/* ---------- formulários ---------- */
+const opts = MAT.map(m => `<option value="${m.id}">${esc(m.nome)}</option>`).join("");
+$("#i-materia").innerHTML = opts; $("#m-materia").innerHTML = opts; $("#f-materia").innerHTML = opts;
+
+function abrirItem(id){
+  editId = id || null; delArmado = false;
+  const it = id ? itens.find(x => x.id === id) : null;
+  const d = new Date().getDay(), padrao = filtro !== "todas" ? filtro : (MAT.find(m => m.dia === d) || MAT[0]).id;
+  $("#item-titulo-dlg").textContent = it ? "Editar tarefa" : "Nova tarefa";
+  $("#i-titulo").value = it ? it.titulo : "";
+  $("#i-materia").value = it ? it.materia : padrao;
+  $("#i-tipo").value = it ? (it.tipo || "Atividade") : "Atividade";
+  $("#i-data").value = it ? (it.data || "") : "";
+  $("#i-peso").value = it && it.peso != null ? it.peso : "";
+  $("#i-nota").value = it && it.nota != null ? it.nota : "";
+  $("#i-del").hidden = !it; $("#i-del").textContent = "Excluir"; $("#i-err").hidden = true;
+  $("#dlg-item").showModal();
+}
+$("#form-item").addEventListener("submit", e => {
+  e.preventDefault();
+  const num = v => v === "" ? null : Number(String(v).replace(",", "."));
+  const nota = num($("#i-nota").value), peso = num($("#i-peso").value), titulo = $("#i-titulo").value.trim();
+  const err = !titulo ? "Dê um título para a tarefa." : (nota != null && !(nota >= 0 && nota <= 10)) ? "A nota precisa estar entre 0 e 10." : (peso != null && !(peso >= 0)) ? "O peso não pode ser negativo." : "";
+  if (err) { $("#i-err").textContent = err; $("#i-err").hidden = false; return; }
+  const antigo = editId ? itens.find(x => x.id === editId) : null;
+  const body = {titulo, materia:$("#i-materia").value, tipo:$("#i-tipo").value, data:$("#i-data").value || null, peso, nota, feito: antigo ? !!antigo.feito : false};
+  if (nota != null) body.feito = true;
+  $("#dlg-item").close();
+  salvar("itens", editId || novoId(), body);
+});
+$("#i-del").addEventListener("click", () => {
+  if (!delArmado) { delArmado = true; $("#i-del").textContent = "Toque de novo para excluir"; return; }
+  $("#dlg-item").close(); apagar("itens", editId);
+});
+$("#form-mat").addEventListener("submit", e => {
+  e.preventDefault();
+  let url = $("#m-url").value.trim(); const titulo = $("#m-titulo").value.trim();
+  if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
+  let ok = false; try { ok = !!new URL(url).hostname.includes("."); } catch (x) {}
+  if (!titulo || !ok) { $("#m-err").textContent = "Confira o título e o link (precisa ser um endereço da web)."; $("#m-err").hidden = false; return; }
+  $("#dlg-mat").close();
+  salvar("materiais", novoId(), {titulo, materia:$("#m-materia").value, url});
+});
+
+$("#f-materia").addEventListener("change", e => { $("#f-data").value = ultimaAula(byId[e.target.value]); });
+$("#form-falta").addEventListener("submit", e => {
+  e.preventDefault();
+  const materia = $("#f-materia").value, data = $("#f-data").value, m = byId[materia];
+  const err = !data ? "Escolha o dia da aula." : parseD(data).getDay() !== m.dia ? `${m.curto} é às ${DIAS[m.dia].toLowerCase()}. Confira a data.` : faltas.some(f => f.materia === materia && f.data === data) ? "Essa falta já está registrada." : "";
+  if (err) { $("#f-err").textContent = err; $("#f-err").hidden = false; return; }
+  $("#dlg-falta").close(); addFalta(materia, data, Number($("#f-horas").value) || 4);
+});
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button,[data-close]"); if (!t) return;
+  if (t.dataset.tab) { tab = t.dataset.tab; try { localStorage.setItem("tab", tab); } catch (x) {} render(); window.scrollTo(0,0); }
+  else if ("novo" in t.dataset) abrirItem();
+  else if (t.dataset.edit) abrirItem(t.dataset.edit);
+  else if (t.dataset.filtro) { filtro = t.dataset.filtro; render(); }
+  else if ("novomat" in t.dataset) { $("#form-mat").reset(); if (filtro !== "todas") $("#m-materia").value = filtro; $("#m-err").hidden = true; $("#dlg-mat").showModal(); }
+  else if (t.dataset.delmat) { if (t.dataset.armado) apagar("materiais", t.dataset.delmat); else { t.dataset.armado = "1"; t.textContent = "Confirmar"; t.style.color = "var(--bad)"; } }
+  else if ("falta" in t.dataset) abrirFalta(t.dataset.falta);
+  else if (t.dataset.delfalta) { if (t.dataset.armado) delFalta(t.dataset.delfalta); else { t.dataset.armado = "1"; t.textContent = "Remover?"; t.style.color = "var(--bad)"; } }
+  else if ("close" in t.dataset) t.closest("dialog").close();
+});
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset && t.dataset.feito) { const it = itens.find(x => x.id === t.dataset.feito); if (it) salvar("itens", it.id, {...limpo(it), feito: t.checked}); }
+  else if (t.id === "meta") { const v = Number(t.value); if (v >= 0 && v <= 10) { meta = v; t.blur(); render(); salvaCfg(); } }
+  else if (t.dataset && t.dataset.aulas) { const v = Math.round(Number(t.value)); if (v >= 4 && v <= 300) { aulas = {...aulas, [t.dataset.aulas]: v}; t.blur(); render(); salvaCfg(); } }
+});
+
+/* ---------- login e carga ---------- */
+async function carregar(){
+  const [a, b, c, d] = await Promise.all([
+    sb.from("itens").select("*"), sb.from("materiais").select("*"),
+    sb.from("faltas").select("*"), sb.from("config").select("*").eq("id", 1).maybeSingle()]);
+  if (a.error || b.error || c.error || d.error) { aviso("Não deu para carregar os dados. Confira a internet e recarregue."); return; }
+  itens = a.data.map(i => ({...i, peso: i.peso == null ? null : Number(i.peso), nota: i.nota == null ? null : Number(i.nota)}));
+  mats = b.data; faltas = c.data;
+  if (d.data) { meta = Number(d.data.meta); aulas = {...(d.data.carga || {})}; }
+  aviso("");
+  if (!document.querySelector("dialog[open]")) render();
+}
+function tela(logado){
+  db = logado ? true : null;
+  $("#login").hidden = logado; $("#sair").hidden = !logado;
+  $("#week").hidden = !logado; $("#view").hidden = !logado; document.querySelector("nav.tabs").hidden = !logado;
+  if (logado) { renderWeek(); render(); carregar(); } else { itens = []; mats = []; faltas = []; }
+}
+const erroLogin = t => { $("#l-err").textContent = t; $("#l-err").hidden = !t; };
+$("#form-login").addEventListener("submit", async e => {
+  e.preventDefault(); erroLogin("");
+  const {error} = await sb.auth.signInWithPassword({email: $("#l-email").value.trim(), password: $("#l-senha").value});
+  if (error) erroLogin(/confirm/i.test(error.message) ? "Confirme o e-mail pelo link que enviamos e tente de novo." : "E-mail ou senha incorretos.");
+});
+$("#l-criar").addEventListener("click", async () => {
+  erroLogin("");
+  const email = $("#l-email").value.trim(), password = $("#l-senha").value;
+  if (!email || password.length < 8) { erroLogin("Preencha o e-mail e uma senha de pelo menos 8 caracteres."); return; }
+  const {data, error} = await sb.auth.signUp({email, password, options: {emailRedirectTo: location.origin + location.pathname}});
+  if (error) erroLogin("Não deu para criar a conta: " + error.message);
+  else if (!data.session) erroLogin("Conta criada. Abra o link de confirmação no seu e-mail e depois entre com a senha.");
+});
+$("#sair").addEventListener("click", () => sb.auth.signOut());
+let logadoAntes = null;
+sb.auth.onAuthStateChange((ev, session) => { const l = !!session; if (l !== logadoAntes) { logadoAntes = l; tela(l); } });
+document.querySelectorAll("dialog").forEach(dl => dl.addEventListener("close", render));
+document.addEventListener("visibilitychange", () => { if (!document.hidden && db) { renderWeek(); carregar(); } });
+</script>
+
+</body>
+</html>
