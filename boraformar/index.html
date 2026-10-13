@@ -395,7 +395,7 @@ async function apagar(col, id){
   const {error} = await sb.from(col).delete().eq("id", id);
   if (error) aviso("Não deu para excluir. Tente de novo.");
 }
-const limpo = it => { const {id, criado_em, ...b} = it; return b; };
+const limpo = it => { const {id, criado_em, removido, ...b} = it; return b; };
 
 /* ---------- formulários ---------- */
 const opts = MAT.map(m => `<option value="${m.id}">${esc(m.nome)}</option>`).join("");
@@ -484,8 +484,8 @@ $("#tema").addEventListener("click", () => { temaAtual = temaAtual === "dark" ? 
 /* ---------- login e carga ---------- */
 async function carregar(){
   const [a, b, c, d] = await Promise.all([
-    sb.from("itens").select("*"), sb.from("materiais").select("*"),
-    sb.from("faltas").select("*"), sb.from("config").select("*").eq("id", 1).maybeSingle()]);
+    sb.from("itens").select("*").eq("removido", false), sb.from("materiais").select("*").eq("removido", false),
+    sb.from("faltas").select("*").eq("removido", false), sb.from("config").select("*").eq("id", 1).maybeSingle()]);
   if (a.error || b.error || c.error || d.error) { aviso("Não deu para carregar os dados. Confira a internet e recarregue."); return; }
   itens = a.data.map(i => ({...i, peso: i.peso == null ? null : Number(i.peso), nota: i.nota == null ? null : Number(i.nota)}));
   mats = b.data; faltas = c.data;
