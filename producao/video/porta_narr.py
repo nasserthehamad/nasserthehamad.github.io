@@ -39,6 +39,9 @@ first = next(k for k in range(len(loud)) if loud[k]) * 0.01
 last = (len(loud) - next(k for k in range(len(loud)) if loud[::-1][k])) * 0.01
 inner = [r for r in runs if r[0] > first and r[1] < last]
 bounds = sorted(sorted(inner, key=lambda r: r[1] - r[0], reverse=True)[:5])
+if os.environ.get('BOUNDS'):
+    want = [float(v) for v in os.environ['BOUNDS'].split(',')]
+    bounds = [min(inner, key=lambda r: abs(r[0] - t)) for t in want]
 print('scene pauses:', [(round(a, 2), round(b - a, 2)) for a, b in bounds])
 segs, s0 = [], first
 for a, b in bounds: segs.append((s0, a)); s0 = b
@@ -124,15 +127,17 @@ starts, acc = {}, 0.0
 for name, dur, _, _ in M.SCENES:
     starts[name] = acc; acc += int(round(dur * 30)) / 30
 for k in ORDER:
-    a, b = T[k]['a'] - 0.04, T[k]['b'] + 0.1
+    a, b = max(0.0, T[k]['a'] - 0.04), T[k]['b'] + 0.1
     seg = x[int(a * SR):int(b * SR)]
     i = int((starts[k] + LEAD - 0.04) * SR); j = min(n, i + len(seg)); nar[i:j] += seg[:j - i]
-nar *= 0.85 / np.abs(nar).max()
+voiced = np.abs(nar) > 0.02 * np.abs(nar).max()
+nar *= 0.15 / np.sqrt((nar[voiced] ** 2).mean())
 env = np.convolve(np.abs(nar), np.ones(int(0.15 * SR)) / int(0.15 * SR), 'same')
-duck = 1 - 0.55 * np.clip(env / 0.02, 0, 1)
+duck = 1 - 0.5 * np.clip(env / 0.02, 0, 1)
 duck = np.convolve(duck, np.ones(int(0.12 * SR)) / int(0.12 * SR), 'same')
-mix = base * 0.75 * duck[:, None] + nar[:, None]
-mix *= 0.89 / np.abs(mix).max()
+mix = base * 0.6 * duck[:, None] + nar[:, None]
+mix = np.tanh(mix * 1.3) / 1.3
+mix *= min(1.0, 0.95 / np.abs(mix).max())
 with wave.open(OUT + '/audio.wav', 'wb') as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((mix * 32767).astype(np.int16).tobytes())
 with open(OUT + '/list.txt', 'w') as f:
