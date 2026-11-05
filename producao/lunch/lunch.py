@@ -285,6 +285,11 @@ def setup_s1():
     FOOTSH = Image.new('RGBA', (280, 60), (0, 0, 0, 0))
     m = Image.new('L', (280, 60), 0); ImageDraw.Draw(m).ellipse((20, 14, 260, 46), fill=120)
     FOOTSH.putalpha(m.filter(ImageFilter.GaussianBlur(8)))
+    global HOOK
+    f = F('InterDisplay-Black', 132)
+    HOOK = Image.new('RGBA', (W, 400), (0, 0, 0, 0)); dh = ImageDraw.Draw(HOOK)
+    for y, line in ((110, 'QUEM COMEU'), (270, 'A MARMITA?')):
+        dh.text((W // 2, y), line, font=f, fill=WHITE, anchor='mm', stroke_width=10, stroke_fill=INK)
 
 def frame_s1(t):
     im = S1_BG.copy()
@@ -301,6 +306,11 @@ def frame_s1(t):
         bob = 4 * math.sin(2 * math.pi * t / 1.8)
         ax, ay = 40 + 190, 262 + 330
         comp(im, b, (ax - 190 * s, ay - 330 * s + bob), clamp(q * 3))
+    if t < 1.5:
+        ha = 1.0 if t < 1.15 else 1 - (t - 1.15) / 0.35
+        hs = 1.0 + 0.04 * (1 - eo(t / 0.4))
+        hk = HOOK if hs == 1.0 else HOOK.resize((int(W * hs), int(400 * hs)), Image.BILINEAR)
+        comp(im, hk, ((W - hk.width) / 2, 280 - (hk.height - 400) / 2), ha)
     comp(im, KICKER, ((W - KICKER.width) // 2, 196))
     CAP['s1'].draw(im, t)
     return im.convert('RGB')
@@ -723,4 +733,4 @@ if __name__ == '__main__':
         only = sys.argv[2:] or [k for k, _ in SCENES]
         for idx, (k, fn) in enumerate(SCENES):
             if k in only:
-                encode(k, fn, DURS[k], fade_in=6 if idx == 0 else 0, fade_out=12 if idx == len(SCENES) - 1 else 0)
+                encode(k, fn, DURS[k], fade_in=0, fade_out=12 if idx == len(SCENES) - 1 else 0)

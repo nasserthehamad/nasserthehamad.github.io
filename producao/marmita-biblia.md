@@ -18,7 +18,7 @@ Gags fixos: bilhetes escritos à mão (fonte Caveat) com carinha; a tampa **azul
 
 ## Arco
 
-**Ep. 1 (publicado 05/11, 15h).** A marmita sumiu, bilhete "tava uma delícia".
+**Ep. 1.** Publicado 05/11 às 15h pelo Metricool e ficou com 0 views; **relançado 06/11 às 13h pelo app** (versão `a-marmita-sumiu-ep1-v2.mp4`, com título no início e capa nova). A marmita sumiu, bilhete "tava uma delícia".
 Escolha: **A** Ju do RH (cheiro de lasanha) · **B** Seu Carlos (molho na gravata).
 
 **Ep. 2 — o confronto.** Léo confronta quem ganhou.
@@ -51,4 +51,4 @@ Escolha: **A** Ju do RH (cheiro de lasanha) · **B** Seu Carlos (molho na gravat
 - Roteiro de 6 cenas, ~30 s, uma frase de narração por cena (pausa longa `[long pause]` entre cenas).
 - Legendas = texto exato da narração.
 - Selo de IA ligado no post (`isAigc: true`), conta pública, 3–5 hashtags: #historiainterativa #comedia #vocedecide #storytime.
-- Vídeo publicado em `videos/a-marmita-sumiu-epN.mp4` deste repositório → link para o Metricool (marca 7899577).
+- **Postagem sempre manual pelo app** (pelo Metricool o vídeo ficou com 0 views). Entregar ao dono: vídeo, capa e legenda.
