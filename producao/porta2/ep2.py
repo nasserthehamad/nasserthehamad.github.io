@@ -427,6 +427,8 @@ def setup_e6():
     CARD_B = M.card('B', 'Pular o muro', RED, (64, 10, 14), (255, 228, 228), WHITE)
     CTA = rich_line([('Comenta ', WHITE), ('A', WARM), (' ou ', WHITE), ('B', RED)], F('InterDisplay-ExtraBold', 74))
     SUB = rich_line([('O mais votado vira o episódio 3', (204, 204, 216))], F('Inter-Medium', 40), stroke=4)
+    global FOLLOW
+    FOLLOW = rich_line([('Segue', WARM), (' pra não perder o episódio 3', WHITE)], F('InterDisplay-ExtraBold', 54), stroke=5)
 
 def frame_e6(t):
     im = E6_BG.convert('RGBA'); im.alpha_composite(E6_RAIN.layer(t))
@@ -444,6 +446,10 @@ def frame_e6(t):
         p = eo((t - 1.9) / 0.4); comp(im, CTA, ((W - CTA.width) / 2, 1065 + (1 - p) * 24), p)
     if t >= 2.3:
         p = eo((t - 2.3) / 0.4); comp(im, SUB, ((W - SUB.width) / 2, 1175 + (1 - p) * 18), p)
+    if t >= 2.9:
+        p = backout((t - 2.9) / 0.45); s_ = 0.7 + 0.3 * p + (0.02 * math.sin(2 * math.pi * (t - 3.4) / 1.3) if t > 3.4 else 0)
+        fw = FOLLOW.resize((max(1, int(FOLLOW.width * s_)), max(1, int(FOLLOW.height * s_))), Image.BILINEAR)
+        comp(im, fw, ((W - fw.width) / 2, 1275 + (FOLLOW.height - fw.height) / 2), clamp((t - 2.9) * 4))
     return im.convert('RGB')
 
 # ------------------------------------------------------------ captions & assembly
@@ -579,7 +585,9 @@ if __name__ == '__main__':
         for i, im in enumerate(th): sheet.paste(im, ((i % 4) * (W // 4), (i // 4) * (H // 4)))
         sheet.save(f'{OUT}/sheet.png')
     else:
+        only = sys.argv[3:] or ORDER
         for idx, k in enumerate(ORDER):
+            if k not in only: continue
             encode(k, FRAMES[k], DURS[k], fade_in=5, fade_out=12 if idx == len(ORDER) - 1 else 0)
         starts, acc = {}, 0.0
         for k in ORDER: starts[k] = acc; acc += int(round(DURS[k] * FPS)) / FPS
