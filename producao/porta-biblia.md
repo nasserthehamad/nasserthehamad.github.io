@@ -19,7 +19,7 @@ Episódios 1 a 4 terminam em **A ou B**; o 5 é o final. **Postagem sempre manua
 **Ep. 1 (publicado 05/11, ~18h40, pelo app).** 3h17, mensagem "não abre a porta", batidas, vulto no poste,
 "quem tá batendo na sua porta não sou eu". Escolha: **A** abrir a porta · **B** fugir pelos fundos.
 
-**Ep. 2.**
+**Ep. 2 (venceu B, publicado 06/11 às 20h; `producao/porta2/ep2.py`).**
 - Se **A (abrir):** Lia abre só uma fresta, com a corrente. Ninguém. No capacho, uma caixinha molhada com o nome dela escrito.
   O vulto do poste sumiu. Nova mensagem: "você abriu."
   Escolha: **A** abrir a caixa · **B** fechar tudo e ligar pro irmão.
