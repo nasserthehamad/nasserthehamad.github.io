@@ -28,7 +28,7 @@ camisa e que o bilhete "tava uma delícia" está escrito em azul. Isso vira can�
 **Ep. 1.** Publicado 05/11 às 15h pelo Metricool e ficou com 0 views; **relançado 06/11 às 11h30 pelo app** (versão `a-marmita-sumiu-ep1-v2.mp4`, com título no início e capa nova). A marmita sumiu, bilhete "tava uma delícia".
 Escolha: **A** Ju do RH (cheiro de lasanha) · **B** Seu Carlos (molho na gravata).
 
-**Ep. 2 — o confronto.** Léo confronta quem ganhou.
+**Ep. 2 — o confronto.** Léo confronta quem ganhou. **Venceu A (Ju), 06/11.** Produção: `producao/marmita2/ep2.py` (cenas) + `nar2.py` (narração → timing2.json). Postar 07/11 às 11h30.
 - Se **A (Ju):** o cheiro é da lasanha *dela* (receita da vó dela também) e ela só escreve a lápis. Mas ela viu, ao meio-dia,
   alguém saindo da copa com uma marmita de **tampa azul**: o Pedro, o estagiário.
 - Se **B (Carlos):** confrontado com a caneta azul, mostra que a dele sumiu da mesa de manhã (está com a reserva). O molho é do
