@@ -16,15 +16,23 @@ trilha animada sintetizada, figurinhas com contorno branco. Todo episódio termi
 
 Gags fixos: bilhetes escritos à mão (fonte Caveat) com carinha; a tampa **azul** da marmita do Léo é a pista que liga tudo.
 
+**Pista da caneta azul (veio de um comentário em 06/11):** um seguidor reparou que o Seu Carlos tem uma caneta azul no bolso da
+camisa e que o bilhete "tava uma delícia" está escrito em azul. Isso vira canônico:
+- A **caneta azul do Seu Carlos sumiu da mesa dele de manhã** (ele está usando a reserva, igual). Quem escreveu o bilhete usou a caneta dele.
+- A Ju escreve **só a lápis** (o lápis no coque) — álibi dela.
+- No Ep. 2, citar na tela: "Um de vocês reparou: a caneta do chefe é azul… e o bilhete também." (mostra que os comentários mudam a história).
+- No final, a caneta sumida reaparece na **portaria, presa no livro de visitas** — serve para os dois finais (Seu Zé trabalha ali; a vó assinou o livro ao entrar).
+
 ## Arco
 
 **Ep. 1.** Publicado 05/11 às 15h pelo Metricool e ficou com 0 views; **relançado 06/11 às 11h30 pelo app** (versão `a-marmita-sumiu-ep1-v2.mp4`, com título no início e capa nova). A marmita sumiu, bilhete "tava uma delícia".
 Escolha: **A** Ju do RH (cheiro de lasanha) · **B** Seu Carlos (molho na gravata).
 
 **Ep. 2 — o confronto.** Léo confronta quem ganhou.
-- Se **A (Ju):** o cheiro é da lasanha *dela* (receita da vó dela também). Mas ela viu, ao meio-dia,
+- Se **A (Ju):** o cheiro é da lasanha *dela* (receita da vó dela também) e ela só escreve a lápis. Mas ela viu, ao meio-dia,
   alguém saindo da copa com uma marmita de **tampa azul**: o Pedro, o estagiário.
-- Se **B (Carlos):** o molho é do macarrão dele, e ele está nervoso porque comeu o **iogurte** de alguém.
+- Se **B (Carlos):** confrontado com a caneta azul, mostra que a dele sumiu da mesa de manhã (está com a reserva). O molho é do
+  macarrão dele, e ele está nervoso porque comeu o **iogurte** de alguém.
   Ele viu o Pedro rondando a geladeira com um garfo na mão.
 - Escolha: **A** revirar o lixo da copa · **B** pedir as câmeras pro Seu Zé.
 
@@ -41,9 +49,9 @@ Escolha: **A** Ju do RH (cheiro de lasanha) · **B** Seu Carlos (molho na gravat
 
 **Ep. 5 — o final (sem escolha).**
 - **A:** foi o próprio **Seu Zé**, o porteiro: a lasanha estava com o cheiro igual à da avó dele e ele não resistiu.
-  Ele devolve com uma marmita nova e um bilhete de desculpas.
+  Ele devolve com uma marmita nova e um bilhete de desculpas — escrito com a caneta azul do Seu Carlos, que estava na portaria.
 - **B:** foi a **vó do Léo**, que passou no escritório pra fazer surpresa, provou "só um pedacinho" e acabou com tudo.
-  Ela deixa outra lasanha e o bilhete "tava uma delícia" era dela.
+  Ela deixa outra lasanha e o bilhete "tava uma delícia" era dela: pegou a caneta azul da mesa do Seu Carlos e deixou no livro de visitas da portaria.
 - Fecha com "FIM" + "Qual história vem agora? Comenta!" (puxa a próxima série).
 
 ## Regras de produção
