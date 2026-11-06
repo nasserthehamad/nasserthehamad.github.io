@@ -18,7 +18,7 @@ Gags fixos: bilhetes escritos à mão (fonte Caveat) com carinha; a tampa **azul
 
 ## Arco
 
-**Ep. 1.** Publicado 05/11 às 15h pelo Metricool e ficou com 0 views; **relançado 06/11 às 13h pelo app** (versão `a-marmita-sumiu-ep1-v2.mp4`, com título no início e capa nova). A marmita sumiu, bilhete "tava uma delícia".
+**Ep. 1.** Publicado 05/11 às 15h pelo Metricool e ficou com 0 views; **relançado 06/11 às 11h30 pelo app** (versão `a-marmita-sumiu-ep1-v2.mp4`, com título no início e capa nova). A marmita sumiu, bilhete "tava uma delícia".
 Escolha: **A** Ju do RH (cheiro de lasanha) · **B** Seu Carlos (molho na gravata).
 
 **Ep. 2 — o confronto.** Léo confronta quem ganhou.
