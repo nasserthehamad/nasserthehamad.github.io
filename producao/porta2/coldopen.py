@@ -7,16 +7,17 @@ from make import F, eo, comp, vgrad, WHITE, WARM, INK
 W, H, SR, DUR = 1080, 1920, 44100, 1.7
 bg = vgrad(W, H, (10, 14, 30), (2, 3, 8)).convert('RGBA')
 rain = M.Rain(31, M.RAIN_OUT); mult = M.make_mult(0.45, False); kick = E.kicker()
-def big(txt, size):
+def big(txt, size, maxw=1000):
+    while F('InterDisplay-Black', size).getlength(txt) > maxw - 40: size -= 4
     f = F('InterDisplay-Black', size); w = int(f.getlength(txt)) + 40; asc, desc = f.getmetrics()
     im = Image.new('RGBA', (w, asc + desc + 40), (0, 0, 0, 0))
     ImageDraw.Draw(im).text((20, 20), txt, font=f, fill=WHITE, stroke_width=11, stroke_fill=INK); return im
-L1, L2 = big('NÃO VAI', 190), big('PRO GALPÃO.', 150)
+L1, L2 = big(os.environ.get('HOOK1', 'QUEM TÁ BATENDO'), 150), big(os.environ.get('HOOK2', 'NÃO SOU EU.'), 190)
 f_small = F('InterDisplay-ExtraBold', 44)
 def frame(t):
     im = bg.copy(); im.alpha_composite(rain.layer(t))
     s = 1 + 0.25 * (1 - eo(t / 0.25))
-    for img, y in ((L1, 700), (L2, 920)):
+    for img, y in ((L1, 720), (L2, 900)):
         i2 = img.resize((int(img.width * s), int(img.height * s)), Image.BILINEAR)
         comp(im, i2, ((W - i2.width) / 2, y - (i2.height - img.height) / 2))
     d = ImageDraw.Draw(im)
