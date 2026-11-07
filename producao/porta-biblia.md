@@ -5,7 +5,7 @@ legenda palavra por palavra, narração ElevenLabs (voz **Jhony Tygas**, `FhdOWg
 tags `[softly]`, `[whispers]`, `[dramatically]`). Batidas na porta como gancho sonoro. Suspense sem violência explícita.
 Episódios 1 a 4 terminam em **A ou B**; o 5 é o final. **Postagem sempre manual pelo app** (pelo Metricool o vídeo ficou com 0 views).
 
-## Elenco (nova linha aprovada em 07/11 — pedido do Nasser: quem manda as mensagens mais importante, vilão mais perigoso)
+## Elenco (nova linha adotada em 07/11 a partir do pedido do Nasser — quem manda as mensagens mais importante, vilão mais perigoso; ele ainda pode vetar)
 
 | Personagem | Quem é |
 | --- | --- |
