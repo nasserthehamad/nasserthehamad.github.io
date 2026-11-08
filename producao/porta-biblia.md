@@ -26,17 +26,11 @@ Uma porta se abre: Seu Antônio, vigia noturno aposentado, de lanterna (no fundo
 "Menina? Entra… tá chovendo." O celular vibra: "não entra." e logo depois "sou eu, lia. a bia." — a irmã que sumiu há um ano
 (cartaz DESAPARECIDA). Escolha: **A** entrar na casa (do Seu Antônio) · **B** responder a Bia.
 
-**Ep. 4 (a fazer).**
-- Se **A (entrar):** lá dentro, o quadro de chaves com o número de cada casa da rua — inclusive a da Lia; na mesa, o celular velho
-  da Bia. Ele tranca a porta "por causa da chuva". Bia: "sai daí. agora."
-- Se **B (responder):** "cadê você?" → "no poste. ele tem a chave da sua casa. foi ele que me levou." O vulto no poste acena.
-- As irmãs se reencontram. Às 3h17, as batidas voltam. Escolha final: **A** armar uma armadilha (provas + polícia) · **B** fugir juntas.
-
-**Ep. 5 — final.**
-- **A:** trancam o Seu Antônio no galpão com as provas; a viatura chega. Última cena: 3h17, mensagem de outro número:
-  "vocês acharam que eu trabalhava sozinho?" — gancho de 2ª temporada.
-- **B:** fogem e amanhecem num posto de gasolina, a salvo. O celular vibra: foto das duas ali, tirada de fora. "FIM?"
-- Fecha com "FIM" + "Qual história vem agora? Comenta!".
+**Ep. 4 — FINAL (08/11 ~18h; `producao/porta4/ep4.py`).** A série foi encurtada para 4 episódios porque estava com pouca
+audiência e o Ep. 3 ficou sem votos (escolhido B). Gancho "SOU EU, LIA. / A BIA.". A Lia responde "cadê você?"; a Bia: "no poste.
+ele tem a chave da sua casa. foi ele que me levou." Reencontro no poste; a lanterna do Seu Antônio aparece atrás delas, mas a Bia
+já tinha chamado a polícia (luzes vermelha e azul). "Depois de um ano, as irmãs estavam juntas de novo." Gancho final: às 3h17,
+"vocês acharam que ele trabalhava sozinho?" → "FIM?" + "Qual história vem agora?".
 
 ## Regras
 
