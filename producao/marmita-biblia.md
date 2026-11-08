@@ -41,9 +41,11 @@ veio de um comentário); viu "o Pedro" com a marmita de tampa azul. Escolha: **A
 
 **Ep. 3 (08/11 11h30; `producao/marmita3/`).** O Seu Zé volta a gravação: 11:58, alguém de moletom amarelo pega a marmita.
 "Igual ao do Pedro!" — mas a pessoa é bem mais baixinha (régua de altura). Escolha: **A** acusar o Pedro na frente de todo mundo ·
-**B** armar uma armadilha com lasanha apimentada.
+**B** armar uma armadilha com lasanha apimentada → **venceu B**.
 
-**Ep. 4.**
+**Ep. 4 (para 09/11 11h30; `producao/marmita4/`, caminho B).** Lasanha com MUITA pimenta; no dia seguinte, ao meio-dia, um grito na copa; a pessoa fugiu e deixou cair o moletom amarelo; o Seu Zé acha a caneta azul do Seu Carlos presa no livro de visitas. Última votação: **A** alguém de dentro do prédio · **B** alguém de fora.
+
+**Ep. 4 (plano original, os dois caminhos).**
 - Se **A (acusar):** o Pedro tem álibi — estava em reunião com o Seu Carlos das 11h30 às 12h30 (o Carlos confirma) — e diz que o
   moletom e o boné ficaram pendurados na portaria. Silêncio constrangedor.
 - Se **B (armadilha):** no dia seguinte alguém grita na copa com a boca pegando fogo e foge; no chão fica o moletom amarelo.
