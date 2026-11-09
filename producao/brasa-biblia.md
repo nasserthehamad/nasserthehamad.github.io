@@ -17,7 +17,7 @@ comentários ganha nome e função na história.
 - **Duração:** entre 20 e 25 s, com o final emendando no começo (loop).
 - **Gancho:** sem spoiler.
 - **Áudio:** postar com o original, sem música do app por cima.
-- **Visual:** vista de lado, tipo diorama (a referência é vista de cima). A bandeira do reino é vermelha com uma chama.
+- **Visual:** pixel art detalhado (canvas 360x640, ampliado 3x/4x/5x), vista de lado, tipo diorama (a referência é vista de cima). A bandeira do reino é vermelha com uma chama.
 
 ## O mundo
 - **Centro:** a praça com a fogueira, numa encruzilhada de estradas com placas de madeira.
@@ -34,7 +34,7 @@ comentários ganha nome e função na história.
 4. "E além da ponte… alguém acendeu uma luz." Os moradores reagem com um "!".
 5. "Comenta seu nome e sua função. Os primeiros viram FUNDADORES."
 
-Arquivos: `videos/brasa-ep1.mp4` e `producao/capas/capa-brasa-ep1.jpg`. Código em `producao/reino/` (`world.py` e `ep1.py`,
+Arquivos: `videos/brasa-ep1-hd.mp4` e `producao/capas/capa-brasa-ep1-hd.jpg`. Código em `producao/reino/` (versão detalhada: `world2.py` e `ep1hd.py`, canvas 360x640,
 rodando com `N=<seguidores>` e `NAME=BRASA`).
 
 ## Próximos episódios (rascunho)
