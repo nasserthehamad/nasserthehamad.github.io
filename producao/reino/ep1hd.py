@@ -596,6 +596,12 @@ def audio(path):
                              capture_output=True).stdout
         v = np.frombuffer(raw, '<i2').astype(np.float64) / 32768
         v = v / (np.abs(v).max() + 1e-9)
+        for rng_ in filter(None, os.environ.get('MUTE', '').split(',')):
+            a_, b_ = [float(q) for q in rng_.split('-')]
+            i0, i1 = int(a_ * SR), min(len(v), int(b_ * SR))
+            fade = np.ones(i1 - i0)
+            k_ = min(int(0.03 * SR), len(fade) // 2)
+            v[i0:i1] *= 0
         vt = np.zeros(len(mus))
         add(vt, VOICE_OFF, v, 1.0)
         env = np.convolve(np.abs(vt), np.ones(int(0.05 * SR)) / int(0.05 * SR), mode='same')
