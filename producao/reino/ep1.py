@@ -11,7 +11,7 @@ from world import *
 HERE = os.path.dirname(os.path.abspath(__file__))
 FW, FH, FPS = 1080, 1920, 30
 N = int(os.environ.get('N', '7'))
-NAME = os.environ.get('NAME', 'BIFÚRCIA')
+NAME = os.environ.get('NAME', 'BRASA')
 OUTDIR = os.environ.get('OUTDIR', os.path.join(HERE, 'out'))
 os.makedirs(OUTDIR, exist_ok=True)
 JERSEY = os.path.join(HERE, 'fonts', 'JerseyFix.ttf')
@@ -44,6 +44,8 @@ ARRIVE = [s + WALK for s in START]
 ENTRY = [(90 + (i % 3 - 1) * 3, 336) if i % 2 == 0 else (-8, 193) for i in range(N)]
 QTIMES = [T4 + 1.95 + 0.14 * k for k in range(N)]
 TAG_T = T5 + 0.65
+MYST_T = T6 + 0.9
+BANG_T = [MYST_T + 0.45 + 0.09 * k for k in range(N)]
 
 
 def vstate(i, t):
@@ -70,12 +72,12 @@ FLIES = [(_r.uniform(10, 170), _r.uniform(152, 240), _r.random() * 6.28, _r.unif
 
 
 def myst_on(t):
-    if t < T6 + 0.6:
+    if t < MYST_T:
         return 0.0
-    for a, b in [(17.35, 17.5), (20.95, 21.15), (22.4, 22.5)]:
+    for a, b in [(17.55, 17.68), (20.95, 21.15), (22.4, 22.5)]:
         if a <= t < b:
             return 0.0
-    return clamp((t - T6 - 0.6) / 0.3)
+    return clamp((t - MYST_T) / 0.25)
 
 
 def scene(t):
@@ -94,7 +96,9 @@ def scene(t):
         for c_ in range(10):
             dy = int(round(math.sin(t * 8 - c_ * 0.8) * 0.8)) if c_ > 2 else 0
             for r_ in range(6):
-                col = (60, 200, 190) if c_ + r_ * 0.6 < 6.5 else (250, 150, 60)
+                col = (176, 44, 40)
+                if (c_, r_) in ((4, 1), (5, 2), (4, 2), (3, 3), (4, 3), (5, 3), (4, 4), (5, 4), (3, 4)):
+                    col = (255, 236, 140) if (c_, r_) in ((4, 3), (4, 4)) else (255, 160, 50)
                 if r_ in (0, 5) and c_ > 0:
                     col = tuple(int(v * 0.8) for v in col)
                 img[top + r_ + dy, 77 + c_] = col
@@ -149,10 +153,11 @@ def scene(t):
         for dx, dy in ((1, 0), (-1, 0), (0, -1), (0, 1)):
             out[my + dy, mx + dx] = out[my + dy, mx + dx] * (1 - 0.55 * mo) + np.array((110, 220, 190)) * 0.55 * mo
     # plantas-fantasma
-    if t >= T6 + 0.9:
-        ghost(out, 'A', (t - T6 - 0.9) / 0.6, t)
-    if t >= T6 + 1.9:
-        ghost(out, 'B', (t - T6 - 1.9) / 0.6, t)
+    if T6 <= t < T7:
+        for k in range(N):
+            if BANG_T[k] <= t < BANG_T[k] + 1.6:
+                x, y, _ = vstate(k, t)
+                qmark(out, int(round(x)) - 2, int(round(y)) - 21, bang=True)
     # ? sobre as cabeças
     if T4 <= t < T6:
         for k in range(N):
@@ -232,20 +237,19 @@ CAPS = [
     (0, T2, 300, [(0.0, [('ESTE PERFIL TEM', WHITE)], 150), (0.25, [(f'{N} SEGUIDORES.', GOLD)], 200)]),
     (T2, T3, 300, [(T2, [('AQUI, CADA SEGUIDOR', WHITE)], 150),
                    (T2 + 0.45, [('VIRA ', WHITE), ('MORADOR.', GOLD)], 180)]),
-    (T3, T4, 270, [(T3, [('BEM-VINDOS A', WHITE)], 130), (T3 + 0.4, [(NAME, GOLD)], 290),
-                   (T3 + 1.1, [('O REINO ONDE TUDO SE DECIDE NO ', WHITE), ('A', TEAL), (' OU ', WHITE), ('B', ORANGE)], 74)]),
+    (T3, T4, 270, [(T3, [('BEM-VINDOS A', WHITE)], 130), (T3 + 0.4, [(NAME, GOLD)], 300),
+                   (T3 + 1.1, [('UM REINO QUE CRESCE A CADA SEGUIDOR', WHITE)], 74)]),
     (T4, T4 + 1.8, 300, [(T4, [('POR ENQUANTO,', WHITE)], 150), (T4 + 0.45, [('É SÓ UMA FOGUEIRA…', WHITE)], 150)]),
     (T4 + 1.8, T5, 300, [(T4 + 1.8, [(f'…E {N} MORADORES', WHITE)], 150), (T4 + 2.2, [('SEM NOME.', GOLD)], 200)]),
     (T5, T6, 300, [(T5, [('SÓ GANHA NOME', WHITE)], 150), (T5 + 0.45, [('QUEM SE APRESENTA.', GOLD)], 170)]),
-    (T6, T7, 270, [(T6, [('O REINO PRECISA DECIDIR:', WHITE)], 130), (T6 + 0.45, [('O QUE CONSTRUIR', GOLD)], 170),
-                   (T6 + 0.45, [('PRIMEIRO?', GOLD)], 170)]),
-    (T7, T7 + 2.1, 270, [(T7, [('COMENTA SEU NOME,', WHITE)], 150),
-                         (T7 + 0.4, [('SUA FUNÇÃO E SEU VOTO', WHITE)], 140)]),
+    (T6, T7, 270, [(T6, [('E ALÉM DA PONTE…', WHITE)], 140), (MYST_T, [('ALGUÉM ACENDEU', GOLD)], 170),
+                   (MYST_T, [('UMA LUZ.', GOLD)], 170)]),
+    (T7, T7 + 2.1, 270, [(T7, [('COMENTA SEU NOME', WHITE)], 150),
+                         (T7 + 0.4, [('E SUA FUNÇÃO.', GOLD)], 170)]),
     (T7 + 2.1, TEND + 1, 270, [(T7 + 2.1, [('OS PRIMEIROS VIRAM', WHITE)], 150),
                                (T7 + 2.5, [('FUNDADORES.', GOLD)], 210)]),
 ]
 COUNT_T = (T2 + 0.6, T3)
-LABEL_A_T, LABEL_B_T = T6 + 1.45, T6 + 2.45
 EX_T = T7 + 0.8
 
 
@@ -259,10 +263,6 @@ def overlay_state(t):
     if TAG_T <= t < T6:
         x, y, _ = vstate(TAG, t)
         st.append(('tag', round(x, 1), round(y, 1), int((t - TAG_T) / 0.35) % 2))
-    if t >= LABEL_A_T:
-        st.append(('labA',))
-    if t >= LABEL_B_T:
-        st.append(('labB',))
     if t >= EX_T:
         st.append(('ex',))
     return tuple(st)
@@ -323,9 +323,9 @@ def overlay(state):
             d.text((x0 + 18 + 82 + 22, cy - 23 - 0.267 * 84), name, font=ft, fill=(255, 255, 255, 255))
         elif kind == 'ex':
             ft1, ft2 = font(56), font(92)
-            segs = [('Lia', WHITE), (', ', GREY), ('ferreira', GOLD), (', ', GREY), ('A', TEAL)]
+            segs = [('Lia', WHITE), (', ', GREY), ('ferreira', GOLD)]
             w = max(sum(ft2.getlength(s) for s, _ in segs), ft1.getlength('EXEMPLO DE COMENTÁRIO:')) + 80
-            x0, y0 = FW / 2 - w / 2, 520
+            x0, y0 = FW / 2 - w / 2, 580
             panel(d, (x0, y0, x0 + w, y0 + 190), fill=(26, 20, 48, 235))
             d.text((x0 + 40, y0 + 30 - 0.267 * 56), 'EXEMPLO DE COMENTÁRIO:', font=ft1, fill=GREY + (255,))
             x = x0 + 40
@@ -475,9 +475,9 @@ def music(total):
     # virada antes da decisão
     for k in range(4):
         nn = int(0.06 * SR)
-        add(drums, T6 - 0.25 + k * 0.0625, noise(nn, 500 + k) * np.exp(-np.arange(nn) / SR * 50), 0.32 + 0.06 * k)
-    dg = gain_env(n, [(0, 1), (T4 - 0.3, 1), (T4, 0), (T6 - 0.3, 0), (T6 - 0.26, 1), (total, 1)])
-    sg = gain_env(n, [(0, 1), (T4 - 0.1, 1), (T4 + 0.2, 0), (T6 - 0.1, 0), (T6 + 0.1, 1), (total, 1)])
+        add(drums, T7 - 0.25 + k * 0.0625, noise(nn, 500 + k) * np.exp(-np.arange(nn) / SR * 50), 0.32 + 0.06 * k)
+    dg = gain_env(n, [(0, 1), (T4 - 0.3, 1), (T4, 0), (T7 - 0.3, 0), (T7 - 0.26, 1), (total, 1)])
+    sg = gain_env(n, [(0, 1), (T4 - 0.1, 1), (T4 + 0.2, 0), (T7 - 0.1, 0), (T7 + 0.1, 1), (total, 1)])
     tg = 1 - sg
     mix = (smooth(lead_sq, 3) * 0.16 * sg + lead_tr * 0.20 * tg + bass * 0.30 + smooth(arp, 3) * 0.05
            + drums * 0.55 * dg)
@@ -545,21 +545,18 @@ def sfx(total):
     for k, m in enumerate([88, 93, 96, 100]):
         nn = int(0.09 * SR)
         add(s, TAG_T + k * 0.05, tri(midi(m), nn) * adsr(nn, dec=0.05, sus=0.3), 0.12)
-    # construção das plantas
-    for t0, chord in ((T6 + 0.9, (74, 81)), (T6 + 1.9, (72, 79))):
-        k = 0
-        while k * 0.03 < 0.6:
-            blip(t0 + k * 0.03, 600 + 1300 * k * 0.03 / 0.6, d=0.012, g=0.05, duty=0.25)
-            k += 1
-        for m in chord:
-            nn = int(0.45 * SR)
-            add(s, t0 + 0.6, sq(midi(m), nn, 0.25) * adsr(nn, dec=0.2, sus=0.3, r=0.15), 0.08)
-    # luz misteriosa (bem baixinho)
-    nn = int(1.1 * SR)
+    # luz misteriosa
+    nn = int(1.8 * SR)
     tt = np.arange(nn) / SR
     hum = (np.sin(2 * math.pi * 98 * tt) + 0.6 * np.sin(2 * math.pi * 147 * tt)) * (0.6 + 0.4 * np.sin(2 * math.pi * 3 * tt))
-    add(s, T6 + 0.6, hum * np.sin(math.pi * tt / 1.1), 0.07)
-    add(s, T6 + 0.6, np.sin(2 * math.pi * 2637 * tt) * (0.5 + 0.5 * np.sin(2 * math.pi * 7 * tt)) * np.sin(math.pi * tt / 1.1), 0.012)
+    add(s, MYST_T, hum * np.sin(math.pi * tt / 1.8), 0.12)
+    add(s, MYST_T, np.sin(2 * math.pi * 2637 * tt) * (0.5 + 0.5 * np.sin(2 * math.pi * 7 * tt)) * np.sin(math.pi * tt / 1.8), 0.03)
+    for k, m in enumerate((81, 80)):
+        nn = int(0.5 * SR)
+        add(s, MYST_T + k * 0.25, tri(midi(m), nn, vib=0.02) * adsr(nn, a=0.03, dec=0.3, sus=0.4, r=0.2), 0.10)
+    # moradores reagem (!)
+    for k, tb in enumerate(BANG_T):
+        blip(tb, 1180 + 60 * k, d=0.04, g=0.08, duty=0.25)
     # grilos
     t = T5 + 1.0
     while t < TEND:
@@ -597,7 +594,7 @@ def main():
         return
     wav = os.path.join(OUTDIR, 'ep1.wav')
     audio(wav)
-    out = os.path.join(OUTDIR, os.environ.get('NAMEOUT', 'bifurcia-ep1.mp4'))
+    out = os.path.join(OUTDIR, os.environ.get('NAMEOUT', 'brasa-ep1.mp4'))
     nfr = int(round(TEND * FPS))
     f0 = frame(0.0).astype(np.float32)
     p = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{FW}x{FH}',

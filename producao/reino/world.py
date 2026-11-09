@@ -232,11 +232,12 @@ for x0, y0, tip in [(74, 173, -1), (91, 181, 1)]:
     for k, (a, b) in enumerate([(1, 5), (2, 4), (3, 3)]):
         for y in range(y0 + a, y0 + b + 1):
             put(tx + tip * k, y, (96, 60, 30) if y in (y0 + a, y0 + b) else (204, 156, 94))
-for ch, x0, y0 in [('A', 80, 174), ('B', 96, 182)]:
-    for r_, row in enumerate(GLYPH[ch]):
-        for c_, v in enumerate(row):
-            if v == '#':
-                put(x0 + c_, y0 + r_, (70, 40, 20))
+for y0 in (175, 183):   # tábuas sem letra (veios)
+    for x0, x1 in ((77, 86), (93, 102)):
+        if (y0 == 175) == (x0 == 77):
+            for x in range(x0, x1):
+                if x % 3:
+                    put(x, y0 + 1, (176, 128, 74)); put(x + 1, y0 + 3, (176, 128, 74))
 
 # fogueira (pedras e lenha)
 for dx, dy in [(-5, 0), (-4, 1), (-2, 2), (0, 2), (2, 2), (4, 1), (5, 0), (-4, -1), (4, -1), (-2, -2), (2, -2), (0, -2)]:
@@ -419,17 +420,26 @@ def ring_positions(n, cx=90, cy=214):
 
 
 QMARK = ['.###.', '#...#', '...#.', '..#..', '.....', '..#..']
+EMARK = ['..#..', '..#..', '..#..', '..#..', '.....', '..#..']
 
 
-_QM = np.array([[c == '#' for c in row] for row in QMARK])
-_QO = np.zeros((8, 7), bool)
+_QMk = np.array([[c == '#' for c in row] for row in QMARK])
+_QOk = np.zeros((8, 7), bool)
 for _dy in (-1, 0, 1):
     for _dx in (-1, 0, 1):
-        _QO[1 + _dy:7 + _dy, 1 + _dx:6 + _dx] |= _QM
+        _QOk[1 + _dy:7 + _dy, 1 + _dx:6 + _dx] |= _QMk
 
 
-def qmark(img, x, y):
-    """? branco com contorno, topo em (x, y)."""
+_EM = np.array([[c == '#' for c in row] for row in EMARK])
+_EO = np.zeros((8, 7), bool)
+for _dy in (-1, 0, 1):
+    for _dx in (-1, 0, 1):
+        _EO[1 + _dy:7 + _dy, 1 + _dx:6 + _dx] |= _EM
+
+
+def qmark(img, x, y, bang=False):
+    """? (ou !) branco com contorno, topo em (x, y)."""
+    _QM, _QO = (globals()['_EM'], globals()['_EO']) if bang else (globals()['_QMk'], globals()['_QOk'])
     for r_ in range(8):
         for c_ in range(7):
             X, Y = x + c_ - 1, y + r_ - 1
@@ -480,8 +490,9 @@ MYST = (138, 127)
 def myst_level():
     d = np.sqrt((xx - MYST[0]) ** 2 + ((yy - MYST[1]) * 1.4) ** 2)
     lv = np.zeros((H, W), np.float32)
-    lv[d < 7] = 0.35
-    lv[d < 4] = 0.7
+    lv[d < 10] = 0.3
+    lv[d < 6] = 0.6
+    lv[d < 3] = 0.85
     return lv
 
 
