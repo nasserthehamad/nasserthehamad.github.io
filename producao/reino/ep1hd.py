@@ -596,8 +596,14 @@ def audio(path):
                              capture_output=True).stdout
         v = np.frombuffer(raw, '<i2').astype(np.float64) / 32768
         v = v / (np.abs(v).max() + 1e-9)
-        mix = mus * 0.42 + sfx(total) * 0.75
-        add(mix, VOICE_OFF, v, 0.95)
+        vt = np.zeros(len(mus))
+        add(vt, VOICE_OFF, v, 1.0)
+        env = np.convolve(np.abs(vt), np.ones(int(0.05 * SR)) / int(0.05 * SR), mode='same')
+        talk = (env > 0.02).astype(float)
+        k = int(0.25 * SR)
+        talk = np.convolve(talk, np.ones(k) / k, mode='same')
+        duck = float(os.environ.get('MUS_GAP', '0.22')) * (1 - talk) + float(os.environ.get('MUS_TALK', '0.09')) * talk
+        mix = mus * duck + sfx(total) * 0.45 + vt * 0.95
     fo = int(0.25 * SR)
     mix[-fo:] *= np.linspace(1, 0.35, fo)
     mix = mix / (np.abs(mix).max() + 1e-9) * 0.89
