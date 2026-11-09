@@ -603,7 +603,7 @@ def audio(path):
         k = int(0.25 * SR)
         talk = np.convolve(talk, np.ones(k) / k, mode='same')
         duck = float(os.environ.get('MUS_GAP', '0.22')) * (1 - talk) + float(os.environ.get('MUS_TALK', '0.09')) * talk
-        mix = mus * duck + sfx(total) * 0.45 + vt * 0.95
+        mix = mus * duck + sfx(total) * float(os.environ.get('SFX_G', '0.45')) + vt * 0.95
     fo = int(0.25 * SR)
     mix[-fo:] *= np.linspace(1, 0.35, fo)
     mix = mix / (np.abs(mix).max() + 1e-9) * 0.89
