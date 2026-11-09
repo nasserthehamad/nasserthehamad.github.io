@@ -17,6 +17,14 @@ os.makedirs(OUTDIR, exist_ok=True)
 JERSEY = os.path.join(HERE, 'fonts', 'JerseyFix.ttf')
 
 T2, T3, T4, T5, T6, T7, TEND = 2.7, 6.1, 8.9, 12.4, 15.4, 19.6, 23.6
+C4B, C7B, MYST_OFF = T4 + 1.8, T7 + 2.1, 0.9
+_b = os.environ.get('BOUNDS')
+if _b:
+    T2, T3, T4, C4B, T5, T6, _my, T7, C7B = [float(v) for v in _b.split(',')][:9]
+    TEND = float(os.environ['TEND'])
+    MYST_OFF = _my - T6
+VOICE = os.environ.get('VOICE')
+VOICE_OFF = float(os.environ.get('VOICE_OFF', '0.15'))
 XF = 0.5
 
 WHITE, GOLD, TEAL, ORANGE, GREY = (255, 255, 255), (255, 208, 72), (96, 226, 214), (255, 170, 80), (190, 186, 210)
@@ -42,9 +50,9 @@ START = [T2 + 0.3 + STEP * i for i in range(N)]
 WALK = 1.0
 ARRIVE = [s + WALK for s in START]
 ENTRY = [(180 + (i % 3 - 1) * 6, 672) if i % 2 == 0 else (-16, 386) for i in range(N)]
-QTIMES = [T4 + 1.95 + 0.14 * k for k in range(N)]
+QTIMES = [C4B + 0.15 + 0.14 * k for k in range(N)]
 TAG_T = T5 + 0.65
-MYST_T = T6 + 0.9
+MYST_T = T6 + MYST_OFF
 BANG_T = [MYST_T + 0.45 + 0.09 * k for k in range(N)]
 
 
@@ -79,7 +87,7 @@ FLIES = [(_r.uniform(20, 340), _r.uniform(304, 480), _r.random() * 6.28, _r.unif
 def myst_on(t):
     if t < MYST_T:
         return 0.0
-    for a, b in [(17.55, 17.68), (20.95, 21.15), (22.4, 22.5)]:
+    for a, b in [(MYST_T + 1.25, MYST_T + 1.38), (T7 + 1.35, T7 + 1.55), (T7 + 2.8, T7 + 2.9)]:
         if a <= t < b:
             return 0.0
     return clamp((t - MYST_T) / 0.25)
@@ -246,15 +254,15 @@ CAPS = [
                    (T2 + 0.45, [('VIRA ', WHITE), ('MORADOR.', GOLD)], 180)]),
     (T3, T4, 270, [(T3, [('BEM-VINDOS A', WHITE)], 130), (T3 + 0.4, [(NAME, GOLD)], 300),
                    (T3 + 1.1, [('UM REINO QUE CRESCE A CADA SEGUIDOR', WHITE)], 74)]),
-    (T4, T4 + 1.8, 300, [(T4, [('POR ENQUANTO,', WHITE)], 150), (T4 + 0.45, [('É SÓ UMA FOGUEIRA…', WHITE)], 150)]),
-    (T4 + 1.8, T5, 300, [(T4 + 1.8, [(f'…E {N} MORADORES', WHITE)], 150), (T4 + 2.2, [('SEM NOME.', GOLD)], 200)]),
+    (T4, C4B, 300, [(T4, [('POR ENQUANTO,', WHITE)], 150), (T4 + 0.45, [('É SÓ UMA FOGUEIRA…', WHITE)], 150)]),
+    (C4B, T5, 300, [(C4B, [(f'…E {N} MORADORES', WHITE)], 150), (C4B + 0.4, [('SEM NOME.', GOLD)], 200)]),
     (T5, T6, 300, [(T5, [('SÓ GANHA NOME', WHITE)], 150), (T5 + 0.45, [('QUEM SE APRESENTA.', GOLD)], 170)]),
     (T6, T7, 270, [(T6, [('E ALÉM DA PONTE…', WHITE)], 140), (MYST_T, [('ALGUÉM ACENDEU', GOLD)], 170),
                    (MYST_T, [('UMA LUZ.', GOLD)], 170)]),
-    (T7, T7 + 2.1, 270, [(T7, [('COMENTA SEU NOME', WHITE)], 150),
+    (T7, C7B, 270, [(T7, [('COMENTA SEU NOME', WHITE)], 150),
                          (T7 + 0.4, [('E SUA FUNÇÃO.', GOLD)], 170)]),
-    (T7 + 2.1, TEND + 1, 270, [(T7 + 2.1, [('OS PRIMEIROS VIRAM', WHITE)], 150),
-                               (T7 + 2.5, [('FUNDADORES.', GOLD)], 210)]),
+    (C7B, TEND + 1, 270, [(C7B, [('OS PRIMEIROS VIRAM', WHITE)], 150),
+                               (C7B + 0.4, [('FUNDADORES.', GOLD)], 210)]),
 ]
 COUNT_T = (T2 + 0.6, T3)
 EX_T = T7 + 0.8
@@ -575,13 +583,21 @@ def sfx(total):
     blip(EX_T, 1318, d=0.05, g=0.08)
     for k, m in enumerate((79, 86)):
         nn = int(0.25 * SR)
-        add(s, T7 + 2.5 + k * 0.08, sq(midi(m), nn, 0.25) * adsr(nn, dec=0.1, sus=0.3), 0.11)
+        add(s, C7B + 0.4 + k * 0.08, sq(midi(m), nn, 0.25) * adsr(nn, dec=0.1, sus=0.3), 0.11)
     return s
 
 
 def audio(path):
     total = TEND
-    mix = music(total + 0.5)[:int(total * SR)] * 0.9 + sfx(total)
+    mus = music(total + 0.5)[:int(total * SR)]
+    mix = mus * 0.9 + sfx(total)
+    if VOICE:
+        raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', VOICE, '-ac', '1', '-ar', str(SR), '-f', 's16le', '-'],
+                             capture_output=True).stdout
+        v = np.frombuffer(raw, '<i2').astype(np.float64) / 32768
+        v = v / (np.abs(v).max() + 1e-9)
+        mix = mus * 0.42 + sfx(total) * 0.75
+        add(mix, VOICE_OFF, v, 0.95)
     fo = int(0.25 * SR)
     mix[-fo:] *= np.linspace(1, 0.35, fo)
     mix = mix / (np.abs(mix).max() + 1e-9) * 0.89
