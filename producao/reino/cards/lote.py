@@ -22,7 +22,7 @@ d.rectangle((0, 0, CW, 330), fill=(178, 46, 42))
 d.text((CW / 2, 110), 'REINO DE BRASA', font=f(120), fill=(255, 220, 120), anchor='mm')
 d.text((CW / 2, 230), 'AS CARTEIRINHAS DOS FUNDADORES', font=f(66), fill=(255, 240, 220), anchor='mm')
 row = [FK.make_folk(n, r, 0) for n, r in FK.FOUNDERS]
-sc = 7
+sc = 6
 y_base = 760
 for k, s in enumerate(row):
     ys, xs = np.nonzero(s[..., 3] > 0)
@@ -30,10 +30,11 @@ for k, s in enumerate(row):
     rgba = np.zeros(s.shape, np.uint8)
     rgba[..., :3] = s[..., :3]; rgba[..., 3] = (s[..., 3] > 0) * 255
     p = Image.fromarray(rgba, 'RGBA').resize((s.shape[1] * sc, s.shape[0] * sc), Image.NEAREST)
-    row_ = 0 if k < 6 else 1
-    col_ = k if k < 6 else k - 6
-    n_in = 6 if row_ == 0 else 5
-    xx = int(CW / 2 + (col_ - (n_in - 1) / 2) * 168 - p.width / 2)
+    per = (len(row) + 1) // 2
+    row_ = 0 if k < per else 1
+    col_ = k if k < per else k - per
+    n_in = per if row_ == 0 else len(row) - per
+    xx = int(CW / 2 + (col_ - (n_in - 1) / 2) * 126 - p.width / 2)
     yb = y_base + row_ * 250
     im.paste(p, (xx, yb - p.height), p)
 d.text((CW / 2, 1120), 'Achou a sua? Arrasta pro lado!', font=f(70), fill=(255, 255, 255), anchor='mm')

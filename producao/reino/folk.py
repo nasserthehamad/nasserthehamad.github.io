@@ -31,6 +31,10 @@ ROLES = {
     'pescad': dict(tunic=(60, 140, 160), hat='bucket', item='rod'),
     'bibliotec': dict(tunic=(110, 70, 150), glasses=True, item='book'),
     'fazend': dict(tunic=(214, 196, 150), pants=(66, 92, 150), straps=True, hat='straw', item='pitchfork'),
+    'construt': dict(tunic=(222, 132, 56), pants=(90, 74, 60), hat='bandana_y', item='saw'),
+    'aventur': dict(tunic=(56, 148, 136), hat='feather', item='map', cape=(150, 60, 50)),
+    'costur': dict(tunic=(232, 142, 172), item='yarn', tape=True),
+    'acougu': dict(tunic=(244, 240, 236), apron=(214, 70, 70), apron_stripes=True, item='ham'),
 }
 
 
@@ -143,7 +147,10 @@ def make_folk(name, role, frame=0, hair_style=None):
     if ap:
         for y in range(oy + 13, oy + 20):
             for x in range(5, 11):
-                px(x, y, ap if x < 9 else shade(ap, 0.84))
+                c_ = ap if x < 9 else shade(ap, 0.84)
+                if spec.get('apron_stripes') and x % 2 == 0:
+                    c_ = (250, 246, 240)
+                px(x, y, c_)
         px(5, oy + 12, ap); px(10, oy + 12, shade(ap, 0.84))
     elif spec.get('straps'):
         for y in range(oy + 10, oy + 19):
@@ -155,6 +162,11 @@ def make_folk(name, role, frame=0, hair_style=None):
         for x in range(4, 12):
             px(x, oy + 16, (96, 64, 40))
         px(7, oy + 16, (230, 190, 80)); px(8, oy + 16, (196, 150, 60))
+    if spec.get('tape'):
+        for y in range(oy + 10, oy + 18):
+            px(5, y, (250, 210, 70)); px(10, y, (230, 190, 50))
+        for y in range(oy + 11, oy + 18, 2):
+            px(5, y, (60, 50, 40))
     # braços
     sw = {0: (0, 0), 1: (-1, 1), 2: (1, -1)}[frame]
     sleeve = tun
@@ -216,6 +228,21 @@ def make_folk(name, role, frame=0, hair_style=None):
                 px(x, y, hc if x < 10 else shade(hc, 0.8))
         for x in range(2, 14):
             px(x, oy + 2, shade(hc, 0.9))
+    elif hat == 'bandana_y':
+        for y in range(oy - 1, oy + 2):
+            for x in range(3, 13):
+                if not (y == oy - 1 and x in (3, 12)):
+                    px(x, y, (250, 206, 60) if x < 11 else (214, 172, 40))
+        px(13, oy + 1, (214, 172, 40)); px(14, oy + 2, (214, 172, 40))
+    elif hat == 'feather':
+        hc, hcs = (60, 100, 70), (44, 76, 54)
+        for y in range(oy - 2, oy + 2):
+            for x in range(4, 13):
+                px(x, y, hc if x < 10 else hcs)
+        for x in range(2, 15):
+            px(x, oy + 2, hcs)
+        for k_, (x, y) in enumerate([(12, oy - 3), (13, oy - 4), (14, oy - 5), (15, oy - 6), (13, oy - 3), (14, oy - 4)]):
+            px(x, y, (230, 60, 50) if k_ % 2 == 0 else (250, 200, 60))
     elif hat == 'straw':
         straw, strs = (226, 192, 110), (186, 150, 78)
         for x in range(0, 16):
@@ -225,6 +252,12 @@ def make_folk(name, role, frame=0, hair_style=None):
                 px(x, y, straw if x < 10 else strs)
         for x in range(4, 12):
             px(x, oy + 1, (170, 60, 50))
+    if spec.get('cape'):
+        cp = spec['cape']
+        for y in range(oy + 10, oy + 21):
+            px(2, y, cp); px(13, y, shade(cp, 0.8))
+            if y > oy + 12:
+                px(1, y, shade(cp, 0.9)); px(14, y, shade(cp, 0.7))
     # objetos (mão direita fica em x 12..13, y oy+16)
     it = spec.get('item')
     hy = oy + 16 + sw[1]
@@ -281,6 +314,31 @@ def make_folk(name, role, frame=0, hair_style=None):
                 px(x, y, steel)
         for x in range(12, 17):
             px(x, hy - 16, stsh)
+    elif it == 'saw':
+        for k_ in range(9):
+            for j_ in range(3 + k_ // 3):
+                px(14 + j_, hy - 2 - k_, (200, 206, 220) if j_ < 2 + k_ // 3 else (150, 156, 176))
+        for k_ in range(0, 9, 2):
+            px(13, hy - 2 - k_, (150, 156, 176))
+        px(14, hy - 1, wood); px(15, hy - 1, wood); px(14, hy, wsh); px(15, hy, wood)
+    elif it == 'map':
+        for y in range(hy - 6, hy + 1):
+            for x in range(12, 18):
+                px(x, y, (240, 222, 170) if (x + y) % 5 else (210, 186, 130))
+        px(14, hy - 4, (200, 50, 50)); px(15, hy - 3, (200, 50, 50)); px(16, hy - 4, (200, 50, 50))
+        px(12, hy - 6, (176, 140, 90)); px(12, hy, (176, 140, 90))
+    elif it == 'yarn':
+        for y in range(hy - 4, hy + 2):
+            for x in range(12, 18):
+                if (x - 14.5) ** 2 + (y - hy + 1) ** 2 <= 9:
+                    px(x, y, (150, 90, 200) if (x + y) % 3 else (190, 140, 230))
+        px(16, hy - 6, (200, 200, 210)); px(17, hy - 7, (200, 200, 210)); px(18, hy - 8, (200, 200, 210))
+    elif it == 'ham':
+        for y in range(hy - 6, hy):
+            for x in range(13, 19):
+                if (x - 16) ** 2 / 9 + (y - hy + 3) ** 2 / 9 <= 1:
+                    px(x, y, (200, 110, 80) if x < 17 else (170, 86, 60))
+        px(13, hy, (240, 236, 220)); px(12, hy + 1, (240, 236, 220)); px(13, hy + 1, (240, 236, 220))
     elif it == 'leash':
         for k in range(6):
             px(13 + k, hy + 1 + k // 2, (180, 60, 50))
@@ -330,6 +388,8 @@ def folk(name, role, frame=0):
     return _cache[k]
 
 
-FOUNDERS = [("Gabriel", "ferreiro"), ("Naty", "confeiteira"), ("Ana Sofia", "adestradora de cão de caça"),
-            ("Raviela", "cavaleira"), ("Rafael", "pescador"), ("Emanuel", "bibliotecário"), ("Victor", "fazendeiro"),
-            ("Antônio", "padeiro"), ("Izabelly", "caçadora"), ("Francini", "padeira"), ("Cristal", "guarda")]
+FOUNDERS = [("Gabriel", "ferreiro"), ("Lívia", "construtora de casas"), ("Naty", "confeiteira"),
+            ("Ana Sofia", "adestradora de cão de caça"), ("Raviela", "cavaleira"), ("Rafael", "pescador"),
+            ("Emanuel", "bibliotecário"), ("Victor", "fazendeiro"), ("Antônio", "padeiro"), ("Izabelly", "caçadora"),
+            ("Francini", "padeira"), ("Cristal", "guarda"), ("Rafaela", "aventureira"), ("Maria", "costureira"),
+            ("Gustavo", "açougueiro")]

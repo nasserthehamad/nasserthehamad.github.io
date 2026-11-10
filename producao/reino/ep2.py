@@ -16,8 +16,11 @@ FOUND = F.FOUNDERS
 NF = len(FOUND)
 
 # ---------------------------------------------------------------- tempo
-S2, S3, S4, S4B, S5, S6, S6B, TEND = 3.0, 9.6, 14.4, 16.8, 19.8, 24.0, 26.0, 28.4
-ROLL = 0.6
+ROLL = 0.55
+S2 = 3.0
+S3 = S2 + ROLL * len(F.FOUNDERS)
+S4, S4B, S5, S6, S6B = S3 + 4.8, S3 + 7.2, S3 + 10.2, S3 + 14.4, S3 + 16.4
+TEND = S3 + 18.9
 _b = os.environ.get('BOUNDS')
 if _b:
     S2, S3, S4, S4B, S5, S6, S6B = [float(v) for v in _b.split(',')][:7]
@@ -40,7 +43,8 @@ def tod(t):
 RING = W.ring_positions(NF)
 WORK = {'Gabriel': (118, 358), 'Naty': (250, 404), 'Ana Sofia': (34, 412), 'Raviela': (196, 446), 'Rafael': (206, 292),
         'Emanuel': (110, 482), 'Victor': (296, 470), 'Antônio': (268, 406), 'Izabelly': (150, 322), 'Francini': (284, 404),
-        'Cristal': (282, 310)}
+        'Cristal': (282, 310), 'Lívia': (140, 390), 'Rafaela': (238, 326),
+        'Maria': (214, 414), 'Gustavo': (232, 472)}
 BUILDS = [('forja', S3 + 0.35), ('padaria', S3 + 1.05), ('biblio', S3 + 1.75), ('pier', S3 + 2.45), ('horta', S3 + 2.85),
           ('lantern', S3 + 3.25)]
 BDUR = 0.6
@@ -279,7 +283,8 @@ def fund(role):
 CAPS = [
     (0, S2, 300, [(0.0, [('VOCÊS COMENTARAM', WHITE)], 140), (0.0, [('O NOME…', WHITE)], 140),
                   (0.7, [('…E VIRARAM ', WHITE), ('MORADORES.', GOLD)], 150)]),
-    (S3, S4, 290, [(S3, [('E O REINO COMEÇOU', WHITE)], 140), (S3, [('A CRESCER.', GOLD)], 170)]),
+    (S3, S4, 280, [(S3, [('COM A LÍVIA CONSTRUINDO,', WHITE)], 130), (S3 + 0.4, [('O REINO COMEÇOU', GOLD)], 150),
+                   (S3 + 0.4, [('A CRESCER.', GOLD)], 150)]),
     (S4, S4B, 290, [(S4, [('A RAVIELA, A CAVALEIRA,', WHITE)], 130), (S4 + 0.4, [('FEZ UM JURAMENTO:', GOLD)], 150)]),
     (S4B, S5, 270, [(S4B, [('“VOU DERROTAR O INIMIGO', GOLD)], 130), (S4B, [('QUE QUER DESTRUIR', GOLD)], 130),
                     (S4B, [('O REINO…', GOLD)], 130), (S4B + 1.1, [('…E UM DIA SEREI RAINHA.”', WHITE)], 120)]),
@@ -349,18 +354,18 @@ def overlay(state):
             if sub:
                 d.text((cx, cy + 28), sub, font=ft2, fill=(240, 236, 250, 255), anchor='mm')
         elif k == 'book':
-            x0, y0, x1, y1 = 90, 250, 990, 1500
+            x0, y0, x1, y1 = 90, 230, 990, 1600
             E.panel(d, (x0, y0, x1, y1), fill=(240, 222, 182, 248), border=(92, 58, 34, 255), b=12)
             d.rectangle((x0 + 12, y0 + 12, x1 - 12, y0 + 190), fill=(178, 46, 42, 255))
             d.text((FW / 2, y0 + 70), 'LIVRO DO REINO', font=E.font(100), fill=(255, 220, 120, 255), anchor='mm')
             d.text((FW / 2, y0 + 150), 'OS FUNDADORES DE BRASA', font=E.font(56), fill=(255, 240, 220, 255), anchor='mm')
-            yy_ = y0 + 250
+            yy_ = y0 + 236
             for j, (n, r) in enumerate(FOUND):
                 rr = r if len(r) <= 15 else r.split()[0]
-                d.text((x0 + 70, yy_), f'{j + 1:03d}', font=E.font(64), fill=(140, 100, 64, 255), anchor='lm')
-                d.text((x0 + 200, yy_), n.upper(), font=E.font(70), fill=(40, 26, 20, 255), anchor='lm')
-                d.text((x1 - 60, yy_), rr, font=E.font(54), fill=(178, 46, 42, 255), anchor='rm')
-                yy_ += 92
+                d.text((x0 + 70, yy_), f'{j + 1:03d}', font=E.font(54), fill=(140, 100, 64, 255), anchor='lm')
+                d.text((x0 + 180, yy_), n.upper(), font=E.font(62), fill=(40, 26, 20, 255), anchor='lm')
+                d.text((x1 - 60, yy_), rr, font=E.font(48), fill=(178, 46, 42, 255), anchor='rm')
+                yy_ += 74
     arr = np.array(im)
     a = arr[..., 3]
     ys, xs = np.nonzero(a)

@@ -37,32 +37,36 @@ comentários ganha nome e função na história.
 Arquivos: `videos/brasa-ep1-hd.mp4` e `producao/capas/capa-brasa-ep1-hd.jpg`. Código em `producao/reino/` (versão detalhada: `world2.py` e `ep1hd.py`, canvas 360x640,
 rodando com `N=<seguidores>` e `NAME=BRASA`).
 
-## Ep. 2, "Os Fundadores" (10/11, 20h)
-Os 11 fundadores, pela ordem dos comentários:
+## Ep. 2, "Os Fundadores" (atualizado em 10/11 às 18h com 15 fundadores; o perfil tinha 32 seguidores)
+Os 15 fundadores, pela ordem dos comentários no Ep. 1:
 
 | Nº | Nome | Função |
 | --- | --- | --- |
 | 001 | Gabriel | ferreiro |
-| 002 | Naty | confeiteira |
-| 003 | Ana Sofia | adestradora de cão de caça (tem um cachorro) |
-| 004 | Raviela | cavaleira (quer ser rainha depois de derrotar o inimigo que quer destruir o reino) |
-| 005 | Rafael | pescador |
-| 006 | Emanuel | bibliotecário |
-| 007 | Victor | fazendeiro |
-| 008 | Antônio | padeiro |
-| 009 | Izabelly | caçadora |
-| 010 | Francini | padeira |
-| 011 | Cristal | guarda (função neutra: sem "o/a", "fundador(a)") |
+| 002 | Lívia | construtora de casas (ela "constrói" o reino no timelapse) |
+| 003 | Naty | confeiteira |
+| 004 | Ana Sofia | adestradora de cão de caça (tem um cachorro) |
+| 005 | Raviela | cavaleira (quer ser rainha depois de derrotar o inimigo que quer destruir o reino) |
+| 006 | Rafael | pescador |
+| 007 | Emanuel | bibliotecário |
+| 008 | Victor | fazendeiro |
+| 009 | Antônio | padeiro |
+| 010 | Izabelly | caçadora |
+| 011 | Francini | padeira |
+| 012 | Cristal | guarda (função neutra: sem "o/a", "fundador(a)") |
+| 013 | Rafaela | aventureira, "responsável por trazer recursos aos moradores" (boa candidata a atravessar a ponte no Ep. 3) |
+| 014 | Maria | costureira |
+| 015 | Gustavo | açougueiro |
 
 Roteiro:
 1. "Vocês comentaram o nome… e viraram moradores."
-2. Chamada: 0,6 s por pessoa, com nome grande, função e "Morador 00X · Fundador(a)".
-3. Timelapse "E o reino começou a crescer": Forja do Gabriel, Padaria (Antônio, Francini e Naty), Biblioteca do Emanuel,
+2. Chamada: 0,55 s por pessoa, com nome grande, função e "Morador 00X · Fundador(a)".
+3. Timelapse "Com a Lívia construindo, o reino começou a crescer": Forja do Gabriel, Padaria (Antônio, Francini e Naty), Biblioteca do Emanuel,
    Píer do Rafael, Horta do Victor e o lampião da ponte.
 4. Juramento da Raviela: "Vou derrotar o inimigo que quer destruir o reino… e um dia serei rainha."
 5. "Naquela noite, a Cristal vigiava a ponte… e a luz estava mais perto."
 6. "Comenta seu nome e sua função. Os próximos moram aqui."
-7. Livro do Reino com os 11 nomes.
+7. Livro do Reino com os 15 nomes.
 
 Arquivos: `videos/brasa-ep2.mp4` e `producao/capas/capa-brasa-ep2.jpg`. Carrossel em `producao/reino/cards/fundadores/`.
 
