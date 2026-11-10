@@ -26,7 +26,25 @@ if _b:
     S2, S3, S4, S4B, S5, S6, S6B = [float(v) for v in _b.split(',')][:7]
     TEND = float(os.environ['TEND'])
     ROLL = (S3 - S2) / NF
+ROLL_T = [S2 + k * ROLL for k in range(NF)]
+R2_T, C6_T, BANG_OFF = S4B + 1.1, S6 + 0.6, 1.7
+_tj = os.environ.get('TIMING2')
+if _tj:
+    import json as _json
+    _T = _json.load(open(_tj))
+    S2, S3, S4, S4B, S5, S6, S6B, TEND = [_T[k] for k in ('S2', 'S3', 'S4', 'S4B', 'S5', 'S6', 'S6B', 'TEND')]
+    ROLL_T = _T['ROLL_T']
+    R2_T, C6_T, BANG_OFF = _T['R2'], _T['C6'], _T['BANG'] - _T['S5']
+    ROLL = (S3 - S2) / NF
 XF = 0.4
+
+
+def roll_idx(t):
+    k = 0
+    for j, t0 in enumerate(ROLL_T):
+        if t >= t0:
+            k = j
+    return k
 
 
 def tod(t):
@@ -56,7 +74,7 @@ LABELS = [('forja', 'FORJA DO GABRIEL', None, (250, 888)),
 SPARK_T = [1.25 + 0.12 * k for k in range(NF)]
 RAVI = [n for n, _ in FOUND].index('Raviela')
 CRIS = [n for n, _ in FOUND].index('Cristal')
-BANG_T = S5 + 1.7
+BANG_T = S5 + BANG_OFF
 
 
 def bprog(name, t):
@@ -76,7 +94,7 @@ def people(t):
             x, y = RING[i]
         sh_ = shot(t)
         if sh_[0] == 'close' and sh_[1] == i and t < S3:
-            ph_ = (t - S2) - i * ROLL
+            ph_ = t - ROLL_T[i]
             if 0 <= ph_ < 0.18:
                 y -= 4 * math.sin(math.pi * ph_ / 0.18)
         fr = 0
@@ -239,7 +257,7 @@ def shot(t):
     if t < S2:
         return ('med', None)
     if t < S3:
-        return ('close', min(NF - 1, int((t - S2) / ROLL)))
+        return ('close', roll_idx(t))
     if t < S4:
         return ('wide', None)
     if t < S5:
@@ -287,11 +305,11 @@ CAPS = [
                    (S3 + 0.4, [('A CRESCER.', GOLD)], 150)]),
     (S4, S4B, 290, [(S4, [('A RAVIELA, A CAVALEIRA,', WHITE)], 130), (S4 + 0.4, [('FEZ UM JURAMENTO:', GOLD)], 150)]),
     (S4B, S5, 270, [(S4B, [('“VOU DERROTAR O INIMIGO', GOLD)], 130), (S4B, [('QUE QUER DESTRUIR', GOLD)], 130),
-                    (S4B, [('O REINO…', GOLD)], 130), (S4B + 1.1, [('…E UM DIA SEREI RAINHA.”', WHITE)], 120)]),
+                    (S4B, [('O REINO…', GOLD)], 130), (R2_T, [('…E UM DIA SEREI RAINHA.”', WHITE)], 120)]),
     (S5, S6, 280, [(S5, [('NAQUELA NOITE, A CRISTAL', WHITE)], 130), (S5, [('VIGIAVA A PONTE…', WHITE)], 130),
                    (BANG_T, [('E A LUZ ESTAVA', GOLD)], 160), (BANG_T, [('MAIS PERTO.', GOLD)], 160)]),
     (S6, S6B, 290, [(S6, [('COMENTA SEU NOME', WHITE)], 150), (S6, [('E SUA FUNÇÃO.', GOLD)], 170),
-                    (S6 + 0.6, [('OS PRÓXIMOS MORAM AQUI.', WHITE)], 110)]),
+                    (C6_T, [('OS PRÓXIMOS MORAM AQUI.', WHITE)], 110)]),
 ]
 
 
@@ -410,7 +428,7 @@ def sfx(total):
             nn = int(0.07 * SR)
             E.add(s, ts + j * 0.04, E.sq(E.midi(mm), nn, 0.25) * E.adsr(nn, dec=0.04, sus=0.2), 0.09)
     for k in range(NF):   # chamada: um "plim" por morador
-        t0 = S2 + k * ROLL
+        t0 = ROLL_T[k]
         nn = int(0.12 * SR)
         tt = np.arange(nn) / SR
         E.add(s, t0, E.lp(E.noise(nn, 40 + k), 0.2) * np.exp(-tt * 30), 0.25)
