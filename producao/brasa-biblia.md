@@ -11,6 +11,9 @@ comentários ganha nome e função na história.
 ## Regras
 - **Sem votação A/B.** Decidido em 09/11: nossos votos nunca pegaram, e o pedido precisa ser um só.
 - **Um pedido só:** "Comenta seu nome e sua função." Exemplo na tela: "Lia, ferreira".
+- **Abertura fixa de todo episódio (pedido do Nasser em 10/11, depois de o Ep. 2 sair sem ela):** "ESTE REINO TEM N MORADORES."
+  - N é o número real de seguidores, que o Nasser confirma antes de renderizar.
+  - Vem com um contador animado subindo do número do episódio anterior até o atual (ex.: 32 → N).
 - **O número do gancho é sempre o real:** "Este perfil tem X seguidores." Confirmar com o Nasser antes de renderizar.
 - **Só ganha nome quem comenta pedindo.** Ninguém aparece no vídeo sem ter se apresentado.
 - **Sem narrador:** só texto na tela (fonte pixel Jersey 10), trilha 8-bit sintetizada e efeitos. Não gasta ElevenLabs.
