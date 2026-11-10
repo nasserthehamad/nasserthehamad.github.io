@@ -44,6 +44,27 @@ rodando com `N=<seguidores>` e `NAME=BRASA`).
   - cada episódio traz moradores novos com nome, mais uma construção ou acontecimento e um passo do mistério;
   - quando o perfil bater uma marca (50, 100…), sai um episódio especial de "festa".
 
+## Recompensas para quem participa (decidido em 09/11)
+Todo mundo que se apresenta ganha alguma coisa. O nível muda conforme o número de comentários:
+- **Todo morador:**
+  - um boneco único gerado a partir do nome (sempre o mesmo boneco para a mesma pessoa);
+  - aparece no próximo episódio com crachá de nome e função;
+  - entra no **Livro do Reino**, a cartela final com todos os nomes (dá pra pausar e se achar).
+- **Fundadores (quem comentou no Ep. 1):** selo de FUNDADOR(A) para sempre na carteirinha e uma chama no crachá.
+- **Carteirinha de morador:** imagem com o boneco, o nome, a função, o número de morador e a data
+  (código em `producao/reino/cards/carteira.py`).
+  - Sai num **post de fotos (carrossel)**, um por episódio.
+  - Por ser uma imagem "minha", é o que a pessoa compartilha.
+- **Função vira construção:** quando várias pessoas escolhem uma função, ela vira um prédio com o nome de quem a pediu
+  (ex.: "Forja da Lia", "Padaria do João").
+- **Destaques:** de 1 a 3 moradores por episódio viram personagens da história (ex.: quem atravessa a ponte).
+- **Resposta:** cada comentário recebe um "Bem-vindo(a) a Brasa, Fulano, nosso(a) [função]!".
+
+### Cuidados
+- Usar só o nome e a função que a pessoa escreveu. Nunca a foto do perfil nem o @, a não ser que ela peça.
+- Pular nomes ou funções ofensivos.
+- A ordem de chegada define o número de morador.
+
 ## Rotina de produção
 1. Na manhã seguinte ao post, o Nasser manda print dos comentários (nome e função).
 2. Listar os fundadores na ordem dos comentários e escrever a história do episódio com eles.
