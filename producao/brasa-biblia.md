@@ -37,9 +37,43 @@ comentários ganha nome e função na história.
 Arquivos: `videos/brasa-ep1-hd.mp4` e `producao/capas/capa-brasa-ep1-hd.jpg`. Código em `producao/reino/` (versão detalhada: `world2.py` e `ep1hd.py`, canvas 360x640,
 rodando com `N=<seguidores>` e `NAME=BRASA`).
 
+## Ep. 2, "Os Fundadores" (10/11, 20h)
+Os 11 fundadores, pela ordem dos comentários:
+
+| Nº | Nome | Função |
+| --- | --- | --- |
+| 001 | Gabriel | ferreiro |
+| 002 | Naty | confeiteira |
+| 003 | Ana Sofia | adestradora de cão de caça (tem um cachorro) |
+| 004 | Raviela | cavaleira (quer ser rainha depois de derrotar o inimigo que quer destruir o reino) |
+| 005 | Rafael | pescador |
+| 006 | Emanuel | bibliotecário |
+| 007 | Victor | fazendeiro |
+| 008 | Antônio | padeiro |
+| 009 | Izabelly | caçadora |
+| 010 | Francini | padeira |
+| 011 | Cristal | guarda (função neutra: sem "o/a", "fundador(a)") |
+
+Roteiro:
+1. "Vocês comentaram o nome… e viraram moradores."
+2. Chamada: 0,6 s por pessoa, com nome grande, função e "Morador 00X · Fundador(a)".
+3. Timelapse "E o reino começou a crescer": Forja do Gabriel, Padaria (Antônio, Francini e Naty), Biblioteca do Emanuel,
+   Píer do Rafael, Horta do Victor e o lampião da ponte.
+4. Juramento da Raviela: "Vou derrotar o inimigo que quer destruir o reino… e um dia serei rainha."
+5. "Naquela noite, a Cristal vigiava a ponte… e a luz estava mais perto."
+6. "Comenta seu nome e sua função. Os próximos moram aqui."
+7. Livro do Reino com os 11 nomes.
+
+Arquivos: `videos/brasa-ep2.mp4` e `producao/capas/capa-brasa-ep2.jpg`. Carrossel em `producao/reino/cards/fundadores/`.
+
+Código:
+- `folk.py`: boneco por nome e função (chapéus, ferramentas e o cachorro da adestradora).
+- `build.py`: construções.
+- `ep2.py`: o episódio.
+
+**Fios para o Ep. 3:** o inimigo da Raviela (é a luz?), a Cristal de guarda na ponte e os cães da Ana Sofia farejando.
+
 ## Próximos episódios (rascunho)
-- **Ep. 2, "Os Fundadores":** os comentaristas aparecem com nome e função (crachás) e fazem a primeira construção, de
-  acordo com as funções que escolheram. À noite, a luz do outro lado da ponte **chega mais perto**.
 - **Ep. 3 em diante:**
   - cada episódio traz moradores novos com nome, mais uma construção ou acontecimento e um passo do mistério;
   - quando o perfil bater uma marca (50, 100…), sai um episódio especial de "festa".
