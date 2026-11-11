@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>sendfile</title>
+<body style="font:16px sans-serif;padding:20px">enviando…
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const src = q.get('src'), name = src.split('/').pop();
+  const target = q.get('to') || 'https://www.tiktok.com';
+  try {
+    const r = await fetch('../' + src, {cache: 'no-store'});
+    const b = await r.blob();
+    const f = new File([b], name, {type: b.type || 'video/mp4'});
+    if (!window.opener) { document.body.textContent = 'sem opener'; return; }
+    window.opener.postMessage({kind: 'sendfile', file: f}, target);
+    document.body.textContent = 'ok ' + f.size;
+  } catch (e) { document.body.textContent = 'erro ' + e; }
+})();
+</script>
