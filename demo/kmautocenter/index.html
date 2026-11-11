@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>KM Auto Center Bauru · Prévia de site</title>
+<meta name="description" content="Prévia de site para a KM Auto Center, oficina mecânica em Bauru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --steel:#24323C; --steel2:#30424E; --paper:#EEF1F2; --signal:#F26B1D; --line:#C9D1D6; --ink:#1C262D; --mute:#56656F;
+  --cond:"Saira Condensed","Arial Narrow",sans-serif; --sans:"Public Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.demo{background:var(--signal);color:#fff;font-size:13px;line-height:1.4;text-align:center;padding:8px 16px}
+.demo strong{font-weight:700}
+
+.hero{background:var(--steel);color:#fff}
+.hero-in{max-width:1080px;margin:0 auto;padding:44px 22px 120px;display:grid;grid-template-columns:1fr;gap:6px}
+.brand{font:800 22px/1 var(--cond);letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:10px;margin-bottom:34px}
+.brand span{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:8px;background:var(--signal);font-size:20px}
+.hero h1{font:800 clamp(40px,7.4vw,76px)/.98 var(--cond);margin:0;max-width:16ch;letter-spacing:-.005em}
+.hero p{max-width:46ch;color:#C9D4DB;font-size:19px;margin:18px 0 0}
+.facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:26px;font-size:15px;color:#C9D4DB}
+.facts b{color:#fff}
+.status{display:inline-flex;align-items:center;gap:8px}
+.status i{width:9px;height:9px;border-radius:50%;background:#6E7F8A}
+.status.open i{background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.2)}
+
+/* ordem de serviço */
+.os-wrap{max-width:1080px;margin:-88px auto 0;padding:0 22px}
+.os{background:#fff;border-radius:14px;box-shadow:0 18px 40px -18px rgba(36,50,60,.45);display:grid;grid-template-columns:1.35fr 1fr;overflow:hidden}
+.os-main{padding:30px 30px 28px}
+.os-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:20px}
+.os-head h2{font:800 30px/1 var(--cond);margin:0}
+.os-head small{color:var(--mute);font-size:14px}
+fieldset{border:0;margin:0 0 20px;padding:0}
+legend{font-weight:700;font-size:16px;margin-bottom:10px;padding:0}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check{position:relative}
+.check input{position:absolute;opacity:0}
+.check label{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer;font-size:16px;line-height:1.25;min-height:48px}
+.check label::before{content:"";flex:none;width:20px;height:20px;border:2px solid #8A99A3;border-radius:4px;background:#fff center/14px no-repeat}
+.check input:checked+label{border-color:var(--signal);background:#FFF4ED}
+.check input:checked+label::before{background-color:var(--signal);border-color:var(--signal);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3 3 7-7' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.check input:focus-visible+label{outline:3px solid var(--signal);outline-offset:2px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:700;font-size:16px;margin-bottom:6px}
+.field input,.field textarea{width:100%;font:inherit;font-size:16px;padding:12px;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--steel);outline:none}
+.send{width:100%;display:flex;justify-content:center;align-items:center;gap:10px;border:0;cursor:pointer;background:var(--signal);color:#fff;font:700 18px/1 var(--sans);padding:17px;border-radius:10px}
+.send:hover{background:#DB5C12}
+.send svg{width:20px;height:20px}
+.hint{font-size:14px;color:var(--mute);margin:10px 0 0;text-align:center}
+.os-side{background:var(--steel2);color:#fff;padding:30px}
+.os-side h3{font:800 24px/1.1 var(--cond);margin:0 0 14px}
+.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.14);color:#D4DDE3;font-size:16px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--steel);font:800 17px/1 var(--cond)}
+
+.wrap{max-width:1080px;margin:0 auto;padding:76px 22px}
+.wrap h2{font:800 clamp(32px,5vw,46px)/1 var(--cond);margin:0 0 10px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:56ch}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+.services div{padding:20px 20px 22px 0;border-bottom:1px solid var(--line)}
+.services h3{font:800 23px/1.1 var(--cond);margin:0 0 6px}
+.services p{margin:0;color:var(--mute);font-size:16px;max-width:30ch}
+
+.visit{display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:start}
+.hours{width:100%;border-collapse:collapse;font-size:16px;margin-bottom:24px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours td+td{text-align:right}
+.hours tr.today td{font-weight:700;color:var(--signal)}
+.addr{font-size:18px;font-weight:600;margin:0 0 6px}
+.dir{font-weight:700;color:var(--signal);text-underline-offset:4px}
+.map{width:100%;aspect-ratio:4/3;border:0;border-radius:12px;background:#d8dee2}
+footer{background:var(--steel);color:#AFBEC7;text-align:center;font-size:13px;padding:26px 16px 34px}
+footer a{color:#fff}
+
+@media (max-width:860px){
+  .os{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .visit{grid-template-columns:1fr}
+}
+@media (max-width:540px){
+  .checks{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .os-main,.os-side{padding:24px 20px}
+  .hero-in{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo" role="note"><strong>Prévia de site</strong> feita por Hamad Labs para a KM Auto Center. Não é o site oficial; textos de exemplo.</div>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="brand"><span aria-hidden="true">KM</span>KM Auto Center Bauru</div>
+    <h1>Oficina mecânica de confiança na Vila Altinópolis</h1>
+    <p>Diagnóstico rápido, preço justo e atendimento direto com quem vai mexer no seu carro.</p>
+    <div class="facts">
+      <span><b>4,9</b> no Google, com mais de 350 avaliações</span>
+      <span class="status" id="status" aria-live="polite"><i></i><span>Horário de hoje</span></span>
+    </div>
+  </div>
+</header>
+
+<div class="os-wrap">
+  <form class="os" id="os">
+    <div class="os-main">
+      <div class="os-head"><h2>Pedir orçamento</h2><small>Resposta pelo WhatsApp</small></div>
+      <fieldset>
+        <legend>O que o carro está apresentando?</legend>
+        <div class="checks">
+          <div class="check"><input type="checkbox" id="c1" value="Barulho ou batida na suspensão"><label for="c1">Barulho na suspensão</label></div>
+          <div class="check"><input type="checkbox" id="c2" value="Problema no freio"><label for="c2">Freio chiando ou fraco</label></div>
+          <div class="check"><input type="checkbox" id="c3" value="Luz de injeção acesa"><label for="c3">Luz de injeção acesa</label></div>
+          <div class="check"><input type="checkbox" id="c4" value="Revisão / troca de óleo"><label for="c4">Revisão ou troca de óleo</label></div>
+          <div class="check"><input type="checkbox" id="c5" value="Embreagem ou câmbio"><label for="c5">Embreagem ou câmbio</label></div>
+          <div class="check"><input type="checkbox" id="c6" value="Ar-condicionado"><label for="c6">Ar-condicionado</label></div>
+        </div>
+      </fieldset>
+      <div class="field"><label for="car">Carro e ano</label><input id="car" placeholder="Ex.: Onix 2019" autocomplete="off"></div>
+      <div class="field"><label for="more">Conte mais (opcional)</label><textarea id="more" placeholder="Quando começou, se piora com o carro frio, etc."></textarea></div>
+      <button class="send" type="submit">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>
+        Enviar pelo WhatsApp</button>
+      <p class="hint">Abre o WhatsApp com a mensagem pronta. É só enviar.</p>
+    </div>
+    <aside class="os-side">
+      <h3>Como funciona</h3>
+      <ol class="steps">
+        <li>Você manda o que o carro tem pelo formulário.</li>
+        <li>A gente responde e marca um horário pra olhar.</li>
+        <li>Você recebe o diagnóstico e o valor antes de qualquer serviço.</li>
+        <li>Aprovou, a gente faz. Muitos reparos ficam prontos no mesmo dia.</li>
+      </ol>
+    </aside>
+  </form>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>O que a gente faz</h2>
+    <p class="sub">Mecânica geral para carros de passeio, do básico aos defeitos que ninguém achou.</p>
+    <div class="services">
+      <div><h3>Diagnóstico</h3><p>Scanner e teste na rua pra achar a causa, não só o sintoma.</p></div>
+      <div><h3>Suspensão e direção</h3><p>Amortecedor, bandeja, pivô, barulhos e alinhamento.</p></div>
+      <div><h3>Freios</h3><p>Pastilha, disco, fluido e regulagem.</p></div>
+      <div><h3>Motor e injeção</h3><p>Falhas, perda de força, luz de injeção e consumo alto.</p></div>
+      <div><h3>Revisão</h3><p>Óleo, filtros, correias e checagem completa.</p></div>
+      <div><h3>Embreagem e câmbio</h3><p>Troca de kit, trambulador e vazamentos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="wrap visit">
+    <div>
+      <h2>Horário</h2>
+      <table class="hours" id="hours"><tbody></tbody></table>
+      <p class="addr">R. São Gonçalo, 3-10<br>Vila Altinópolis, Bauru</p>
+      <a class="dir" href="https://www.google.com/maps/search/?api=1&query=KM%20Auto%20Center%20Bauru&query_place_id=ChIJxTKizd9nv5QRlODN1Giwjc8">Como chegar</a>
+    </div>
+    <iframe class="map" title="Mapa da KM Auto Center" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=KM%20Auto%20Center%20Bauru%2C%20R.%20S%C3%A3o%20Gon%C3%A7alo%2C%203-10%2C%20Bauru&z=16&output=embed"></iframe>
+  </div>
+</section>
+
+<footer>Site por <a href="https://nasserthehamad.github.io/">Hamad Labs</a></footer>
+
+<script>
+const WA="5514997707540";
+const HOURS={0:null,1:[480,1080],2:[480,1080],3:[480,1080],4:[480,1080],5:[480,1080],6:null};
+const DAYS=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+const fmt=m=>{const h=Math.floor(m/60),mi=m%60;return h+"h"+(mi?String(mi).padStart(2,"0"):"")};
+function now(){const p=new Intl.DateTimeFormat("en-US",{timeZone:"America/Sao_Paulo",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;return{d:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(g("weekday")),m:+g("hour")*60+ +g("minute")}}
+const {d,m}=now();
+const tb=document.querySelector("#hours tbody");
+[1,2,3,4,5,6,0].forEach(i=>{const tr=document.createElement("tr");if(i===d)tr.className="today";
+  tr.innerHTML=`<td>${DAYS[i]}${i===d?" (hoje)":""}</td><td>${HOURS[i]?fmt(HOURS[i][0])+" às "+fmt(HOURS[i][1]):"Fechado"}</td>`;tb.appendChild(tr)});
+const st=document.getElementById("status"),h=HOURS[d];let txt;
+if(h&&m>=h[0]&&m<h[1]){st.classList.add("open");txt="Aberto agora, até as "+fmt(h[1])}
+else if(h&&m<h[0]){txt="Fechado agora, abre hoje às "+fmt(h[0])}
+else{for(let k=1;k<=7;k++){const j=(d+k)%7;if(HOURS[j]){txt="Fechado agora, abre "+(k===1?"amanhã":DAYS[j].toLowerCase())+" às "+fmt(HOURS[j][0]);break}}}
+st.querySelector("span").textContent=txt;
+
+document.getElementById("os").addEventListener("submit",e=>{
+  e.preventDefault();
+  const items=[...document.querySelectorAll(".checks input:checked")].map(i=>"- "+i.value);
+  const car=document.getElementById("car").value.trim();
+  const more=document.getElementById("more").value.trim();
+  let msg="Olá! Vim pelo site e queria um orçamento.";
+  if(car) msg+="\nCarro: "+car;
+  if(items.length) msg+="\nO que está acontecendo:\n"+items.join("\n");
+  if(more) msg+="\nDetalhes: "+more;
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank","noopener");
+});
+</script>
+</body>
+</html>
