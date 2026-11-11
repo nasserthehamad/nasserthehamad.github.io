@@ -33,7 +33,14 @@ if _tj:
     S2, S3, S3B, S4, S4B, S5, S6, TEND = [_T[k] for k in ('S2', 'S3', 'S3B', 'S4', 'S4B', 'S5', 'S6', 'TEND')]
 STAGE0 = S5 + 0.8
 BDUR = (S6 - STAGE0) / NB
+BT = [STAGE0 + b * BDUR for b in range(NB)]
+if _tj and _T.get('BT'):
+    BT = list(_T['BT'])[:NB]
+    STAGE0 = BT[0]
 POP0, POP1 = 0.25, 2.6
+D2, D3, D4, D6 = 0.3, 0.4, 0.3, 0.4      # quando entra a 2ª parte da legenda (s após o início da cena)
+if _tj:
+    D2, D3, D4, D6 = [_T.get(k, d) for k, d in (('D2', D2), ('D3', D3), ('D4', D4), ('D6', D6))]
 XF = 0.4
 
 
@@ -78,7 +85,7 @@ STAGE_Y = 486
 def batch_of(t):
     if t < STAGE0 or t >= S6:
         return None
-    return min(NB - 1, int((t - STAGE0) / BDUR))
+    return max(b for b in range(NB) if BT[b] <= t)
 
 
 # rastro de pegadas: da ponte até a praça
@@ -129,7 +136,7 @@ def people_now(t):
             res.append((i, 252, 334, 0)); continue
         if n in stage:
             j = [m for m, _ in NEW[b * BATCH:(b + 1) * BATCH]].index(n)
-            tin = STAGE0 + b * BDUR
+            tin = BT[b]
             q = W.clamp((t - tin) / 0.25)
             x0, y0 = CROWD[i]
             x = x0 + (STAGE_X[j] - x0) * W.ease(q)
@@ -310,16 +317,16 @@ def short_role(r):
 
 
 CAPS = [
-    (S2, S3, 270, [(S2, [(f'COM {GOAL} MORADORES,', WHITE)], 140), (S2 + 0.3, [('A GENTE CONSTRÓI', GOLD)], 150),
-                   (S2 + 0.3, [('O CASTELO.', GOLD)], 170)]),
+    (S2, S3, 270, [(S2, [(f'COM {GOAL} MORADORES,', WHITE)], 140), (S2 + D2, [('A GENTE CONSTRÓI', GOLD)], 150),
+                   (S2 + D2, [('O CASTELO.', GOLD)], 170)]),
     (S3, S3B, 280, [(S3, [('A RAFAELA VOLTOU', WHITE)], 140), (S3, [('DA FLORESTA COM ERVAS', WHITE)], 120),
-                    (S3 + 0.4, [('PRA CHÁS E REMÉDIOS…', GOLD)], 120)]),
+                    (S3 + D3, [('PRA CHÁS E REMÉDIOS…', GOLD)], 120)]),
     (S3B, S4, 300, [(S3B, [('…MAS ALGUÉM', WHITE)], 150), (S3B + 0.3, [('SEGUIU ELA.', TEAL)], 190)]),
-    (S4, S4B, 290, [(S4, [('O CÃO DA ANA SOFIA', WHITE)], 140), (S4 + 0.3, [('FAREJOU AS PEGADAS…', GOLD)], 140)]),
+    (S4, S4B, 290, [(S4, [('O CÃO DA ANA SOFIA', WHITE)], 140), (S4 + D4, [('FAREJOU AS PEGADAS…', GOLD)], 140)]),
     (S4B, S5, 290, [(S4B, [('…E ELAS VÃO', WHITE)], 150), (S4B + 0.3, [('ATÉ O REINO.', TEAL)], 180)]),
     (S5, S6, 270, [(S5, [(f'CHEGARAM {len(NEW)} MORADORES', WHITE)], 130), (S5 + 0.3, [('NOVOS:', GOLD)], 170)]),
     (S6, TEND + 1, 270, [(S6, [('SEGUE E COMENTA', WHITE)], 150), (S6, [('SEU NOME E SUA FUNÇÃO', GOLD)], 130),
-                         (S6 + 0.4, [('PRA VIRAR MORADOR.', WHITE)], 110)]),
+                         (S6 + D6, [('PRA VIRAR MORADOR.', WHITE)], 110)]),
 ]
 
 
@@ -334,7 +341,7 @@ def overlay_state(t):
     if S2 + 0.6 <= t < S3 or t >= S6 + 0.6:
         st.append(('bar',))
     b = batch_of(t)
-    if b is not None and t >= STAGE0 + b * BDUR + 0.2:
+    if b is not None and t >= BT[b] + 0.2:
         st.append(('stage', b))
     if S4 + 0.6 <= t < S5:
         st.append(('bark', int(t * 2.5) % 2))
@@ -460,7 +467,7 @@ def sfx(total):
         bark(t); bark(t + 0.18)
         t += 0.8
     for b in range(NB):   # palco: plim por lote
-        t0 = STAGE0 + b * BDUR + 0.2
+        t0 = BT[b] + 0.2
         for j, m in enumerate((79, 83, 86, 91)):
             nn = int(0.09 * SR)
             E.add(s, t0 + j * 0.06, E.sq(E.midi(m), nn, 0.25) * E.adsr(nn, dec=0.05, sus=0.2), 0.08)

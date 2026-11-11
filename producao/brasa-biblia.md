@@ -120,6 +120,11 @@ Roteiro (24 s, sem voz por enquanto):
    (nome e função) **embaixo dos pés**, pra ninguém ficar escondido.
 6. "SEGUE e comenta seu nome e sua função pra virar morador." Barra 44/100 e castelo ao fundo; o final emenda no começo.
 
+Versão narrada (11/11): `videos/brasa-ep3-narrado.mp4`, com 44 s. A voz Jhony Tygas foi gerada pelo Nasser no site, porque o
+conector da ElevenLabs teve o plano grátis bloqueado ("atividade incomum"). O áudio está em `producao/reino/voz/ep3b.mp3` e o
+tempo de cada cena em `voz/timing3.json` (BT = início de cada grupo de 4 nomes; D2/D3/D4/D6 = quando entra a 2ª linha da legenda).
+Na chamada, o narrador lê os 20 nomes em 5 grupos de 4, no mesmo momento em que cada grupo sobe ao palco.
+
 Arquivos: `videos/brasa-ep3.mp4` e `producao/capas/capa-brasa-ep3.jpg`. Código: `producao/reino/ep3.py`
 (rodando com `N=<seguidores>`; `TIMING3=<json>` com S2, S3, S3B, S4, S4B, S5, S6 e TEND sincroniza com uma narração).
 
