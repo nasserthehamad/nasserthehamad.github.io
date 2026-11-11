@@ -13,10 +13,13 @@ comentários ganha nome e função na história.
 - **Um pedido só:** "Comenta seu nome e sua função." Exemplo na tela: "Lia, ferreira".
 - **Abertura fixa de todo episódio (pedido do Nasser em 10/11, depois de o Ep. 2 sair sem ela):** "ESTE REINO TEM N MORADORES."
   - N é o número real de seguidores, que o Nasser confirma antes de renderizar.
-  - Vem com um contador animado subindo do número do episódio anterior até o atual (ex.: 32 → N).
+  - O número já aparece certo **desde o primeiro quadro**, com todos os moradores na tela (nada de contador começando em 0,
+    que vira a capa automática e estraga o gancho). Só os brilhos dos que chegaram pulsam.
 - **O número do gancho é sempre o real:** "Este perfil tem X seguidores." Confirmar com o Nasser antes de renderizar.
 - **Só ganha nome quem comenta pedindo.** Ninguém aparece no vídeo sem ter se apresentado.
-- **Sem narrador:** só texto na tela (fonte pixel Jersey 10), trilha 8-bit sintetizada e efeitos. Não gasta ElevenLabs.
+- **Narração:** a referência tem narração de IA, então os episódios saem narrados (voz Jhony Tygas `FhdOWgf0bSw3HKWefhlq`,
+  `eleven_v4`), com a música bem baixa por baixo da voz. **Só gasta ElevenLabs quando o Nasser disser.** Primeiro sai a versão
+  sem voz (texto na tela, fonte pixel Jersey 10, trilha 8-bit e efeitos).
 - **Duração:** entre 20 e 25 s, com o final emendando no começo (loop).
 - **Gancho:** sem spoiler.
 - **Áudio:** postar com o original, sem música do app por cima.
@@ -80,10 +83,53 @@ Código:
 
 **Fios para o Ep. 3:** o inimigo da Raviela (é a luz?), a Cristal de guarda na ponte e os cães da Ana Sofia farejando.
 
+## Ep. 3, "As Pegadas" (11/11; o perfil tinha 44 seguidores)
+Os 20 moradores novos, pela ordem dos comentários no Ep. 2 (os outros 9 seguidores ainda não se apresentaram e aparecem sem nome):
+
+| Nº | Nome | Função |
+| --- | --- | --- |
+| 016 | Kelly | artesã |
+| 017 | Izabelle | médica |
+| 018 | Oliveti | bruxa (poções) |
+| 019 | Alerrandro | escultor |
+| 020 | Lorena | filósofa/pensadora |
+| 021 | Rubens | bruxo (visões e espíritos) |
+| 022 | Viviane | artista |
+| 023 | Cathe | mago (previsões/visões) |
+| 024 | João | ferreiro |
+| 025 | Bernardo | mágico curandeiro |
+| 026 | Samuel | minerador |
+| 027 | Cauby | matemático |
+| 028 | Cauã | arqueiro |
+| 029 | Valdemir | vaqueiro |
+| 030 | Yasmim | cantora |
+| 031 | Aurora | dançarina |
+| 032 | Laura | louca |
+| 033 | Nic | bobo da corte |
+| 034 | Clara | enfermeira |
+| 035 | Giovanni | alquimista |
+
+Roteiro (24 s, sem voz por enquanto):
+1. "ESTE REINO TEM 44 MORADORES." Os 44 já estão na praça desde o primeiro quadro.
+2. **Meta coletiva:** "COM 100 MORADORES, A GENTE CONSTRÓI O CASTELO." Aparece o contorno do castelo, e a barra
+   "MORADORES 44/100" fica no fim do vídeo.
+3. "A Rafaela voltou da floresta com ervas pra chás e remédios… mas alguém seguiu ela." Pegadas brilhando atrás dela na ponte.
+4. "O cão da Ana Sofia farejou as pegadas… e elas vão até o reino." O cão segue a trilha, e a Ana Sofia reage com um "!".
+   (Compensa o Ep. 2, onde ela ficou escondida atrás da multidão na chamada.)
+5. "Chegaram 20 moradores novos:" eles vão para um palco na frente da fogueira, 4 por vez, com foco de luz e crachá
+   (nome e função) **embaixo dos pés**, pra ninguém ficar escondido.
+6. "SEGUE e comenta seu nome e sua função pra virar morador." Barra 44/100 e castelo ao fundo; o final emenda no começo.
+
+Arquivos: `videos/brasa-ep3.mp4` e `producao/capas/capa-brasa-ep3.jpg`. Código: `producao/reino/ep3.py`
+(rodando com `N=<seguidores>`; `TIMING3=<json>` com S2, S3, S3B, S4, S4B, S5, S6 e TEND sincroniza com uma narração).
+
+**Fios para o Ep. 4:** de quem são as pegadas (a luz da ponte?), o inimigo da Raviela, os bruxos e magos novos (Oliveti, Rubens,
+Cathe e Bernardo) tendo visões, e o castelo como meta (a barra sobe a cada episódio).
+
 ## Próximos episódios (rascunho)
-- **Ep. 3 em diante:**
+- **Ep. 4 em diante:**
   - cada episódio traz moradores novos com nome, mais uma construção ou acontecimento e um passo do mistério;
-  - quando o perfil bater uma marca (50, 100…), sai um episódio especial de "festa".
+  - quando o perfil bater uma marca (50, 100…), sai um episódio especial de "festa". Em 100 sai o episódio do castelo.
 
 ## Recompensas para quem participa (decidido em 09/11)
 Todo mundo que se apresenta ganha alguma coisa. O nível muda conforme o número de comentários:
