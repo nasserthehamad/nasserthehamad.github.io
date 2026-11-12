@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bestiário — cada nome vira uma criatura em pixel art, sempre a mesma pro mesmo nome.
 Tudo sai do crc32 do nome normalizado (minúsculo, sem acento): tipo, corpo, traços, raridade, status e nome da espécie."""
-import hashlib, math, random, unicodedata, zlib
+import hashlib, json, math, os, random, unicodedata, zlib
 import numpy as np
 from PIL import Image, ImageDraw
 
@@ -87,7 +87,23 @@ WHEELS = {
 RAR_BONUS = {'COMUM': 0, 'INCOMUM': 8, 'RARO': 15, 'ÉPICO': 22, 'LENDÁRIO': 30}
 
 
+_OV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'overrides.json')
+
+
+def overrides():
+    """Resultados forçados por decisão editorial (ex.: o sorteado do #001 ganhou LENDÁRIO). Ficam registrados em overrides.json."""
+    try:
+        return json.load(open(_OV_PATH))
+    except Exception:
+        return {}
+
+
 def spin(name, wheel, salt):
+    ov = overrides().get(norm(name), {})
+    if wheel == 'RARIDADE' and 'rarity' in ov:
+        for i, (lab, p) in enumerate(WHEELS[wheel]):
+            if lab == ov['rarity']:
+                return i, lab, p
     """Resultado determinístico de uma roleta: (índice, rótulo, %)."""
     roll = h32(name, salt) % 100
     acc = 0

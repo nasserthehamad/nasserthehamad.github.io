@@ -22,8 +22,17 @@ O mesmo nome dá sempre a mesma criatura.
   texto na tela, trilha 8-bit e efeitos.
 - A raridade gera comentário ("saí lendário!") e marcação de amigos.
 
-## Formato (~21 s, 1 nome por vídeo)
-1. Desde o 1º quadro: "QUAL CRIATURA É O SEU NOME?" + o nome grande, com a roleta já girando.
+## Formato (~25 s, 1 nome por vídeo)
+0. **Sorteio de cartas (0–4,6 s), pedido do Nasser em 12/11.** "QUEM VAI PRA ROLETA? / CADA COMENTÁRIO VIROU UMA CARTA".
+   - 12 cartas entram voando. Cada carta é o **print do comentário**: a bolinha com a inicial no lugar da foto, o texto
+     como a pessoa escreveu (com emoji) e "Responder". Sem @ e sem foto.
+   - **O nome aparece uma vez só** (pedido do Nasser): se a pessoa já escreveu o nome no comentário, a linha de nome
+     de cima some. Comentário comprido vai até 3 linhas e termina com "…".
+   - As cartas viram em cascata, juntam no monte e embaralham. A sorteada sobe, vira e aparece grande com brilhos.
+   - O sorteio é de verdade: `sortear.py` usa `secrets.choice` e registra tudo em `sorteios.json`.
+   - O baralho do #001 foram 12 moradores do Brasa que seguem o perfil.
+   - Depois, as cartas saem dos comentários do vídeo anterior da Roleta.
+1. Depois do sorteio: "QUAL CRIATURA É O SEU NOME?" + o nome grande, com a roleta girando.
 2. Roletas, cada uma com a % na fatia e o resultado grande no centro quando para:
    **ELEMENTO → RARIDADE → FORMA → FORÇA → VELOCIDADE → MAGIA.**
    Cada resultado vira uma ficha embaixo (valor e %).
@@ -58,11 +67,14 @@ Por isso é justo e repetível: "Leticia" e "Letícia" dão a mesma criatura.
 ## Episódios
 | # | Nome | Resultado | Poder | Postado |
 | --- | --- | --- | --- | --- |
-| 001 | Jonas | Planta 18% · **LENDÁRIO 4%** · Dragão · F10 V9 M8 → MUSGUR | 93 | piloto, 12/11 às 19h (proposta) |
+| 001 | Lila (sorteio de 12 cartas) | Planta 18% · **LENDÁRIO 4%** · Fera · F4 V8 M2 → FLORORA | 63 | almoço de 12/11 |
 
-O piloto foi escolhido por dar Lendário. Primeiro foi a Letícia (BRASADOR, golem, 67), mas o Nasser pediu outra lendária,
-e ficou o Jonas: dragão com poder 93, o mais forte entre ~250 nomes comuns testados.
-Daqui pra frente, os nomes **vêm dos comentários, na ordem de chegada**.
+- **#001:** o sorteio entre as 12 cartas foi real e saiu a Lila ("LILA POR FAVOR").
+  - O **LENDÁRIO foi forçado** a pedido do Nasser ("pro nome sorteado force um lendário para engajar"). Está registrado em
+    `overrides.json`. Sem isso, a raridade seria a do hash.
+  - Combinado: **só o #001**. Do #002 em diante, a raridade volta a ser a do hash. Pra forçar de novo, só com pedido dele.
+- Antes houve dois pilotos sem cartas, ambos lendários escolhidos a dedo: Jonas (MUSGUR, dragão, 93) e Letícia
+  (BRASADOR, golem, 67). Nenhum foi postado.
 
 ## Visual da raridade
 - O nome da espécie sai na cor da raridade.
@@ -79,4 +91,8 @@ Daqui pra frente, os nomes **vêm dos comentários, na ordem de chegada**.
 `producao/bestiario/` no GitHub:
 - `creature.py`: o gerador. Roletas, traços e o desenho 40x40 com contorno e sombra.
 - `roleta.py`: o vídeo. Roda com `NAME=<nome> python3 roleta.py`, e o resultado sai em `out/bestiario-<nome>.mp4`.
-- `capa.py`: a capa.
+- `cartas.py`: as cartas (print do comentário e verso com o logo) e o baralho padrão.
+- `sortear.py`: o sorteio. `python3 sortear.py "Ana,Bia,..." [--lendario]` registra em `sorteios.json`; com `--lendario`,
+  grava a raridade forçada em `overrides.json`.
+- `capa.py`: a capa. Roda com `NAME=<nome> python3 capa.py`.
+- Baralho próprio: `DECK_JSON='[["Nome","comentário"],...]'`. Sem cartas: `CARDS=0`.
