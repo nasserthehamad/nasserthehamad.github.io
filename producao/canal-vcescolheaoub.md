@@ -1,6 +1,6 @@
 # Canal @vcescolheaoub — "Você Escolhe A ou B"
 
-**Desde 09/11 o carro-chefe é o BRASA** (reino em pixel art em que cada seguidor vira morador; bíblia em
+**Desde 12/11 são 2 posts por dia: BRASA (meio-dia) e ROLETA DO NOME (19h).** Desde 09/11 o carro-chefe é o BRASA (reino em pixel art em que cada seguidor vira morador; bíblia em
 `claude/series/brasa.md`). As séries de votação A/B terminaram: Quem Bate à Porta em 08/11 e A Marmita Sumiu em 11/11.
 O plano de 08/11 ("Golpe ou não?" e "Escolhe e paga o preço", Claude Doc https://claude.ai/artifact/N2nV84GJFyGFRKWJogUzGS)
 não chegou a ser postado.
@@ -15,7 +15,8 @@ não chegou a ser postado.
 
 | Série | Formato | Status | Bíblia |
 | --- | --- | --- | --- |
-| **Brasa** | reino pixel art, narrado (Jhony Tygas) | Ep. 3 em 11/11. Em andamento. | `claude/series/brasa.md` |
+| **Brasa** | reino pixel art, narrado (Jhony Tygas) | Ep. 4 em 12/11 ao meio-dia. Em andamento, 1 por dia. | `claude/series/brasa.md` |
+| **Roleta do Nome** | 6 roletas com % → criatura pixel + poder total, sem voz | Piloto (Letícia, Lendário) em 12/11 às 19h. 1 por dia. | `claude/series/roleta-do-nome.md` |
 | A Marmita Sumiu | comédia narrada, votação A/B | Encerrada: final publicado em 11/11 às 19h58 | `claude/series/a-marmita-sumiu.md` |
 | Quem Bate à Porta | suspense narrado, votação A/B | Encerrada em 08/11 | `claude/series/quem-bate-a-porta.md` |
 | O Pix Errado | narrada | Não postada | `claude/series/o-pix-errado.md` |
