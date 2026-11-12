@@ -6,7 +6,7 @@ sys.path.insert(0, '/home/claude/reino')
 import ep1hd as E
 im = Image.fromarray(R.frame(R.COUNT1 + 0.6)).convert('RGBA')
 d = ImageDraw.Draw(im)
-title = 'ROLETA DO NOME #001'
+title = 'BESTIÁRIO DE BRASA #001'
 tw = E.font(64).getlength(title)
 E.panel(d, (540 - tw / 2 - 30, 96, 540 + tw / 2 + 30, 196), b=6)
 E.draw_line(d, 540, 122, [(title, (255, 255, 255))], 64)

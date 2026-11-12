@@ -1,7 +1,15 @@
-# Roleta do Nome — bíblia da série
+# Bestiário de Brasa (Roleta do Nome) — bíblia da série
 
 Segunda série diária do @vcescolheaoub, criada em 12/11 para postar 2 vídeos por dia junto com o **Brasa**.
 Ideia aprovada pelo Nasser ("baita ideia"). A mecânica de roleta com porcentagens e pontos totais também foi pedido dele.
+
+**Contexto (Nasser, 12/11):** é o **bestiário do Brasa**. As criaturas povoam a floresta do outro lado da ponte e **têm
+chance de aparecer na história** do Brasa, o que é um prêmio a mais pra quem comenta.
+- No vídeo: "VIVE NA FLORESTA DE BRASA" embaixo do nome da espécie, a luz turquesa piscando na floresta do fundo, e o fim
+  "COMENTA SEU NOME E SUA CRIATURA PODE APARECER NA HISTÓRIA DE BRASA".
+- Na capa: "BESTIÁRIO DE BRASA #001".
+- No Brasa: a expedição da Rafaela (Ep. 4) entrou na floresta, e criaturas do bestiário podem cruzar o caminho dela
+  (sempre as de quem comentou, de preferência épicas e lendárias).
 
 ## A ideia em uma frase
 Cada nome comentado passa por **6 roletas com porcentagem**, e no fim choca uma **criatura em pixel art** com **PODER TOTAL**.
@@ -21,7 +29,7 @@ O mesmo nome dá sempre a mesma criatura.
    Cada resultado vira uma ficha embaixo (valor e %).
    - Se a raridade der ÉPICO ou LENDÁRIO, o nome da raridade explode grande na tela. É o pico do vídeo.
 3. O ovo cai, treme e choca. Aparece a criatura com o **nome da espécie na cor da raridade**, e o **PODER TOTAL** sobe contando.
-4. Fim: "COMENTA SEU NOME / PRA GIRAR A SUA ROLETA / E SEGUE PRA VER O RESULTADO". O final emenda no começo (loop).
+4. Fim: "COMENTA SEU NOME / E SUA CRIATURA PODE APARECER / NA HISTÓRIA DE BRASA". O final emenda no começo (loop).
 
 ## Probabilidades (fixas e mostradas nas fatias)
 | Roleta | Fatias |

@@ -99,6 +99,9 @@ def background(t, glow=0.0):
         bay = np.array([[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]) / 16
         a = a * (a[..., 0:1] > bay[yy % 4, xx % 4][..., None] * 0.35)
         img = img * (1 - a) + np.array(RC) * a
+    if math.sin(t * 2.3) > -0.3:                 # a luz turquesa da floresta de Brasa
+        for dx, dy in ((0, 0), (1, 0), (0, 1), (1, 1)):
+            img[548 + dy, 286 + dx] = (170, 255, 230)
     big = np.repeat(np.repeat(img, 3, 0), 3, 1)
     return big.clip(0, 255).astype(np.uint8)
 
@@ -273,9 +276,9 @@ def layer(t):
         E.draw_line(d, FW / 2, 222, [('QUAL CRIATURA É O SEU NOME?', (220, 214, 240))], 60)
         E.draw_line(d, FW / 2, 300, [(NAME.upper(), GOLD)], 170)
     else:
-        E.draw_line(d, FW / 2, 222, [('COMENTA SEU NOME', WHITE)], 110)
-        E.draw_line(d, FW / 2, 330, [('PRA GIRAR A SUA ROLETA', GOLD)], 84)
-        E.draw_line(d, FW / 2, 420, [('E SEGUE PRA VER O RESULTADO', (220, 214, 240))], 56)
+        E.draw_line(d, FW / 2, 196, [('COMENTA SEU NOME', WHITE)], 104)
+        E.draw_line(d, FW / 2, 306, [('E SUA CRIATURA PODE APARECER', GOLD)], 64)
+        E.draw_line(d, FW / 2, 378, [('NA HISTÓRIA DE ', GOLD), ('BRASA', (255, 150, 40))], 64)
     k, s = current_spin(t)
     if s is not None:
         E.draw_line(d, FW / 2, 446, [(f"{s['lab']}", WHITE)], 74)
@@ -299,6 +302,7 @@ def layer(t):
     # revelação
     if t >= EGG_CRACK + 0.15:
         E.draw_line(d, FW / 2, 470, [(TR['species'], RC)], 96)
+        E.draw_line(d, FW / 2, 572, [('VIVE NA FLORESTA DE BRASA', (96, 226, 214))], 44)
     if t >= COUNT0:
         q = W_clamp((t - COUNT0) / (COUNT1 - COUNT0))
         val = int(round(TR['total'] * (1 - (1 - q) ** 2)))

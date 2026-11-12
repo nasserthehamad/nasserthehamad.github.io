@@ -177,6 +177,12 @@ Arquivos: `videos/brasa-ep4.mp4`, `producao/capas/capa-brasa-ep4.jpg` e código 
 **Fios para o Ep. 5:** o que a expedição acha na floresta (outra vila? quem acendeu a luz?), o que significa a runa da pedra
 e o nome do bruxo sem nome.
 
+## Bestiário de Brasa (série irmã, desde 12/11)
+As criaturas da floresta do outro lado da ponte saem da série **Bestiário de Brasa**, a "Roleta do Nome", às 19h
+(bíblia: `claude/series/roleta-do-nome.md`). Cada nome comentado lá vira uma criatura com raridade e poder.
+Elas **podem aparecer na história**: a expedição da Rafaela pode encontrar criaturas de quem comentou, de preferência
+épicas e lendárias, com o nome da espécie e do "dono".
+
 ## Próximos episódios (rascunho)
 - **Ep. 4 em diante:**
   - cada episódio traz moradores novos com nome, mais uma construção ou acontecimento e um passo do mistério;
