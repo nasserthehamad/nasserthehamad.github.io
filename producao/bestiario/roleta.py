@@ -27,7 +27,10 @@ USE_CARDS = os.environ.get('CARDS', '1') != '0'
 if USE_CARDS and NAME not in [n for n, _ in DECK]:
     DECK.insert(len(DECK) // 2, (NAME, NAME))
 DRAWN = [n for n, _ in DECK].index(NAME) if USE_CARDS else -1
-INTRO = 4.6 if USE_CARDS else 0.0
+# FORMAT=2 (padrão desde o #002): gancho de 1,6 s com o comentário sorteado + silhueta + chances, fundo de dia, roletas
+# mais rápidas. FORMAT=1 é o do #001 (12 cartas voando, 4,6 s, fundo de noite).
+F2 = os.environ.get('FORMAT', '2') == '2'
+INTRO = 1.6 if F2 else (4.6 if USE_CARDS else 0.0)
 # fases da intro (s)
 I_IN, I_FLIP, I_GATHER, I_SHUF, I_PULL, I_SHOW, I_OUT = 0.0, 1.95, 2.25, 2.65, 3.05, 3.45, 4.25
 
@@ -41,6 +44,10 @@ SPINS = [  # (roleta, rótulo exibido, salt, início, duração da giro, pausa d
 ]
 _t = 0.0
 SP = []
+if F2:   # roletas ~15% mais rápidas (a raridade mantém a pausa do suspense)
+    SPINS = [('ELEMENTO', 'ELEMENTO', 'el', INTRO, 2.1, 0.4), ('RARIDADE', 'RARIDADE', 'rar', None, 2.4, 0.55),
+             ('FORMA', 'FORMA', 'fo', None, 1.7, 0.35), ('ATRIB', 'FORÇA', 'f', None, 1.2, 0.25),
+             ('ATRIB', 'VELOCIDADE', 'v', None, 1.2, 0.25), ('ATRIB', 'MAGIA', 'm', None, 1.2, 0.35)]
 for w, lab, salt, t0, dur, hold in SPINS:
     t0 = _t if t0 is None else t0
     SP.append(dict(w=w, lab=lab, salt=salt, t0=t0, t1=t0 + dur, t2=t0 + dur + hold))
@@ -96,12 +103,45 @@ def _bg():
     return img.astype(np.float32)
 
 
-BG = _bg()
+def _bg_day():
+    """A floresta de Brasa de dia (mesma paleta clara do Brasa): céu azul, nuvens, morros e floresta verdes."""
+    y = np.linspace(0, 1, CH)[:, None, None]
+    top, bot = np.array((70, 136, 226)), np.array((176, 220, 252))
+    img = np.broadcast_to(top * (1 - y) + bot * y, (CH, CW, 3)).copy()
+    r = random.Random(11)
+    for cx, cy, w in ((60, 70, 46), (250, 40, 60), (320, 150, 38), (130, 200, 30)):   # nuvens
+        for k in range(5):
+            ex, ey, rr = cx + (k - 2) * w * 0.32, cy + (0 if k % 2 else 4), w * (0.34 if k % 2 else 0.26)
+            yy, xx = np.mgrid[0:CH, 0:CW]
+            img[((xx - ex) ** 2 / (rr * 1.6) ** 2 + (yy - ey) ** 2 / rr ** 2) < 1] = (250, 252, 255)
+    for col, base, amp in (((110, 160, 200), 470, 70), ((78, 136, 120), 515, 44)):       # morros
+        h = base
+        for x in range(CW):
+            if x % 24 == 0:
+                tgt = base - r.uniform(0, amp)
+            h += (tgt - h) * 0.08
+            img[int(h):, x] = col
+    for k in range(46):                                                                  # pinheiros
+        x0 = r.randrange(-10, CW)
+        hgt = r.randint(30, 62)
+        yb = 562 + r.randint(-6, 10)
+        col = (34, 92, 58) if k % 3 else (46, 112, 66)
+        for j in range(hgt):
+            w = int((j / hgt) * 9) + 1
+            yy = yb - hgt + j
+            img[yy:yy + 1, max(0, x0 - w):min(CW, x0 + w)] = col
+    img[566:, :] = (92, 170, 74)
+    for x in range(0, CW, 2):
+        img[566 + (x * 7) % 9, x] = (120, 196, 92)
+    return img.astype(np.float32)
+
+
+BG = _bg_day() if F2 else _bg()
 
 
 def background(t, glow=0.0):
     img = BG.copy()
-    for x, y, ph, f in STARS:
+    for x, y, ph, f in ([] if F2 else STARS):
         k = 0.5 + 0.5 * math.sin(t * f + ph)
         img[y, x] = img[y, x] * (1 - k) + np.array((255, 248, 220)) * k
     if glow > 0:
@@ -112,7 +152,7 @@ def background(t, glow=0.0):
         bay = np.array([[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]) / 16
         a = a * (a[..., 0:1] > bay[yy % 4, xx % 4][..., None] * 0.35)
         img = img * (1 - a) + np.array(RC) * a
-    if math.sin(t * 2.3) > -0.3:                 # a luz turquesa da floresta de Brasa
+    if not F2 and math.sin(t * 2.3) > -0.3:      # a luz turquesa da floresta de Brasa
         for dx, dy in ((0, 0), (1, 0), (0, 1), (1, 1)):
             img[548 + dy, 286 + dx] = (170, 255, 230)
     big = np.repeat(np.repeat(img, 3, 0), 3, 1)
@@ -285,7 +325,9 @@ def chip_info(k):
 def layer(t):
     im = Image.new('RGBA', (FW, FH), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    if t < I_SHOW + 0.35 and USE_CARDS:
+    if F2 and t < INTRO - 0.2:
+        E.draw_line(d, FW / 2, 120, [('O BARALHO SORTEOU', GOLD)], 64)
+    elif not F2 and t < I_SHOW + 0.35 and USE_CARDS:
         E.draw_line(d, FW / 2, 214, [('QUEM VAI PRA ROLETA?', WHITE)], 96)
         E.draw_line(d, FW / 2, 330, [('CADA COMENTÁRIO VIROU UMA CARTA', GOLD)], 54)
     elif t < CTA:
@@ -294,11 +336,12 @@ def layer(t):
     else:
         E.draw_line(d, FW / 2, 196, [('COMENTA SEU NOME', WHITE)], 104)
         E.draw_line(d, FW / 2, 306, [('PRA ENTRAR NO BARALHO', GOLD)], 72)
-        E.draw_line(d, FW / 2, 390, [('SUA CRIATURA PODE IR PRO ', (96, 226, 214)), ('BRASA', (255, 150, 40))], 50)
+        E.draw_line(d, FW / 2, 390, [('SUA CRIATURA PODE IR PRO ', WHITE if F2 else (96, 226, 214)), ('BRASA', (255, 150, 40))], 50)
     k, s = current_spin(t)
     if s is not None:
         E.draw_line(d, FW / 2, 446, [(f"{s['lab']}", WHITE)], 74)
-        d.text((FW - 110, 470), f'{k + 1}/6', font=E.font(40), fill=(200, 196, 220, 255), anchor='rm')
+        d.text((FW - 110, 470), f'{k + 1}/6', font=E.font(40), fill=(200, 196, 220, 255) if not F2 else WHITE + (255,), anchor='rm',
+               stroke_width=0 if not F2 else 4, stroke_fill=(30, 22, 48, 255))
         if s['w'] == 'RARIDADE' and t >= s['t1'] and TR['lvl'] >= 3 and t < s['t2']:   # pico do vídeo
             q = W_clamp((t - s['t1']) / 0.12)
             sz = int(150 + 40 * (1 - q))
@@ -318,7 +361,7 @@ def layer(t):
     # revelação
     if t >= EGG_CRACK + 0.15:
         E.draw_line(d, FW / 2, 470, [(TR['species'], RC)], 96)
-        E.draw_line(d, FW / 2, 572, [('VIVE NA FLORESTA DE BRASA', (96, 226, 214))], 44)
+        E.draw_line(d, FW / 2, 572, [('VIVE NA FLORESTA DE BRASA', WHITE if F2 else (96, 226, 214))], 44)
     if t >= COUNT0:
         q = W_clamp((t - COUNT0) / (COUNT1 - COUNT0))
         val = int(round(TR['total'] * (1 - (1 - q) ** 2)))
@@ -415,6 +458,66 @@ def intro(base, t):
             put(base, im, x, y, sx, 0, alpha)
 
 
+# ---------------------------------------------------------------- gancho (formato 2)
+def silhouette():
+    a = C.draw(NAME, 0).copy()
+    op = a[..., 3] > 0
+    a[op] = (30, 22, 48, 255)
+    big = Image.fromarray(a).resize((440, 440), Image.NEAREST)
+    m = np.array(big)[..., 3] > 0                       # contorno branco grosso pra destacar do céu
+    ring = np.zeros_like(m)
+    for dy in range(-9, 10, 3):
+        for dx in range(-9, 10, 3):
+            ring |= np.roll(np.roll(m, dy, 0), dx, 1)
+    out = np.zeros((440, 440, 4), np.uint8)
+    out[ring & ~m] = (255, 255, 255, 235)
+    out[m] = np.array(big)[m]
+    return Image.fromarray(out)
+
+
+SIL = silhouette()
+RAR_STRIP = [('COMUM', 40), ('INCOMUM', 30), ('RARO', 17), ('ÉPICO', 9), ('LENDÁRIO', 4)]
+
+
+def hook(base, t):
+    fade = 1 - W_clamp((t - (INTRO - 0.25)) / 0.25)
+    if fade <= 0:
+        return
+    d = ImageDraw.Draw(base)
+    # baralho em leque fechando atrás da carta sorteada
+    q = ease(t / 0.45)
+    for j, off in enumerate((-2, -1, 1, 2)):
+        put(base, K.card_back(), 540 + off * 60 * (1 - q), 330 + abs(off) * 14 * (1 - q), 1, off * 7 * (1 - q), fade * (1 - 0.5 * q))
+    if USE_CARDS:
+        sc = 1.55 * (1 + 0.06 * (1 - ease(t / 0.18)))
+        put(base, face(DRAWN, 1.55) if abs(sc - 1.55) < 0.005 else face(DRAWN, 1.55).resize((int(CWD * sc), int(CHT * sc)), Image.BILINEAR),
+            540, 330 - 40 * (1 - fade), 1, 0, fade)
+    # silhueta da criatura com ?
+    bob = math.sin(t * 6) * 8
+    sil = SIL
+    if fade < 1:
+        sil = sil.copy(); sil.putalpha(sil.getchannel('A').point(lambda v: int(v * fade)))
+    base.alpha_composite(sil, (int(WCX - 220), int(WCY - 230 + bob)))
+    ov = Image.new('RGBA', (FW, FH), (0, 0, 0, 0))
+    do = ImageDraw.Draw(ov)
+    do.text((WCX, WCY - 10 + bob), '?', font=E.font(220), fill=GOLD + (255,), anchor='mm', stroke_width=12, stroke_fill=(30, 22, 48, 255))
+    # chances
+    E.draw_line(do, FW / 2, 1150, [('SÓ ', WHITE), ('4%', C.RAR_COL['LENDÁRIO']), (' SAI LENDÁRIO', WHITE)], 70)
+    bw, x0, y0 = 184, 540 - 184 * 2.5 - 8, 1262
+    for j, (rn, pc) in enumerate(RAR_STRIP):
+        bx = x0 + j * (bw + 4)
+        col = C.RAR_COL[rn]
+        leg = rn == 'LENDÁRIO'
+        blink = leg and (t % 0.5) < 0.25
+        E.panel(do, (bx, y0, bx + bw, y0 + 120), fill=(26, 20, 48, 240), b=5 if not blink else 8)
+        do.rectangle((bx + 10, y0 + 12, bx + bw - 10, y0 + 22), fill=col + (255,))
+        do.text((bx + bw / 2, y0 + 56), rn, font=E.font(30 if len(rn) > 6 else 34), fill=col + (255,), anchor='mm')
+        do.text((bx + bw / 2, y0 + 94), f'{pc}%', font=E.font(40), fill=WHITE + (255,), anchor='mm')
+    if fade < 1:
+        ov.putalpha(ov.getchannel('A').point(lambda v: int(v * fade)))
+    base.alpha_composite(ov)
+
+
 # ---------------------------------------------------------------- quadro
 def creature_im(t):
     fr = int(t / 0.4) % 2
@@ -427,13 +530,15 @@ def frame(t):
     if t >= EGG_CRACK:
         glow = min(1, (t - EGG_CRACK) / 0.3)
     base = Image.fromarray(background(t, glow)).convert('RGBA')
-    if USE_CARDS and t < INTRO:
+    if F2 and t < INTRO + 0.05:
+        hook(base, t)
+    elif USE_CARDS and t < INTRO:
         intro(base, t)
     k, s = current_spin(t)
     if s is not None:
         wi = wheel_im(s['w'])
         sc = 1.0
-        if t < s['t0'] + 0.14 and k > 0:
+        if t < s['t0'] + 0.14 and (k > 0 or F2):
             sc = 0.6 + 0.4 * (t - s['t0']) / 0.14
         ang = angle_at(s, t)
         rot = wi.rotate(-ang, resample=Image.BICUBIC)
@@ -525,7 +630,14 @@ def audio(path):
         E.add(s, t + beat / 2, E.noise(nn, k) * np.exp(-np.arange(nn) / SR * 200), 0.02)
         t += beat / 2
         k += 1
-    if USE_CARDS:                                       # cartas
+    if F2:                                              # gancho: carta batendo + acorde
+        nn = int(0.12 * SR)
+        E.add(s, 0.0, E.lp(E.noise(nn, 5), 0.3) * np.exp(-np.arange(nn) / SR * 30), 0.35)
+        for j, m in enumerate([69, 72, 76, 81]):
+            note(0.02 + j * 0.05, m, d=0.25, g=0.07)
+        nn = int(0.3 * SR)
+        E.add(s, INTRO - 0.25, E.lp(E.noise(nn, 6), 0.15) * np.sin(np.pi * np.arange(nn) / nn), 0.3)
+    elif USE_CARDS:                                     # cartas
         for i in range(len(DECK)):
             nn = int(0.03 * SR)
             E.add(s, I_IN + 0.035 * i + 0.3, E.lp(E.noise(nn, 300 + i), 0.35) * np.exp(-np.arange(nn) / SR * 90), 0.12)

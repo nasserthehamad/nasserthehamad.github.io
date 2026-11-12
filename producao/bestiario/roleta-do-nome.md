@@ -40,6 +40,23 @@ O mesmo nome dá sempre a mesma criatura.
 3. O ovo cai, treme e choca. Aparece a criatura com o **nome da espécie na cor da raridade**, e o **PODER TOTAL** sobe contando.
 4. Fim: "COMENTA SEU NOME / E SUA CRIATURA PODE APARECER / NA HISTÓRIA DE BRASA". O final emenda no começo (loop).
 
+## Formato 2 (do #002 em diante, decidido em 12/11)
+O #001 flopou: 57 views em 3h, contra ~308 do Brasa Ep. 3 no mesmo horário.
+- Só 53% passavam do 1º segundo, contra 77% no Brasa.
+- Ninguém comentou o próprio nome.
+- O começo (tela roxa escura, 12 cartinhas pequenas) não prendia, e a criatura só aparecia no segundo 18.
+
+O Nasser topou testar o #002 neste formato. **Se ficar abaixo de ~150 views em 3h, a série acaba** e o almoço vira
+outro tipo de conteúdo.
+- **Gancho de 1,6 s, tudo já no 1º quadro:**
+  - "O BARALHO SORTEOU" com o comentário sorteado grande. O resto do baralho aparece em leque atrás, fechando.
+  - A **silhueta escura da criatura** com "?", contornada de branco e balançando.
+  - A faixa de chances "SÓ 4% SAI LENDÁRIO", com as 5 raridades e o lendário piscando.
+- **Fundo de dia**, na paleta clara do Brasa: céu azul, nuvens, morros e pinheiros verdes.
+- **Roletas ~15% mais rápidas.** O vídeo fecha em ~20 s (a revelação vem aos 13,5 s).
+- `FORMAT=1` ainda gera o formato do #001. A cópia do código antigo está em `roleta_v1.py`.
+- A raridade volta a sair do hash, sem forçar nada.
+
 ## Probabilidades (fixas e mostradas nas fatias)
 | Roleta | Fatias |
 | --- | --- |
