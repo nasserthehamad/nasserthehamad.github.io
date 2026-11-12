@@ -24,6 +24,7 @@ RARITIES = [('COMUM', 40), ('INCOMUM', 30), ('RARO', 17), ('ÉPICO', 9), ('LEND�
 RAR_COL = {'COMUM': (206, 206, 214), 'INCOMUM': (96, 214, 96), 'RARO': (72, 156, 255), 'ÉPICO': (184, 96, 255),
            'LENDÁRIO': (255, 150, 40)}
 OUTC = (24, 18, 30)
+C_GLOW = {3: (184, 96, 255), 4: (255, 176, 50)}
 
 
 def norm(name):
@@ -37,7 +38,7 @@ def h32(name, salt=''):
 
 # nome da espécie: começo que lembra o elemento + final que lembra a forma (não usa o nome da pessoa)
 SP_PRE = {
-    'FOGO': ['IGN', 'PIR', 'LAV', 'BRAS', 'ARD', 'FULG'],
+    'FOGO': ['IGN', 'CHAM', 'LAV', 'BRAS', 'ARD', 'FULG'],
     'ÁGUA': ['AQU', 'MAR', 'OND', 'HIDR', 'NAU', 'CORAL'],
     'PLANTA': ['FOL', 'RAM', 'FLOR', 'SILV', 'MUSG', 'SEIV'],
     'PEDRA': ['ROK', 'GRAN', 'LIT', 'BASALT', 'TERR', 'CASC'],
@@ -49,22 +50,31 @@ SP_PRE = {
 SP_SUF = {
     'bolha': ['IX', 'OLO', 'UBA', 'IM', 'OTE'],
     'fera': ['AX', 'OX', 'ORA', 'UZ', 'INO'],
-    'ave': ['ILO', 'IRA', 'ÁRIO', 'ICO', 'ÍDEO'],
+    'ave': ['ILO', 'IRA', 'ÁRIO', 'ÉRIO', 'ÍDEO'],
     'dragão': ['DRAK', 'UR', 'OTH', 'DRAGO', 'AXIS'],
     'golem': ['GOR', 'ON', 'ATH', 'DOR', 'ULO'],
 }
 VOW = 'AEIOUÁÉÍÓÚ'
 
 
+# pedaços que não podem aparecer em nome de criatura (palavrão, ofensa ou parecido)
+BAD = ('PIRU', 'PIROC', 'CU', 'BOST', 'MERD', 'PUT', 'CACET', 'PINT', 'XOT', 'BUCET', 'PORR', 'MARIC', 'VIAD', 'BICH',
+       'PENIS', 'ANUS', 'TETA', 'ROLA', 'PICA', 'FODA', 'CORN', 'GAY', 'NAZI', 'KKK')
+
+
 def species(name, typ, body):
     r = random.Random(h32(name, 'sp'))
-    pre = r.choice(SP_PRE[typ])
-    suf = r.choice(SP_SUF[body])
-    if pre[-1] not in VOW and suf[0] not in VOW:
-        pre += r.choice('AIO')
-    elif pre[-1] in VOW and suf[0] in VOW:
-        suf = suf[1:]
-    return pre + suf
+    for _ in range(30):
+        pre = r.choice(SP_PRE[typ])
+        suf = r.choice(SP_SUF[body])
+        if pre[-1] not in VOW and suf[0] not in VOW:
+            pre += r.choice('AIO')
+        elif pre[-1] in VOW and suf[0] in VOW:
+            suf = suf[1:]
+        out = pre + suf
+        if not any(b in norm(out).upper() for b in BAD):
+            return out
+    return out
 
 
 WHEELS = {
@@ -218,6 +228,8 @@ def draw(name, frame=0):
         for k in range(3):
             x = r.randint(cx - 12, cx + 12)
             d.point((x, 6 + k * 2), fill=(170, 150, 220))
+    if t['lvl'] == 4 and top >= 13:
+        d.ellipse((hx - 6, top - 12, hx + 6, top - 8), outline=(255, 214, 72))
     # ---- manchas
     if t['spots'] and B != 'golem':
         for k in range(3):
@@ -267,6 +279,15 @@ def draw(name, frame=0):
     a[..., :3] = np.where((sh | shr)[..., None] & ~hi[..., None], rgb * 0.72, a[..., :3])
     edge = ~op & (up | dn | lf | rt)
     a[edge] = OUTC + (255,)
+    if t['lvl'] >= 3:                                   # contorno de brilho: dourado (lendário) ou roxo (épico)
+        op2 = a[..., 3] > 0
+        nb = np.zeros_like(op2)
+        nb[1:] |= op2[:-1]; nb[:-1] |= op2[1:]; nb[:, 1:] |= op2[:, :-1]; nb[:, :-1] |= op2[:, 1:]
+        ring = ~op2 & nb
+        if t['lvl'] == 3:
+            yy, xx = np.mgrid[0:S, 0:S]
+            ring &= ((yy + xx) % 2 == 0)
+        a[ring] = (C_GLOW[t['lvl']] + (255,))
     return a.clip(0, 255).astype(np.uint8)
 
 

@@ -47,7 +47,9 @@ O mesmo nome dá sempre a mesma criatura.
 - O começo vem do elemento: Fogo IGN/PIR/LAV/BRAS/ARD/FULG, Raio VOLT/TRON/FAISC/ZAP/ELETR/TROV etc.
 - O final vem da forma: Golem GOR/ON/ATH/DOR/ULO, Dragão DRAK/UR/OTH/DRAGO/AXIS etc.
 - Se juntar duas consoantes, entra uma vogal de ligação.
-- Ex.: Letícia → BRASADOR; Raviela → SPECTRIX; Tainá → GRANODOR.
+- Ex.: Jonas → MUSGUR; Letícia → BRASADOR; Raviela → SPECTRIX; Tainá → GRANODOR.
+- Tem um **filtro de palavrão** (lista `BAD` no `creature.py`): se a junção formar algo como "PIRU…" ou "CU", sorteia outra
+  combinação. O pedaço "PIR" saiu da lista do Fogo por causa disso.
 - Antes era o nome da pessoa colado no elemento ("LETIFLAMA"); o Nasser não gostou e foi trocado em 12/11.
 
 Todo resultado sai de um hash do nome normalizado (minúsculo e sem acento), com uma "semente" diferente por roleta.
@@ -56,10 +58,16 @@ Por isso é justo e repetível: "Leticia" e "Letícia" dão a mesma criatura.
 ## Episódios
 | # | Nome | Resultado | Poder | Postado |
 | --- | --- | --- | --- | --- |
-| 001 | Letícia | Fogo 18% · **LENDÁRIO 4%** · Golem · F5 V5 M6 → BRASADOR | 67 | piloto, 12/11 às 19h (proposta) |
+| 001 | Jonas | Planta 18% · **LENDÁRIO 4%** · Dragão · F10 V9 M8 → MUSGUR | 93 | piloto, 12/11 às 19h (proposta) |
 
-O piloto usa um nome comum na faixa de 18 a 34 anos e escolhido por dar Lendário, pra estrear forte.
+O piloto foi escolhido por dar Lendário. Primeiro foi a Letícia (BRASADOR, golem, 67), mas o Nasser pediu outra lendária,
+e ficou o Jonas: dragão com poder 93, o mais forte entre ~250 nomes comuns testados.
 Daqui pra frente, os nomes **vêm dos comentários, na ordem de chegada**.
+
+## Visual da raridade
+- O nome da espécie sai na cor da raridade.
+- **Lendário:** contorno dourado em volta da criatura, brilhos laranja na revelação e o "LENDÁRIO!" explodindo na roleta.
+- **Épico:** contorno roxo pontilhado, brilhos e o "ÉPICO!" na roleta.
 
 ## Regras
 - Só o primeiro nome, como a pessoa escreveu. Nunca o @ ou a foto. Pular nomes ofensivos e nomes de famosos.
