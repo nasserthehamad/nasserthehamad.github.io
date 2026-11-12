@@ -20,7 +20,7 @@ comentários ganha nome e função na história.
 - **Narração:** a referência tem narração de IA, então os episódios saem narrados (voz Jhony Tygas `FhdOWgf0bSw3HKWefhlq`,
   `eleven_v4`), com a música bem baixa por baixo da voz. **Só gasta ElevenLabs quando o Nasser disser.** Primeiro sai a versão
   sem voz (texto na tela, fonte pixel Jersey 10, trilha 8-bit e efeitos).
-- **Duração:** entre 20 e 25 s, com o final emendando no começo (loop).
+- **Duração:** 25 a 30 s, com o final emendando no começo (loop). Os Eps. 2 e 3 (41–44 s) não seguraram mais gente que o Ep. 1 (26 s).
 - **Gancho:** sem spoiler.
 - **Áudio:** postar com o original, sem música do app por cima.
 - **Visual:** pixel art detalhado (canvas 360x640, ampliado 3x/4x/5x), vista de lado, tipo diorama (a referência é vista de cima). A bandeira do reino é vermelha com uma chama.
@@ -130,6 +130,52 @@ Arquivos: `videos/brasa-ep3.mp4` e `producao/capas/capa-brasa-ep3.jpg`. Código:
 
 **Fios para o Ep. 4:** de quem são as pegadas (a luz da ponte?), o inimigo da Raviela, os bruxos e magos novos (Oliveti, Rubens,
 Cathe e Bernardo) tendo visões, e o castelo como meta (a barra sobe a cada episódio).
+
+## Ep. 4, "A Estátua" (12/11, para 19h; o perfil tinha 67 seguidores)
+Primeiro episódio no **formato curto** (25,6 s), feito a partir das métricas de 11/11: ação no 1º segundo, o número de
+moradores escrito por cima da cena e os nomes num desfile rápido.
+
+Os 2 fundadores que ficaram de fora (comentaram no Ep. 1 antes de o Ep. 2 sair) e os 17 novos, pela ordem dos comentários:
+
+| Nº | Nome | Função |
+| --- | --- | --- |
+| 036 | Julielen | arqueóloga e musicista (fundador(a) esquecido(a) no Ep. 2) |
+| 037 | Robson | ajudante de coleta (fundador(a) esquecido(a) no Ep. 2) |
+| 038 | Hanna | padeira |
+| 039 | Amanda | açougueira |
+| 040 | Giovanna | apotecária |
+| 041 | Lila | ??? (não disse a função) |
+| 042 | Caio | padre |
+| 043 | Andréa | desbravadora |
+| 044 | Yuki | veterinário |
+| 045 | Ester | curandeira |
+| 046 | Lavinia | feiticeira |
+| 047 | Amanda | artista e comerciante de tecidos |
+| 048 | Amanda | escriba |
+| 049 | Trubel | cozinheira |
+| 050 | Luiza | bruxa |
+| 051 | Alexandra | exploradora e diplomata |
+| 052 | ??? (pepze_comZ, não disse o nome) | bruxo |
+| 053 | Matheus | botânico |
+| 054 | Sabrina | fazendeira |
+
+Roteiro:
+1. "ESTE REINO TEM 67 MORADORES." Já no 1º segundo o pano vermelho com a chama voa da estátua.
+2. "O Alerrandro esculpiu os fundadores." A estátua mostra Gabriel, Raviela e Lívia em pedra (ideia do próprio Alerrandro nos comentários).
+3. "E gravou 2 nomes que faltavam: Julielen e Robson." Os dois vão até a estátua e recebem o selo de FUNDADORES.
+4. "A Julielen cavou a base da estátua… e achou isso." Ela é arqueóloga: acha uma pedra antiga com uma runa turquesa, da
+   mesma cor da luz da floresta, e os moradores reagem com "!".
+5. "Chegaram 17 moradores novos:" eles vão ao palco em grupos de 4, 4, 3, 3 e 3, com crachá. A Lila aparece com função "???",
+   e o bruxo sem nome com nome "???".
+6. "A Rafaela, a Andréa e a Alexandra levaram a pedra… pra procurar outras vilas." Ideia da Rafaela nos comentários; a
+   Andréa (desbravadora) e a Alexandra (exploradora) são os destaques novos.
+7. "SEGUE e comenta seu nome e sua função pra virar morador." Barra 67/100 e o castelo ao fundo.
+
+Arquivos: `videos/brasa-ep4.mp4`, `producao/capas/capa-brasa-ep4.jpg` e código `producao/reino/ep4.py` (`N=<seguidores>`;
+`TIMING4=<json>` com S2, S2B, S3, S3B, S5, S4, S4B, S6, TEND e BT pra encaixar narração). Capa: `capa4.py`.
+
+**Fios para o Ep. 5:** o que a expedição acha na floresta (outra vila? quem acendeu a luz?), o que significa a runa da pedra
+e o nome do bruxo sem nome.
 
 ## Próximos episódios (rascunho)
 - **Ep. 4 em diante:**

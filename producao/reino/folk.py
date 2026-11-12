@@ -35,6 +35,38 @@ ROLES = {
     'aventur': dict(tunic=(56, 148, 136), hat='feather', item='map', cape=(150, 60, 50)),
     'costur': dict(tunic=(232, 142, 172), item='yarn', tape=True),
     'acougu': dict(tunic=(244, 240, 236), apron=(214, 70, 70), apron_stripes=True, item='ham'),
+    'artes': dict(tunic=(196, 120, 80), apron=(150, 110, 80), item='vase'),
+    'medic': dict(tunic=(246, 246, 250), item='potion_red', badge=True),
+    'enferm': dict(tunic=(246, 246, 250), hat='nurse', item='potion_red'),
+    'brux': dict(tunic=(80, 50, 110), hat='witch', item='potion'),
+    'escult': dict(tunic=(150, 150, 160), apron=(110, 110, 120), item='chisel'),
+    'filosof': dict(tunic=(236, 230, 214), hat='laurel', item='scroll'),
+    'artist': dict(tunic=(236, 200, 90), hat='beret', item='brush'),
+    'magico': dict(tunic=(60, 150, 100), hat='wizard_g', item='potion'),
+    'mago': dict(tunic=(60, 70, 160), hat='wizard', item='staff'),
+    'minera': dict(tunic=(120, 100, 80), hat='miner', item='pickaxe'),
+    'matemat': dict(tunic=(70, 110, 170), glasses=True, item='abacus'),
+    'arqueir': dict(tunic=(80, 120, 60), hat='hood', item='bow'),
+    'vaqueir': dict(tunic=(190, 90, 60), hat='cowboy', item='lasso'),
+    'cantor': dict(tunic=(220, 90, 160), item='lute'),
+    'dancar': dict(tunic=(240, 120, 90), hat='flower', item='ribbon'),
+    'louc': dict(tunic=(140, 220, 120), pants=(200, 80, 200), item='spiral', wild=True),
+    'bobo': dict(tunic=(220, 60, 60), jester=True, hat='jester', item='bells'),
+    'alquim': dict(tunic=(90, 130, 120), hat='goggles', item='potion_green'),
+    # Ep. 4
+    'apotec': dict(tunic=(110, 150, 96), apron=(226, 214, 180), item='potion_green'),
+    'padre': dict(tunic=(52, 48, 64), pants=(40, 38, 50), badge=True, item='book'),
+    'desbrav': dict(tunic=(84, 112, 62), hat='hood', item='spear', cape=(104, 70, 44)),
+    'veterin': dict(tunic=(150, 210, 196), badge=True, item='leash'),
+    'curand': dict(tunic=(126, 176, 116), hat='flower', item='potion_green'),
+    'feitic': dict(tunic=(70, 44, 130), hat='witch', item='staff'),
+    'escrib': dict(tunic=(206, 186, 146), glasses=True, item='scroll'),
+    'cozinh': dict(tunic=(246, 240, 236), apron=(214, 96, 70), hat='chef', item='ham'),
+    'explor': dict(tunic=(60, 120, 160), hat='feather', item='map', cape=(70, 70, 130)),
+    'botanic': dict(tunic=(96, 156, 76), hat='straw', item='vase'),
+    'arqueolog': dict(tunic=(186, 152, 100), hat='cowboy', item='brush'),
+    'music': dict(tunic=(96, 120, 206), item='lute'),
+    'colet': dict(tunic=(156, 124, 84), straps=True, hat='bandana', item='pitchfork'),
 }
 
 
@@ -104,6 +136,8 @@ def make_folk(name, role, frame=0, hair_style=None):
         px(7, oy + 5, fr_); px(8, oy + 5, fr_)
     hh, hs = shade(hair, 1.25), shade(hair, 0.78)
     hat = spec.get('hat')
+    if spec.get('wild'):
+        hair_style = 3
     if hair_style == 3 and hat not in ('helmet', 'helmet_plume', 'hood'):
         for y in range(oy - 2, oy + 6):
             for x in range(1, 15):
@@ -136,6 +170,8 @@ def make_folk(name, role, frame=0, hair_style=None):
                 c = thi
             if spec.get('armor') and (x + y) % 4 == 0:
                 c = (220, 224, 236)
+            if spec.get('jester') and x >= 8:
+                c = (250, 200, 60) if x < 10 else (210, 160, 40)
             px(x, y, c)
     if not spec.get('armor'):
         px(7, oy + 10, skin); px(8, oy + 10, skin); px(7, oy + 11, shade(skin, 0.84))
@@ -162,6 +198,9 @@ def make_folk(name, role, frame=0, hair_style=None):
         for x in range(4, 12):
             px(x, oy + 16, (96, 64, 40))
         px(7, oy + 16, (230, 190, 80)); px(8, oy + 16, (196, 150, 60))
+    if spec.get('badge'):
+        px(5, oy + 12, (220, 50, 50)); px(5, oy + 13, (220, 50, 50)); px(4, oy + 13, (220, 50, 50)); px(6, oy + 13, (220, 50, 50))
+        px(5, oy + 14, (220, 50, 50))
     if spec.get('tape'):
         for y in range(oy + 10, oy + 18):
             px(5, y, (250, 210, 70)); px(10, y, (230, 190, 50))
@@ -228,6 +267,69 @@ def make_folk(name, role, frame=0, hair_style=None):
                 px(x, y, hc if x < 10 else shade(hc, 0.8))
         for x in range(2, 14):
             px(x, oy + 2, shade(hc, 0.9))
+    elif hat in ('witch', 'wizard', 'wizard_g'):
+        hc = {'witch': (60, 40, 80), 'wizard': (50, 60, 150), 'wizard_g': (40, 120, 80)}[hat]
+        for y in range(oy - 9, oy + 2):
+            k_ = (y - (oy - 9)) / 11
+            hw_ = int(1 + k_ * 4)
+            for x in range(8 - hw_, 8 + hw_ + 1):
+                px(x, y, hc if x < 9 else shade(hc, 0.75))
+        for x in range(1, 15):
+            px(x, oy + 2, shade(hc, 0.85))
+        if hat != 'witch':
+            px(7, oy - 3, (255, 230, 120)); px(9, oy - 1, (255, 230, 120)); px(6, oy, (255, 230, 120))
+        else:
+            px(8, oy - 1, (230, 160, 40)); px(9, oy - 1, (230, 160, 40))
+    elif hat == 'beret':
+        for y in range(oy - 2, oy + 2):
+            for x in range(3, 14):
+                if ((x - 8) / 5.5) ** 2 + ((y - oy) / 2.4) ** 2 <= 1:
+                    px(x, y, (200, 40, 60) if x < 11 else (160, 30, 46))
+        px(8, oy - 3, (160, 30, 46))
+    elif hat == 'miner':
+        for y in range(oy - 2, oy + 3):
+            for x in range(2, 14):
+                if ((x - 7.5) / 6) ** 2 + ((y - oy - 1.5) / 3.6) ** 2 <= 1:
+                    px(x, y, (250, 200, 50) if x < 10 else (210, 160, 30))
+        px(7, oy, (255, 255, 200)); px(8, oy, (255, 255, 200)); px(7, oy + 1, (255, 240, 150)); px(8, oy + 1, (255, 240, 150))
+    elif hat == 'cowboy':
+        hc = (150, 100, 56)
+        for y in range(oy - 3, oy + 1):
+            for x in range(4, 12):
+                px(x, y, hc if x < 10 else shade(hc, 0.8))
+        px(7, oy - 3, shade(hc, 0.7)); px(8, oy - 3, shade(hc, 0.7))
+        for x in range(0, 16):
+            px(x, oy + 1, shade(hc, 0.9))
+        px(0, oy, shade(hc, 0.9)); px(15, oy, shade(hc, 0.9))
+    elif hat == 'jester':
+        for y in range(oy - 3, oy + 2):
+            for x in range(3, 13):
+                px(x, y, (220, 60, 60) if x < 8 else (250, 200, 60))
+        for (x, y) in [(2, oy - 4), (1, oy - 5), (13, oy - 4), (14, oy - 5)]:
+            px(x, y, (220, 60, 60) if x < 8 else (250, 200, 60))
+        px(0, oy - 6, (255, 230, 120)); px(15, oy - 6, (255, 230, 120))
+    elif hat == 'nurse':
+        for y in range(oy - 2, oy + 1):
+            for x in range(4, 12):
+                px(x, y, (250, 250, 252) if x < 10 else (220, 220, 230))
+        px(7, oy - 1, (220, 50, 50)); px(8, oy - 1, (220, 50, 50)); px(7, oy - 2, (220, 50, 50)); px(7, oy, (220, 50, 50))
+        px(6, oy - 1, (220, 50, 50))
+    elif hat == 'goggles':
+        for x in range(3, 13):
+            px(x, oy + 1, (80, 60, 50))
+        for x0 in (4, 9):
+            for x in range(x0, x0 + 3):
+                px(x, oy, (140, 200, 220)); px(x, oy + 1, (100, 160, 190))
+    elif hat == 'laurel':
+        for x in range(3, 13):
+            if x % 2 == 0:
+                px(x, oy, (90, 160, 70)); px(x, oy - 1, (120, 190, 90))
+            else:
+                px(x, oy + 1, (90, 160, 70))
+    elif hat == 'flower':
+        for (x, y, c_) in [(11, oy, (255, 120, 160)), (12, oy, (255, 120, 160)), (11, oy - 1, (255, 120, 160)),
+                           (12, oy + 1, (255, 120, 160)), (11, oy + 1, (255, 230, 120))]:
+            px(x, y, c_)
     elif hat == 'bandana_y':
         for y in range(oy - 1, oy + 2):
             for x in range(3, 13):
@@ -314,6 +416,81 @@ def make_folk(name, role, frame=0, hair_style=None):
                 px(x, y, steel)
         for x in range(12, 17):
             px(x, hy - 16, stsh)
+    elif it in ('potion', 'potion_red', 'potion_green'):
+        lc = {'potion': (170, 90, 230), 'potion_red': (230, 70, 80), 'potion_green': (90, 220, 120)}[it]
+        for y in range(hy - 4, hy + 1):
+            for x in range(13, 18):
+                if (x - 15) ** 2 + (y - hy + 2) ** 2 <= 5:
+                    px(x, y, lc if y > hy - 3 else (220, 236, 250))
+        px(15, hy - 5, (220, 236, 250)); px(15, hy - 6, (150, 100, 60))
+        if it == 'potion_green':
+            px(16, hy - 8, (150, 240, 170)); px(14, hy - 9, (150, 240, 170))
+    elif it == 'staff':
+        for y in range(hy - 18, hy + 6):
+            px(14, y, wood)
+        for (x, y) in [(13, hy - 20), (14, hy - 20), (15, hy - 20), (14, hy - 21), (14, hy - 19)]:
+            px(x, y, (150, 220, 255))
+    elif it == 'brush':
+        for k_ in range(8):
+            px(13 + k_ // 3, hy - k_, wood)
+        px(16, hy - 8, (230, 60, 80)); px(16, hy - 9, (230, 60, 80))
+        for (x, y, c_) in [(12, hy + 1, (240, 220, 170)), (13, hy + 1, (240, 220, 170)), (12, hy + 2, (240, 220, 170)),
+                           (13, hy + 2, (60, 140, 230)), (12, hy + 3, (250, 200, 60))]:
+            px(x - 10, y, c_)
+    elif it == 'pickaxe':
+        for y in range(hy - 12, hy + 3):
+            px(14, y, wood)
+        for x in range(10, 20):
+            px(x, hy - 12 + abs(x - 14) // 2, (160, 166, 180))
+    elif it == 'lasso':
+        for k_ in range(14):
+            ang = k_ / 14 * 2 * 3.1416
+            px(16 + int(round(3 * __import__('math').cos(ang))), hy - 4 + int(round(2.5 * __import__('math').sin(ang))), (210, 180, 110))
+        px(14, hy - 1, (210, 180, 110))
+    elif it == 'lute':
+        for y in range(hy - 4, hy + 2):
+            for x in range(12, 18):
+                if ((x - 14.5) / 3) ** 2 + ((y - hy + 1) / 3) ** 2 <= 1:
+                    px(x, y, (190, 120, 60) if x < 16 else (150, 90, 44))
+        px(14, hy - 1, (60, 40, 30))
+        for k_ in range(6):
+            px(17 + k_ // 2, hy - 4 - k_, (110, 70, 40))
+    elif it == 'ribbon':
+        for k_ in range(12):
+            px(14 + k_ // 2, hy - 2 - k_ + int(2 * __import__('math').sin(k_ * 0.9)), (250, 90, 150) if k_ % 2 else (255, 150, 190))
+    elif it == 'scroll':
+        for y in range(hy - 5, hy + 1):
+            for x in range(13, 17):
+                px(x, y, (240, 226, 186))
+        for x in range(12, 18):
+            px(x, hy - 5, (200, 170, 120)); px(x, hy + 1, (200, 170, 120))
+    elif it == 'chisel':
+        for k_ in range(7):
+            px(13 + k_ // 3, hy - k_, (160, 166, 180) if k_ > 3 else wood)
+        for y in range(hy - 3, hy + 2):
+            for x in range(17, 21):
+                px(x - 0, y + 4, (200, 196, 190))
+    elif it == 'abacus':
+        for y in range(hy - 5, hy + 1):
+            for x in range(12, 19):
+                edge = y in (hy - 5, hy) or x in (12, 18)
+                px(x, y, wood if edge else ((230, 80, 80) if (x + y) % 3 == 0 else (240, 230, 200)))
+    elif it == 'vase':
+        for y in range(hy - 5, hy + 1):
+            for x in range(13, 18):
+                if (x - 15) ** 2 / 6 + (y - hy + 2) ** 2 / 9 <= 1:
+                    px(x, y, (200, 110, 70) if x < 16 else (160, 84, 50))
+        px(15, hy - 2, (240, 200, 120))
+    elif it == 'spiral':
+        for k_ in range(10):
+            ang = k_ * 0.9
+            r_ = 0.6 + k_ * 0.3
+            px(16 + int(round(r_ * __import__('math').cos(ang))), hy - 7 + int(round(r_ * __import__('math').sin(ang))),
+               (255, 120, 220) if k_ % 2 else (120, 220, 255))
+    elif it == 'bells':
+        px(14, hy - 1, (255, 220, 80)); px(15, hy - 2, (255, 220, 80)); px(16, hy - 1, (255, 220, 80))
+        for y in range(hy - 4, hy):
+            px(15, y, wood)
     elif it == 'saw':
         for k_ in range(9):
             for j_ in range(3 + k_ // 3):
@@ -393,3 +570,24 @@ FOUNDERS = [("Gabriel", "ferreiro"), ("Lívia", "construtora de casas"), ("Naty"
             ("Emanuel", "bibliotecário"), ("Victor", "fazendeiro"), ("Antônio", "padeiro"), ("Izabelly", "caçadora"),
             ("Francini", "padeira"), ("Cristal", "guarda"), ("Rafaela", "aventureira"), ("Maria", "costureira"),
             ("Gustavo", "açougueiro")]
+
+NEW_EP2 = [("Kelly", "artesã"), ("Izabelle", "médica"), ("Oliveti", "bruxa (poções)"), ("Alerrandro", "escultor"),
+           ("Lorena", "filósofa/pensadora"), ("Rubens", "bruxo (visões e espíritos)"), ("Viviane", "artista"),
+           ("Cathe", "mago (previsões/visões)"), ("João", "ferreiro"), ("Bernardo", "mágico curandeiro"),
+           ("Samuel", "minerador"), ("Cauby", "matemático"), ("Cauã", "arqueiro"), ("Valdemir", "vaqueiro"),
+           ("Yasmim", "cantora"), ("Aurora", "dançarina"), ("Laura", "louca"), ("Nic", "bobo da corte"),
+           ("Clara", "enfermeira"), ("Giovanni", "alquimista")]
+
+
+# Ep. 4 — comentários até 11/11 22h (ordem de chegada). '#n' só diferencia o boneco de nomes repetidos.
+MISSED_FOUNDERS = [("Julielen", "arqueóloga e musicista"), ("Robson", "ajudante de coleta")]
+NEW_EP4 = [("Hanna", "padeira"), ("Amanda", "açougueira"), ("Giovanna", "apotecária"), ("Lila", ""),
+           ("Caio", "padre"), ("Andréa", "desbravadora"), ("Yuki", "veterinário"), ("Ester", "curandeira"),
+           ("Lavinia", "feiticeira"), ("Amanda#2", "artista e comerciante de tecidos"), ("Amanda#3", "escriba"),
+           ("Trubel", "cozinheira"), ("Luiza", "bruxa"), ("Alexandra", "exploradora e diplomata"),
+           ("???#bruxo", "bruxo"), ("Matheus", "botânico"), ("Sabrina", "fazendeira")]
+
+
+def shown(name):
+    """Nome como aparece na tela (sem o '#n')."""
+    return name.split('#')[0]
