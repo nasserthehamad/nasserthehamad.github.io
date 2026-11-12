@@ -1,0 +1,26 @@
+{"coletado":"2026-11-11T22:00-03:00","seguidores":65,
+"fundadores_esquecidos":[
+ {"nome":"Julielen","funcao":"arqueóloga","depois":"musicista","quando":"Ep.1 10/11 15:37; Ep.3 11/11 15:32","nota":"quer descobrir a história do passado do reino"},
+ {"nome":"Robson","funcao":"confeiteiro","depois":"ajudante de coleta","quando":"Ep.1 10/11 16:40; Ep.3 11/11 18:54"}],
+"novos":[
+ {"nome":"Hanna","funcao":"padeira","quando":"Ep.1 11/11 06:27"},
+ {"nome":"Amanda","funcao":"açougueira","quando":"Ep.2 11/11 11:11","perfil":"Amanda Paz"},
+ {"nome":"Giovanna","funcao":"apotecária","quando":"Ep.2 11/11 11:45"},
+ {"nome":"Lila","funcao":null,"quando":"Ep.2 11/11 12:16","nota":"não disse a função"},
+ {"nome":"Caio","funcao":"padre","quando":"Ep.2 11/11 12:44"},
+ {"nome":"Andréa","funcao":"desbravadora (líder do grupo de caça)","quando":"Ep.1 11/11 14:21"},
+ {"nome":"Yuki","funcao":"veterinário","quando":"Ep.3 11/11 14:29"},
+ {"nome":"Ester","funcao":"curandeira","quando":"Ep.3 11/11 14:31"},
+ {"nome":"Lavinia","funcao":"feiticeira","quando":"Ep.3 11/11 15:05"},
+ {"nome":"Amanda","funcao":"artista e comerciante de tecidos","quando":"Ep.3 11/11 16:13","perfil":"Creppy Candy"},
+ {"nome":"Amanda","funcao":"escriba","quando":"Ep.3 11/11 16:25","perfil":"Mandys"},
+ {"nome":"Trubel","funcao":"cozinheira","quando":"Ep.3 11/11 16:32","nota":"escreveu 'R (se não puder bota Trubel)'"},
+ {"nome":"Luiza","funcao":"bruxa","quando":"Ep.3 11/11 17:06"},
+ {"nome":"Alexandra","funcao":"exploradora e diplomata","quando":"Ep.1 11/11 17:12"},
+ {"nome":null,"funcao":"bruxo","quando":"Ep.1/Ep.3 11/11 17:22","perfil":"pepze_comZ","nota":"não disse o nome"},
+ {"nome":"Matheus","funcao":"botânico","quando":"Ep.3 11/11 17:31","nota":"'botânico ou domador'"},
+ {"nome":"Sabrina","funcao":"fazendeira","quando":"Ep.2 11/11 21:52"}],
+"ideias_dos_moradores":[
+ "Rafaela: volta à floresta para descobrir se há outras vilas ou seres desconhecidos",
+ "Alerrandro (escultor): faz uma estátua do fundador / dos fundadores, símbolo do começo e da coragem",
+ "Julielen (arqueóloga): quer descobrir a história do passado do reino"]}
