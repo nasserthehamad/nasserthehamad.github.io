@@ -1,11 +1,16 @@
 # Canal @vcescolheaoub — "Você Escolhe A ou B"
 
-**Desde 12/11 são 2 posts por dia: BRASA (meio-dia) e ROLETA DO NOME (19h).** Desde 09/11 o carro-chefe é o BRASA (reino em pixel art em que cada seguidor vira morador; bíblia em
+**Desde 12/11 são 2 posts por dia: BESTIÁRIO/ROLETA DO NOME no almoço (~12h) e BRASA à noite (~19h).** Desde 09/11 o carro-chefe é o BRASA (reino em pixel art em que cada seguidor vira morador; bíblia em
 `claude/series/brasa.md`). As séries de votação A/B terminaram: Quem Bate à Porta em 08/11 e A Marmita Sumiu em 11/11.
 O plano de 08/11 ("Golpe ou não?" e "Escolhe e paga o preço", Claude Doc https://claude.ai/artifact/N2nV84GJFyGFRKWJogUzGS)
 não chegou a ser postado.
 
-- **Conta:** pessoal, pública. Nome exibido "Você Escolhe A ou B".
+- **Conta:** pessoal, pública. O @vcescolheaoub continua.
+  - **Nome exibido:** vai virar **"Reino de Brasa"** (escolha do Nasser em 12/11). O TikTok só libera trocar o nome depois de
+    12/11, e a troca é uma vez a cada 7 dias. Trocar a partir de 13/11.
+  - **Bio (desde 12/11):** "🔥 Cada seguidor vira morador de Brasa / 🎰 Comenta seu nome: vira criatura".
+  - **Foto:** o logo "chama com castelo" (pixel art; `producao/logo/logo-a.png`). Também foram feitos um "B" com chama e um
+    brasão com coroa. Uma chama com olhos foi descartada por lembrar o Calcifer.
 - **Postagem:** pelo app, ou pelo TikTok Studio na web, no navegador do app do Claude (desde 11/11; o Nasser só escolhe o
   arquivo). Pelo Metricool o vídeo não é distribuído.
 - **Métricas:** o Claude lê direto no TikTok Studio (navegador do app, conta logada). Dados brutos em
@@ -15,8 +20,8 @@ não chegou a ser postado.
 
 | Série | Formato | Status | Bíblia |
 | --- | --- | --- | --- |
-| **Brasa** | reino pixel art, narrado (Jhony Tygas) | Ep. 4 em 12/11 ao meio-dia. Em andamento, 1 por dia. | `claude/series/brasa.md` |
-| **Roleta do Nome** | 6 roletas com % → criatura pixel + poder total, sem voz | Piloto (Letícia, Lendário) em 12/11 às 19h. 1 por dia. | `claude/series/roleta-do-nome.md` |
+| **Brasa** | reino pixel art, narrado (Jhony Tygas) | Ep. 4 em 12/11 à noite. Em andamento, 1 por dia. | `claude/series/brasa.md` |
+| **Bestiário de Brasa** (Roleta do Nome) | 6 roletas com % → criatura pixel + poder total, sem voz | #001 (Jonas, MUSGUR, lendário, 93) em 12/11 no almoço. 1 por dia. | `claude/series/roleta-do-nome.md` |
 | A Marmita Sumiu | comédia narrada, votação A/B | Encerrada: final publicado em 11/11 às 19h58 | `claude/series/a-marmita-sumiu.md` |
 | Quem Bate à Porta | suspense narrado, votação A/B | Encerrada em 08/11 | `claude/series/quem-bate-a-porta.md` |
 | O Pix Errado | narrada | Não postada | `claude/series/o-pix-errado.md` |

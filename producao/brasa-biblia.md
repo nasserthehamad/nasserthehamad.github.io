@@ -17,6 +17,14 @@ comentários ganha nome e função na história.
     que vira a capa automática e estraga o gancho). Só os brilhos dos que chegaram pulsam.
 - **O número do gancho é sempre o real:** "Este perfil tem X seguidores." Confirmar com o Nasser antes de renderizar.
 - **Só ganha nome quem comenta pedindo.** Ninguém aparece no vídeo sem ter se apresentado.
+- **Quem não segue não mora na vila (pedido do Nasser em 12/11, vale do Ep. 5 em diante).**
+  - Antes de cada episódio, cruzar quem comentou com os seguidores.
+  - O TikTok web só mostra os ~30 seguidores mais recentes, mas isso cobre quem chegou desde o episódio anterior. A lista sai
+    da resposta de `/api/user/list` (scene=67) quando se abre "Seguidores" no perfil, no navegador do app.
+  - Se algum morador novo não seguir, o fim do episódio leva o aviso **"QUEM NÃO SEGUE NÃO MORA NA VILA"**. Pode dizer
+    quantos são, mas sem citar nomes.
+  - Checagem de 12/11, com os 30 mais recentes: Caio, Amanda (escriba) e Luiza provavelmente não seguem. Os moradores antigos
+    (Rafaela, Alerrandro, Julielen e Robson) não dá pra confirmar.
 - **Narração:** a referência tem narração de IA, então os episódios saem narrados (voz Jhony Tygas `FhdOWgf0bSw3HKWefhlq`,
   `eleven_v4`), com a música bem baixa por baixo da voz. **Só gasta ElevenLabs quando o Nasser disser.** Primeiro sai a versão
   sem voz (texto na tela, fonte pixel Jersey 10, trilha 8-bit e efeitos).
@@ -173,6 +181,9 @@ Roteiro:
 
 Arquivos: `videos/brasa-ep4.mp4`, `producao/capas/capa-brasa-ep4.jpg` e código `producao/reino/ep4.py` (`N=<seguidores>`;
 `TIMING4=<json>` com S2, S2B, S3, S3B, S5, S4, S4B, S6, TEND e BT pra encaixar narração). Capa: `capa4.py`.
+
+**Moradores novos já anotados pro Ep. 5 (os dois seguem):** "cubo" (comerciante, depois guarda da vila) e "Delox"
+(curandeiro especializado em ervas medicinais).
 
 **Fios para o Ep. 5:** o que a expedição acha na floresta (outra vila? quem acendeu a luz?), o que significa a runa da pedra
 e o nome do bruxo sem nome.
