@@ -42,8 +42,13 @@ O mesmo nome dá sempre a mesma criatura.
 **Poder total** = (força + velocidade + magia) / 30 × 70, arredondado, mais o bônus de raridade
 (Comum 0 · Incomum 8 · Raro 15 · Épico 22 · Lendário 30). Vai de 7 a 100.
 
-**Nome da espécie** = o nome até a 2ª vogal + o sufixo do elemento (flama, maré, folha, rocha, raio, breu, neve, cristal).
-Ex.: Letícia + Fogo = LETIFLAMA.
+**Nome da espécie:** um começo que lembra o elemento mais um final que lembra a forma. Os dois são sorteados pelo hash e
+**não usam o nome da pessoa**.
+- O começo vem do elemento: Fogo IGN/PIR/LAV/BRAS/ARD/FULG, Raio VOLT/TRON/FAISC/ZAP/ELETR/TROV etc.
+- O final vem da forma: Golem GOR/ON/ATH/DOR/ULO, Dragão DRAK/UR/OTH/DRAGO/AXIS etc.
+- Se juntar duas consoantes, entra uma vogal de ligação.
+- Ex.: Letícia → BRASADOR; Raviela → SPECTRIX; Tainá → GRANODOR.
+- Antes era o nome da pessoa colado no elemento ("LETIFLAMA"); o Nasser não gostou e foi trocado em 12/11.
 
 Todo resultado sai de um hash do nome normalizado (minúsculo e sem acento), com uma "semente" diferente por roleta.
 Por isso é justo e repetível: "Leticia" e "Letícia" dão a mesma criatura.
@@ -51,7 +56,7 @@ Por isso é justo e repetível: "Leticia" e "Letícia" dão a mesma criatura.
 ## Episódios
 | # | Nome | Resultado | Poder | Postado |
 | --- | --- | --- | --- | --- |
-| 001 | Letícia | Fogo 18% · **LENDÁRIO 4%** · Golem · F5 V5 M6 → LETIFLAMA | 67 | piloto, 12/11 às 19h (proposta) |
+| 001 | Letícia | Fogo 18% · **LENDÁRIO 4%** · Golem · F5 V5 M6 → BRASADOR | 67 | piloto, 12/11 às 19h (proposta) |
 
 O piloto usa um nome comum na faixa de 18 a 34 anos e escolhido por dar Lendário, pra estrear forte.
 Daqui pra frente, os nomes **vêm dos comentários, na ordem de chegada**.

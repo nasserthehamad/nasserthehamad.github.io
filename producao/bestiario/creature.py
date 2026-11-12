@@ -35,21 +35,36 @@ def h32(name, salt=''):
     return int.from_bytes(hashlib.blake2b((salt + '|' + norm(name)).encode(), digest_size=8).digest(), 'big')
 
 
-def species(name, typ):
-    n = norm(name).split()[0] if norm(name) else 'x'
-    vow = 'aeiou'
-    cut, seen = len(n), 0
-    for i, c in enumerate(n):
-        if c in vow:
-            seen += 1
-            if seen == 2:
-                cut = i + 1
-                break
-    pre = n[:max(2, cut)]
-    suf = TYPES[typ][5]
-    if pre[-1] == suf[0]:
-        pre = pre[:-1]
-    return (pre + suf).upper()
+# nome da espécie: começo que lembra o elemento + final que lembra a forma (não usa o nome da pessoa)
+SP_PRE = {
+    'FOGO': ['IGN', 'PIR', 'LAV', 'BRAS', 'ARD', 'FULG'],
+    'ÁGUA': ['AQU', 'MAR', 'OND', 'HIDR', 'NAU', 'CORAL'],
+    'PLANTA': ['FOL', 'RAM', 'FLOR', 'SILV', 'MUSG', 'SEIV'],
+    'PEDRA': ['ROK', 'GRAN', 'LIT', 'BASALT', 'TERR', 'CASC'],
+    'RAIO': ['VOLT', 'TRON', 'FAISC', 'ZAP', 'ELETR', 'TROV'],
+    'GELO': ['GLAC', 'NEV', 'CRIO', 'GEL', 'BOR', 'FROST'],
+    'SOMBRA': ['UMBR', 'NOX', 'NEBL', 'VULT', 'ECLIP', 'SPECTR'],
+    'CRISTAL': ['QUARTZ', 'LUM', 'PRISM', 'GEM', 'AMETIST', 'OPAL'],
+}
+SP_SUF = {
+    'bolha': ['IX', 'OLO', 'UBA', 'IM', 'OTE'],
+    'fera': ['AX', 'OX', 'ORA', 'UZ', 'INO'],
+    'ave': ['ILO', 'IRA', 'ÁRIO', 'ICO', 'ÍDEO'],
+    'dragão': ['DRAK', 'UR', 'OTH', 'DRAGO', 'AXIS'],
+    'golem': ['GOR', 'ON', 'ATH', 'DOR', 'ULO'],
+}
+VOW = 'AEIOUÁÉÍÓÚ'
+
+
+def species(name, typ, body):
+    r = random.Random(h32(name, 'sp'))
+    pre = r.choice(SP_PRE[typ])
+    suf = r.choice(SP_SUF[body])
+    if pre[-1] not in VOW and suf[0] not in VOW:
+        pre += r.choice('AIO')
+    elif pre[-1] in VOW and suf[0] in VOW:
+        suf = suf[1:]
+    return pre + suf
 
 
 WHEELS = {
@@ -88,7 +103,7 @@ def traits(name):
     body = {'BOLHA': 'bolha', 'FERA': 'fera', 'AVE': 'ave', 'DRAGÃO': 'dragão', 'GOLEM': 'golem'}[forma]
     return dict(name=name, type=typ, rarity=rar, body=body, forma=forma, stats=stats, total=total,
                 pct={'ELEMENTO': p_el, 'RARIDADE': p_ra, 'FORMA': p_fo, **pst},
-                species=species(name, typ),
+                species=species(name, typ, body),
                 eyes=r.choice([2, 2, 2, 1, 3]) if lvl >= 1 else r.choice([2, 2, 1]),
                 ears=r.choice(['pontuda', 'redonda', 'chifre', 'antena', 'nenhuma']),
                 mouth=r.choice(['sorriso', 'presas', 'bico_o', 'linha']),
