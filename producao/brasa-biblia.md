@@ -268,6 +268,7 @@ e o nome do bruxo sem nome.
 
 ## Ep. 5, "A Taverna" (13/11, no almoço; o perfil tinha 73 seguidores)
 Sem voz, 26,8 s. Código: `producao/reino/ep5.py` (`N=<seguidores>`) e capa `capa5.py`.
+**Publicado em 13/11 às 12h24** pelo Nasser, sem narração (ID 7707677278490184966).
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
 Roteiro:
