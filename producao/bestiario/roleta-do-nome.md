@@ -40,6 +40,23 @@ O mesmo nome dá sempre a mesma criatura.
 3. O ovo cai, treme e choca. Aparece a criatura com o **nome da espécie na cor da raridade**, e o **PODER TOTAL** sobe contando.
 4. Fim: "COMENTA SEU NOME / E SUA CRIATURA PODE APARECER / NA HISTÓRIA DE BRASA". O final emenda no começo (loop).
 
+## STATUS: série pausada depois do #001 (13/11)
+O #001 fechou com 140 views e só 1 comentário de fora ("que fofinho", da Lívia). Ninguém comentou o nome para entrar
+no baralho. O Nasser decidiu não testar o #002 ("vamos com outra ideia mesmo"). O almoço vai receber outro formato.
+O código do formato 2 está pronto, caso a série volte.
+
+## No lugar do Bestiário: "PAUSA O VÍDEO" (`pausa.py`, 13/11)
+Pesquisa de psicologia de vendas: auto-referência para todo mundo que assiste, recompensa variável e replay.
+- 12 s em loop. Cada criatura fica 0,1 s na tela e, ao pausar, a pessoa vê nome, raridade com a %, e poder.
+- São 120 criaturas: 48 comuns, 36 incomuns, 20 raras, 11 épicas e 5 lendárias (as chances da roleta).
+- Não há dois épicos ou lendários seguidos. O 1º quadro é um ÉPICO, de gancho.
+- Raras ganham brilho e um "plim" no som.
+- Topo: "PAUSA O VÍDEO / A CRIATURA QUE PARAR É A TUA". Rodapé: "COMENTA QUAL SAIU PRA TI".
+- Fundo de dia, na paleta do Brasa.
+- `SEED=n python3 pausa.py` gera outra ordem; `out/pausa-<n>.mp4`.
+- Capa: o 1º lendário (NAUDRAK, poder 81).
+- Primeiro post: almoço de 13/11.
+
 ## Formato 2 (do #002 em diante, decidido em 12/11)
 O #001 flopou: 57 views em 3h, contra ~308 do Brasa Ep. 3 no mesmo horário.
 - Só 53% passavam do 1º segundo, contra 77% no Brasa.
