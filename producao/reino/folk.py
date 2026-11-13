@@ -67,6 +67,10 @@ ROLES = {
     'arqueolog': dict(tunic=(186, 152, 100), hat='cowboy', item='brush'),
     'music': dict(tunic=(96, 120, 206), item='lute'),
     'colet': dict(tunic=(156, 124, 84), straps=True, hat='bandana', item='pitchfork'),
+    # Ep. 5
+    'banqueir': dict(tunic=(52, 96, 76), buttons=True, glasses=True, item='coins'),
+    'taverna': dict(tunic=(150, 66, 56), apron=(232, 222, 200), hat='bandana', item='mug'),
+    'santa': dict(tunic=(240, 240, 250), pants=(200, 210, 236), hat='halo', item='book'),
 }
 
 
@@ -201,6 +205,10 @@ def make_folk(name, role, frame=0, hair_style=None):
     if spec.get('badge'):
         px(5, oy + 12, (220, 50, 50)); px(5, oy + 13, (220, 50, 50)); px(4, oy + 13, (220, 50, 50)); px(6, oy + 13, (220, 50, 50))
         px(5, oy + 14, (220, 50, 50))
+    if spec.get('buttons'):               # colete com botões dourados (banqueira)
+        for y in range(oy + 11, oy + 16, 2):
+            px(7, y, (255, 214, 80))
+        px(6, oy + 11, (236, 230, 214)); px(8, oy + 11, (236, 230, 214))
     if spec.get('tape'):
         for y in range(oy + 10, oy + 18):
             px(5, y, (250, 210, 70)); px(10, y, (230, 190, 50))
@@ -320,6 +328,12 @@ def make_folk(name, role, frame=0, hair_style=None):
         for x0 in (4, 9):
             for x in range(x0, x0 + 3):
                 px(x, oy, (140, 200, 220)); px(x, oy + 1, (100, 160, 190))
+    elif hat == 'halo':
+        for x in range(4, 12):
+            px(x, oy - 4, (255, 214, 80))
+        px(3, oy - 3, (255, 214, 80)); px(12, oy - 3, (255, 214, 80))
+        for x in range(5, 11):
+            px(x, oy - 3, (255, 246, 190)) if x in (5, 10) else None
     elif hat == 'laurel':
         for x in range(3, 13):
             if x % 2 == 0:
@@ -404,6 +418,20 @@ def make_folk(name, role, frame=0, hair_style=None):
             px(13 + k // 2, hy - k, wood if k < 12 else (120, 90, 60))
         for k in range(1, 8):
             px(21, hy - 15 + k, (220, 220, 230)) if k % 2 else None
+    elif it == 'mug':
+        for y in range(hy - 5, hy + 1):
+            for x in range(13, 18):
+                px(x, y, (150, 96, 52) if x < 17 else (112, 70, 38))
+        for x in range(13, 18):
+            px(x, hy - 6, (250, 248, 240)); px(x, hy - 7, (250, 248, 240)) if x in (14, 15) else None
+        px(18, hy - 4, (112, 70, 38)); px(18, hy - 2, (112, 70, 38)); px(19, hy - 3, (112, 70, 38))
+    elif it == 'coins':
+        for y in range(hy - 4, hy + 2):
+            for x in range(12, 18):
+                if (x - 15) ** 2 * 0.8 + (y - hy + 1) ** 2 <= 9:
+                    px(x, y, (176, 136, 80) if x < 16 else (140, 104, 60))
+        px(14, hy - 5, (110, 80, 50)); px(15, hy - 5, (110, 80, 50))
+        px(17, hy - 6, (255, 214, 80)); px(18, hy - 6, (255, 236, 150)); px(17, hy - 7, (230, 180, 60))
     elif it == 'book':
         for y in range(hy - 4, hy + 1):
             for x in range(12, 18):
@@ -586,6 +614,12 @@ NEW_EP4 = [("Hanna", "padeira"), ("Amanda", "açougueira"), ("Giovanna", "apotec
            ("Lavinia", "feiticeira"), ("Amanda#2", "artista e comerciante de tecidos"), ("Amanda#3", "escriba"),
            ("Trubel", "cozinheira"), ("Luiza", "bruxa"), ("Alexandra", "exploradora e diplomata"),
            ("???#bruxo", "bruxo"), ("Matheus", "botânico"), ("Sabrina", "fazendeira")]
+
+
+# Ep. 5 — comentários até 13/11 08h. A Vitória e a Meize entram mesmo sem seguir (decisão do Nasser).
+NEW_EP5 = [("cubo", "guarda da vila"), ("Delox", "curandeiro de ervas"), ("Vitória", "banqueira"),
+           ("Meize", "artista da vila"), ("Miyuki", "dona de uma taverna")]
+EP5_CHANGES = {"Luiza": "santa", "???#bruxo": ("Pepze", "bruxo")}
 
 
 def shown(name):

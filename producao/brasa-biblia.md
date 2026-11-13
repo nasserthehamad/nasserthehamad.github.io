@@ -184,9 +184,117 @@ Arquivos: `videos/brasa-ep4.mp4`, `producao/capas/capa-brasa-ep4.jpg` e código 
 
 **Moradores novos já anotados pro Ep. 5 (os dois seguem):** "cubo" (comerciante, depois guarda da vila) e "Delox"
 (curandeiro especializado em ervas medicinais).
+Depois das respostas, chegou no Ep. 3 (12/11, à tarde): "Vitória Banqueira", do perfil "Leitora discreta". Entra no
+Ep. 5. Ela não aparece entre quem seguiu desde a noite de 11/11, então a resposta levou o aviso de seguir.
+
+**Respostas aos comentários: o Nasser liberou responder todos (12/11, 19h15).**
+- Toda pessoa que comenta nome e função num episódio recebe resposta dizendo em qual episódio entra. Ela entra na fila
+  aqui na bíblia.
+- Se a pessoa não segue, a resposta leva "segue o perfil, do ep 5 em diante quem não segue não mora na vila".
+- Comentário sem nome ("amo esses vídeos", "aeee") recebe um agradecimento curto + quando sai o próximo episódio.
+- **Quem comemora que apareceu ("eu apareci", "minha biblioteca", "eu entrei") SEMPRE recebe resposta**, mesmo em
+  episódio antigo. Pedido do Nasser em 13/11: "senão fica chato". A resposta lembra o papel da pessoa no reino.
+- Jeito de escrever: sem emoji, minúsculo, "tu/teu", "kkk", e variar o fim das frases pra não ficar repetido.
+- Jeito de postar: clicar com o mouse em "Responder" e "Publicar", digitar como teclado, com intervalo entre uma resposta
+  e outra e em lotes pequenos (ver claude/canais/vcescolheaoub.md).
+
+**Respostas já dadas:**
+- Ep. 3: os 21 comentários (14h30) e a Vitória (17h20).
+- Ep. 2: a Vitória (19h20), com "já te anotei, tu entra no ep 5 como banqueira".
+- Ep. 1: o cubo (19h25), com "anotado, tu entra no ep 5 como guarda da vila, que foi o que tu pediu no ep 3".
+- Os comentários antigos dos Eps. 1 e 2, de quem já virou morador nos Eps. 2 a 4, não foram respondidos um por um.
+- Ep. 4 (20h30), os 5 comentários:
+  - Miyuki: "anotada, tu entra no ep 5 como dona da taverna. e pode deixar que confusão na taverna vai ter kkk".
+  - "nossa vilinha tá crescendo": "tá sim, faltam 33 pro castelo. comenta teu nome e tua função que tu entra no ep 5".
+  - Ruth/Trubel: "entrou sim, a trubel cozinheira oficial do reino kkk".
+  - Yuki: "apareceu sim, o veterinário do reino tá na área".
+  - Lorena: "a filósofa do reino aprovou kkk".
+
+**Fila do Ep. 5 (até 12/11, 20h30):**
+
+| Nome | Função | Segue? |
+| --- | --- | --- |
+| cubo | guarda da vila (antes: comerciante) | sim |
+| Delox | curandeiro de ervas medicinais | sim |
+| Vitória | banqueira | não aparece entre os recentes |
+| Miyuki | dona de uma taverna | sim (eninh.a) |
+| Pepze, o bruxo de chapéu do Ep. 4 | volta com nome (ele mesmo disse "pepze_comZ") | sim |
+| Meize | artista que desenha e registra os acontecimentos da vila | não aparece entre os 30 recentes (recebeu o aviso) |
+| Luiza (já é moradora) | **troca de função: de bruxa vira santa** | sim (passou a seguir) |
+
+Ideia de história: a Miyuki pediu "tiro, porrada e bomba na minha taverninha". Dá uma briga na taverna, ou a pedra
+brilhando lá dentro.
+
+**Ep. 4 publicado em 12/11 às 19h17** (ID 7707412652410096904). Na 1ª hora:
+- 52 views, contra 54 do Ep. 2 e 51 do Ep. 3.
+- 12 curtidas, 2 compartilhamentos e 5 comentários.
+- Retenção: 76% no 1º segundo, 57% no 2º, 44% no 5º e 28% no 10º.
+- **Tempo médio assistido: 15,5 s, o melhor da série** (Ep. 3: 13,0 s; Ep. 2: 10,7 s).
+
+**Ep. 4 com 3h no ar (22h30):** 478 views, 43 curtidas, 5 compartilhamentos, 3 salvamentos e 10 comentários.
+- Views por hora: 54, 90, 301. O Ep. 2 fez 54, 82, 366, então é a mesma curva.
+- 5 seguidores novos vieram do vídeo. O perfil foi de 67 pra 73.
+- Com a distribuição mais ampla, o tempo médio caiu pra 8,4 s. Retenção: 80% no 1º segundo, 58% no 2º.
+- Respostas (22h30): Alexandra ("o que a expedição achar na floresta sai no ep 5"), Luiza (vira santa), "six seven"
+  (convite pra comentar nome e função), Meize (entra no ep 5, com aviso de seguir) e Pepze (o bruxo volta com nome).
+
+**Ep. 4 na manhã de 13/11 (07h):** 584 views, 50 curtidas, 5 compartilhamentos e 11 comentários.
+- A distribuição parou de madrugada. Views por hora: 54, 90, 301, 85, 33, 14 e quase nada depois.
+- Perfil com 73 seguidores.
+- Julielen comentou "eu achei uma pedra!!!! tô feliz". Resposta: "achou e agora a vila inteira quer saber o que essa
+  pedra faz kkk no ep 5 tem mais".
+- Ep. 2 (13/11, 07h40), as comemorações que tinham ficado sem resposta:
+  - Emanuel, "MINHA BIBLIOTECA": "a biblioteca do emanuel é ponto turístico do reino já kkk".
+  - Ana Sofia, "eu": "tu mesma, fundadora e dona do cão de caça mais famoso do reino".
+  Todas as outras comemorações (Eps. 3 e 4) já tinham resposta.
+- **13/11, 07h45–08h40: "comente todos os comentários, pronto".** Foram respondidos todos os comentários antigos que
+  estavam sem resposta: 21 no Ep. 1 e 27 no Ep. 2. Cada resposta diz o número de morador e em qual episódio a pessoa
+  apareceu.
+  - O João e o Alerrandro (Ep. 2) não carregam na página do vídeo no navegador. Foram respondidos pelo painel do Studio
+    (Comentários → buscar → Responder abre o vídeo com todos os comentários).
+  - Correção: a "nossa vilinha tá crescendo" (Ep. 4) é da **Lívia, fundadora 002**, e ontem foi respondida como se fosse
+    nova. Ganhou uma 2ª resposta: "pera, tu é a lívia, a construtora fundadora kkk tua estátua tá aí no ep 4".
+    **Antes de responder, conferir na tabela se a pessoa já é moradora.**
+  - Conferência às 08h40, pelo servidor: zero comentários sem resposta nos Eps. 1 (46), 2 (58), 3 (44) e 4 (23) e no
+    Bestiário (3).
+
+**Respostas no Ep. 3 (12/11, 14h30):** os 21 comentários foram respondidos, sem emoji, dizendo quem está no Ep. 4 e quem
+entra no Ep. 5.
+- O bruxo sem nome (pepze_comZ) foi convidado a dizer o nome, que ele ganha no Ep. 5.
+- Amanda (escriba) e Luiza receberam junto o aviso "segue o perfil, do ep 5 em diante quem não segue não mora na vila".
 
 **Fios para o Ep. 5:** o que a expedição acha na floresta (outra vila? quem acendeu a luz?), o que significa a runa da pedra
 e o nome do bruxo sem nome.
+
+## Ep. 5, "A Taverna" (13/11, no almoço; o perfil tinha 73 seguidores)
+Sem voz, 26,8 s. Código: `producao/reino/ep5.py` (`N=<seguidores>`) e capa `capa5.py`.
+Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
+
+Roteiro:
+1. Abre na vila de dia: o contorno do castelo se desenha até **73%** (a meta é 100) com "ESTE REINO TEM 73 MORADORES."
+   e depois "FALTAM 27 PRO CASTELO." O resto do castelo fica bem apagado, pra mostrar quanto falta.
+2. Floresta à noite: a pedra guia a expedição (Rafaela, Andréa e Alexandra) até **ruínas de outra vila** (muros quebrados,
+   coluna caída, calçamento antigo). Uma laje de pedra tem **o mesmo símbolo da pedra**, e ele acende quando elas chegam.
+3. Palco na praça (entardecer), com crachá embaixo dos pés:
+   - "CHEGARAM 5 MORADORES NOVOS:" cubo (guarda), Delox (curandeiro), Vitória (banqueira), Meize (artista) e Miyuki (taverneira).
+   - "E 2 NOVIDADES:" Luiza ("AGORA É SANTA", com auréola) e Pepze ("ERA O ???", o bruxo de chapéu do Ep. 4).
+4. "A MIYUKI ABRIU UMA TAVERNA…" (à direita da estrada, abaixo da horta) "…E NO PRIMEIRO DIA JÁ TEVE BRIGA."
+   Nuvem de poeira de desenho animado, canecas e tábuas voando, "PÁ! POF! CRÁS! TUM!", tela tremendo. Quem briga são 3
+   moradores sem nome (ninguém identificado apanha).
+5. "QUANDO A POEIRA BAIXOU…" os 3 estão tontos no chão, o guarda cubo chega atrasado, e **pegadas brilhando, iguais às do
+   Ep. 3, entram na taverna**. A Miyuki e o cubo ficam com "?".
+6. Final: "QUEM NÃO SEGUE NÃO MORA NA VILA." + barra 73/100 + "COMENTA TEU NOME E TUA FUNÇÃO".
+
+Decisões do Nasser (13/11):
+- "Ainda é cedo para monstros": nada de criaturas do Bestiário no Brasa por enquanto.
+- A Vitória e a Meize entram mesmo sem seguir, mas a frase "quem não segue não mora na vila" continua no fim.
+- Ep. 5 saiu no almoço, no lugar do "PAUSA O VÍDEO".
+
+Bonecos novos em `folk.py`: banqueira (colete com botões dourados, óculos e saco de moedas), taverneira (avental, lenço e
+caneca) e santa (roupa branca e auréola). `NEW_EP5` e `EP5_CHANGES` (Luiza vira santa; "???#bruxo" vira Pepze).
+
+**Fios para o Ep. 6:** de quem são as pegadas que entraram na taverna, quem morava nas ruínas e por que elas têm o símbolo
+da pedra, e quem começou a briga.
 
 ## Bestiário de Brasa (série irmã, desde 12/11)
 As criaturas da floresta do outro lado da ponte saem da série **Bestiário de Brasa**, a "Roleta do Nome", às 19h
