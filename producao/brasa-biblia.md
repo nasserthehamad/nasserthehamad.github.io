@@ -277,6 +277,12 @@ Com 1h16 no ar (13h40): 45 views, 7 curtidas, 2 compartilhamentos, 3 comentário
     brilhando lá dentro, fica de olho".
   - Pepze ("ai sos era eu eu sempre soube", com print do crachá "ERA O ???"): "era tu sim kkk o bruxo misterioso agora tem
     nome. e aí, tu sabe de quem são as pegadas na taverna?".
+Com 4h no ar (16h20): **118 views** (por hora: 42, 29, 25, 20), 13 curtidas, 2 compartilhamentos, 1 seguidor novo (74).
+- O Ep. 4, postado às 19h, tinha 478 views com 3h (por hora: 54, 90, 301). O Ep. 5 não foi empurrado para um público maior.
+- Tempo médio caiu de 21,9 s na 1ª hora para 4,1 s na 4ª hora (total 13,3 s); 19% veem até o fim.
+  Na 1ª hora quem assistia era morador; depois veio gente de fora pelo Para Você (81%), e 56% saem antes dos 3 s.
+- Aprendizados: (1) almoço rende menos que 19h pro Brasa; (2) a abertura com o castelo e "ESTE REINO TEM 73 MORADORES"
+  não segura quem não conhece. **No Ep. 6, abrir com ação (briga, pegadas, algo acontecendo) no 1º segundo.**
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
 Roteiro:
