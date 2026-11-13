@@ -21,7 +21,7 @@ não chegou a ser postado.
 | Série | Formato | Status | Bíblia |
 | --- | --- | --- | --- |
 | **Brasa** | reino pixel art, narrado (Jhony Tygas) | Ep. 4 em 12/11 à noite. Em andamento, 1 por dia. | `claude/series/brasa.md` |
-| **O reino nos memes** | moradores reais do Brasa em cima dos áudios em alta (8–12 s, sem música; o Nasser escolhe o som no app ao postar) | Escolhida em 13/11 para o almoço. #1: "go go go" com o guarda cubo indo apartar a briga devagar (`videos/meme-gogogo.mp4`, código `producao/reino/meme1.py`). | — |
+| **10.000 Passos** | POV pixel art (tela 90x160): herói com espada numa trilha de pedra na floresta. Cada seguidor = 1 passo; cada vídeo anda dos seguidores de ontem até os de hoje. Abre com "DISSERAM PRA ELE NÃO IR LÁ… MAS ELE CONTINUA ANDANDO", placa "VOLTE" na beira da trilha e uma torre brilhando no fim (o objetivo, 10.000). Sem voz. | Ideia do Nasser em 13/11. Dia 1 = 73 passos (`videos/passos-dia1.mp4`, código `producao/passos/passos.py`, rodar com `N=<seguidores> PREV=<ontem> DIA=<n>`). | — |
 | **Bestiário de Brasa** (Roleta do Nome) | 6 roletas com % → criatura pixel + poder total, sem voz | #001 (Jonas, MUSGUR, lendário, 93) em 12/11 no almoço. Pausada em 13/11 (flopou). | `claude/series/roleta-do-nome.md` |
 | A Marmita Sumiu | comédia narrada, votação A/B | Encerrada: final publicado em 11/11 às 19h58 | `claude/series/a-marmita-sumiu.md` |
 | Quem Bate à Porta | suspense narrado, votação A/B | Encerrada em 08/11 | `claude/series/quem-bate-a-porta.md` |
@@ -83,7 +83,13 @@ não chegou a ser postado.
   - Média de 10 s assistidos de 25; 7% veem até o fim.
   - Suspeita: o começo com cartas pequenas prende pouco. No #002, abrir com o ovo/criatura e encurtar o sorteio para ~2,5 s.
 
-## Tendências do TikTok (13/11, pela web; o navegador estava fora do ar, falta conferir dentro do TikTok)
+## Tendências do TikTok (13/11)
+**No próprio TikTok (Studio → Inspiração, filtro Brasil, 12h):** ENEM domina ("Chego no Enem" 79M, "redação sobre SUS" 54M,
+"Comida pro ENEM" 33M), depois Vasco x Palmeiras, F1 em Interlagos e Teleton. Na aba "Recomendado" (contas parecidas com a
+nossa): animações curtas "Neste mundo…" com reviravolta no fim (até 409K), histórias animadas de Roblox (300–470K) e #rpgdemesa.
+- "O reino nos memes" (#1 "go go go" com o guarda) foi feito e o Nasser não gostou; a série do almoço virou a **10.000 Passos**.
+
+**Pela web, antes do navegador voltar:**
 - **Histórias animadas em partes** ("Zombie Outbreak Survival Stories"): narradas em 2ª pessoa, em lugares conhecidos,
   numeradas, com gancho no fim e pergunta pro público escolher. É o formato do Brasa. Vale numerar bem ("EP. 5") e terminar
   com pergunta (no Ep. 5: "de quem são as pegadas?").
