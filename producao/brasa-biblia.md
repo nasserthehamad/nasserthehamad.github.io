@@ -269,6 +269,14 @@ e o nome do bruxo sem nome.
 ## Ep. 5, "A Taverna" (13/11, no almoço; o perfil tinha 73 seguidores)
 Sem voz, 26,8 s. Código: `producao/reino/ep5.py` (`N=<seguidores>`) e capa `capa5.py`.
 **Publicado em 13/11 às 12h24** pelo Nasser, sem narração (ID 7707677278490184966).
+Com 1h16 no ar (13h40): 45 views, 7 curtidas, 2 compartilhamentos, 3 comentários e 1 seguidor novo (perfil com 74).
+- **Tempo médio de 21,3 s, o melhor da série** (o Ep. 4 tinha 15,5 s na 1ª hora). 33% veem até o fim (Ep. 3: 9%).
+- Ficam 82% no 1º segundo, 51% aos 3 s e 27% aos 10 s. Origem: Para Você 65%, perfil 16%.
+- Respostas (sem emoji, clicando com o mouse):
+  - Miyuki ("BORA AGITAR ESSA CIDADEE!!"): "agitou até demais kkk primeiro dia de taverna e já teve briga. e agora tem pegada
+    brilhando lá dentro, fica de olho".
+  - Pepze ("ai sos era eu eu sempre soube", com print do crachá "ERA O ???"): "era tu sim kkk o bruxo misterioso agora tem
+    nome. e aí, tu sabe de quem são as pegadas na taverna?".
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
 Roteiro:
