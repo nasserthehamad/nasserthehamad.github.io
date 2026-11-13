@@ -40,6 +40,76 @@ comentários ganha nome e função na história.
 - **Do outro lado da ponte:** uma floresta escura. No Ep. 1, **alguém acendeu uma luz** ali (turquesa, piscando).
   - É o mistério de fundo da série. Avança um pouco por episódio e não deve ser explicado cedo.
 
+## Moradores por @ (conferir ANTES de responder qualquer comentário)
+O apelido que aparece no TikTok quase nunca é o nome do morador (ex.: "sleep" é a Luiza, "inuyashazinho" é a Lívia).
+**Regra (Nasser, 13/11):** antes de responder, procurar o @ do comentário nesta tabela. Se não estiver, buscar o @ nos
+comentários de todos os episódios pela API (`/api/comment/list/`) antes de tratar a pessoa como nova.
+Lista gerada em 13/11 a partir dos comentários dos Eps. 1–5 e do Bestiário (também em `producao/reino/arrobas.json`).
+Quem comentou sem pedir personagem, como @lorena_ferreira167 ("six seven"), não é morador.
+
+| @ | Morador | Função / quando entrou |
+| --- | --- | --- |
+| @ajulielen | Julielen | arqueóloga e musicista (fundadora que faltou) |
+| @inuyashazinho | Lívia | construtora de casas (fundadora 002) |
+| @bielpvh_566 | Gabriel | ferreiro (fundador) |
+| @nana017850 | Naty | confeiteira (fundadora) |
+| @ana.sofia3341 | Ana Sofia | adestradora de cão de caça (fundadora) |
+| @rainhab.s | Raviela | cavaleira (fundadora) |
+| @rafa_09864 | Rafael | pescador (fundador) |
+| @emanuel_mccall | Emanuel | bibliotecário (fundador) |
+| @victorgdeamorimco | Victor | fazendeiro (fundador) |
+| @miguewkdc1o | Antônio | padeiro (fundador) |
+| @izabelly15o | Izabelly | caçadora (fundadora) |
+| @cini.facco | Francini | padeira (fundadora) |
+| @pearl_ka | Cristal | guarda (fundadora) |
+| @rafaelasky08 | Rafaela | aventureira, lidera a expedição (fundadora) |
+| @m4yhs.ilk3 | Maria | costureira (fundadora) |
+| @meu.mundinho47 | Gustavo | açougueiro (fundador) |
+| @robson.luis.dias8 | Robson | ajudante de coleta (fundador que faltou) |
+| @kellythais20 | Kelly | artesã (Ep. 2) |
+| @._izabelle_1 | Izabelle | médica (Ep. 2) |
+| @gab08913 | Oliveti | bruxa de poções (Ep. 2) |
+| @alerrandro7161 | Alerrandro | escultor, fez a estátua (Ep. 2) |
+| @justlolobeinglolo | Lorena | filósofa (Ep. 2) |
+| @rubensfreitas916 | Rubens | bruxo de visões (Ep. 2) |
+| @vivi_oooy | Viviane | artista (Ep. 2) |
+| @kittycat.cathe | Cathe | mago de previsões (Ep. 2) |
+| @joao.gabriel2017 | João | ferreiro (Ep. 2) |
+| @0i0i0ioiroi | Bernardo | mágico curandeiro (Ep. 2) |
+| @samuelaquino6147 | Samuel | minerador (Ep. 2) |
+| @yasmimmoto | Yasmim + Cauby + Aurora | cantora; também pediu Cauby (matemático) e Aurora (dançarina) (Ep. 2) |
+| @caua_cruzz | Cauã | arqueiro (Ep. 2) |
+| @rafaeltg280 | Valdemir | vaqueiro (Ep. 2) |
+| @seivialguns | Laura | louca (Ep. 2) |
+| @ovetes5 | Nic | bobo da corte (Ep. 2) |
+| @fao.seu.trabalho | Clara | enfermeira (Ep. 2) |
+| @dottbananot | Giovanni | alquimista (Ep. 2) |
+| @hanna_h10 | Hanna | padeira (Ep. 4) |
+| @amanda.paz.gonalv | Amanda | açougueira (Ep. 4) |
+| @giovannagabrieli | Giovanna | apotecária (Ep. 4) |
+| @mariaerduada111213 | Lila | pediu "por favor" (Ep. 4) |
+| @_miraculosos_m | Caio | padre (Ep. 4) |
+| @priestlyvibes | Andréa | desbravadora, na expedição (Ep. 4) |
+| @mdangell | Yuki | veterinário (Ep. 4) |
+| @lumin_hort | Ester | curandeira (Ep. 4) |
+| @friren1000 | Lavinia | feiticeira (Ep. 4) |
+| @creppy.candy | Amanda (#2) | artista e comerciante de tecidos (Ep. 4) |
+| @amandssousasilver | Amanda (#3) | escriba (Ep. 4) |
+| @mariaruthrochadac | Trubel | cozinheira (Ep. 4) |
+| @sleep_moon12 | Luiza | bruxa no Ep. 4, santa no Ep. 5 |
+| @alexandragoveia | Alexandra | exploradora e diplomata, na expedição (Ep. 4) |
+| @pepzecomz | Pepze | o bruxo "???" do Ep. 4, ganhou nome no Ep. 5 |
+| @mthsgs | Matheus | botânico (Ep. 4) |
+| @sabrinaxavier129 | Sabrina | fazendeira (Ep. 4) |
+| @cubo3a086 | cubo | guarda da vila (Ep. 5) |
+| @deloxy987 | Delox | curandeiro de ervas (Ep. 5) |
+| @leitoradiscreta | Vitória | banqueira (Ep. 5) |
+| @orenjimsst | Meize | artista da vila (Ep. 5) |
+| @eninh.a | Miyuki | taverneira (Ep. 5) |
+
+**Erros que essa tabela evita:** a Lívia (@inuyashazinho) foi tratada como nova no Ep. 4, e a Luiza (@sleep_moon12) no
+Ep. 5 ("aeeee" respondido com convite). As duas receberam uma 2ª resposta corrigindo.
+
 ## Ep. 1, "A Fundação" (09/11, 20h)
 1. O perfil tem 7 seguidores: chegam 7 moradores, um a um.
 2. "Bem-vindos a BRASA, um reino que cresce a cada seguidor."
@@ -277,6 +347,8 @@ Com 1h16 no ar (13h40): 45 views, 7 curtidas, 2 compartilhamentos, 3 comentário
     brilhando lá dentro, fica de olho".
   - Pepze ("ai sos era eu eu sempre soube", com print do crachá "ERA O ???"): "era tu sim kkk o bruxo misterioso agora tem
     nome. e aí, tu sabe de quem são as pegadas na taverna?".
+  - sleep (@sleep_moon12, "aeeee" às 16h57) foi respondida como nova por engano; ela é a **Luiza**. Correção às 20h10:
+    "pera, tu é a luiza kkk já é moradora sim, apareceu no palco agora como santa, com auréola e tudo".
 Com 4h no ar (16h20): **118 views** (por hora: 42, 29, 25, 20), 13 curtidas, 2 compartilhamentos, 1 seguidor novo (74).
 - O Ep. 4, postado às 19h, tinha 478 views com 3h (por hora: 54, 90, 301). O Ep. 5 não foi empurrado para um público maior.
 - Tempo médio caiu de 21,9 s na 1ª hora para 4,1 s na 4ª hora (total 13,3 s); 19% veem até o fim.
