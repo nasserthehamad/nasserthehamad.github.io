@@ -21,7 +21,8 @@ não chegou a ser postado.
 | Série | Formato | Status | Bíblia |
 | --- | --- | --- | --- |
 | **Brasa** | reino pixel art, narrado (Jhony Tygas) | Ep. 4 em 12/11 à noite. Em andamento, 1 por dia. | `claude/series/brasa.md` |
-| **Bestiário de Brasa** (Roleta do Nome) | 6 roletas com % → criatura pixel + poder total, sem voz | #001 (Jonas, MUSGUR, lendário, 93) em 12/11 no almoço. 1 por dia. | `claude/series/roleta-do-nome.md` |
+| **O reino nos memes** | moradores reais do Brasa em cima dos áudios em alta (8–12 s, sem música; o Nasser escolhe o som no app ao postar) | Escolhida em 13/11 para o almoço. #1: "go go go" com o guarda cubo indo apartar a briga devagar (`videos/meme-gogogo.mp4`, código `producao/reino/meme1.py`). | — |
+| **Bestiário de Brasa** (Roleta do Nome) | 6 roletas com % → criatura pixel + poder total, sem voz | #001 (Jonas, MUSGUR, lendário, 93) em 12/11 no almoço. Pausada em 13/11 (flopou). | `claude/series/roleta-do-nome.md` |
 | A Marmita Sumiu | comédia narrada, votação A/B | Encerrada: final publicado em 11/11 às 19h58 | `claude/series/a-marmita-sumiu.md` |
 | Quem Bate à Porta | suspense narrado, votação A/B | Encerrada em 08/11 | `claude/series/quem-bate-a-porta.md` |
 | O Pix Errado | narrada | Não postada | `claude/series/o-pix-errado.md` |
