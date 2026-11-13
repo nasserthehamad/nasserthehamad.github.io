@@ -14,9 +14,10 @@ DIA = int(os.environ.get('DIA', '1'))
 GOAL = 10000
 OUT = '/home/claude/passos/out'
 FW, FH, FPS = 1080, 1920, 30
-CW, CH, S = 90, 160, 12                  # tela de 90x160 px, ampliada 12x
-HOR0 = 80                                # linha do horizonte
-FOC, CAMH = 70.0, 1.0
+RES = int(os.environ.get('RES', '2'))     # 1 = 90x160 (bem pixelado), 2 = 180x320
+CW, CH, S = 90 * RES, 160 * RES, 12 // RES
+HOR0 = 80 * RES                          # linha do horizonte
+FOC, CAMH = 70.0 * RES, 1.0
 STEP_LEN = 0.75
 T_WALK0, T_WALK1 = 1.0, 12.0
 TEND = 17.0
@@ -63,16 +64,16 @@ FOG = np.array((196, 216, 204))
 def _ridge(seed, base, amp, step):
     r = random.Random(seed)
     hs = []
-    for x in range(CW + 40):
+    for x in range(CW + 40 * RES):
         if x % step == 0:
             peak = r.uniform(0.3, 1.0) * amp
         k = x % step
-        hs.append(base - peak * (1 - abs(k - step / 2) / (step / 2)) - r.uniform(0, 1.2))
+        hs.append(base - peak * (1 - abs(k - step / 2) / (step / 2)) - r.uniform(0, 1.2 * RES))
     return hs
 
 
-RIDGE_FAR = _ridge(3, 0, 13, 7)
-RIDGE_NEAR = _ridge(8, 0, 20, 9)
+RIDGE_FAR = _ridge(3, 0, 13 * RES, 7 * RES)
+RIDGE_NEAR = _ridge(8, 0, 20 * RES, 9 * RES)
 
 
 # ---------------------------------------------------------------- objetos ao lado da trilha
@@ -129,6 +130,8 @@ def draw_pine(img, sx, base, hpx, z, seed):
         for x in range(max(0, x0), min(CW, x1 + 1)):
             if x in (x0, x1) or (within > 0.88):
                 c = out
+            elif (x * 3 + y * 5) % 7 == 0 and RES > 1:
+                c = dark if x > sx else mid
             elif x < sx - hw * 0.3:
                 c = lit
             elif x > sx + hw * 0.35:
@@ -163,6 +166,8 @@ def draw_oak(img, sx, base, hpx, z, seed):
     for bx, by, br in blobs:
         m |= (xx - bx) ** 2 + (yy - by) ** 2 <= br * br
     v = ((xx - sx) + (yy - cy)) / max(R, 1)
+    cell = max(1, int(R / 6))
+    v = v + (h2((xx // cell).astype(np.int64) + seed % 997, (yy // cell).astype(np.int64) + 77) - 0.5) * 0.9
     reg = img[y0c:y1c, x0c:x1c]
     rim = m & ~(np.roll(m, 1, 0) & np.roll(m, -1, 0) & np.roll(m, 1, 1) & np.roll(m, -1, 1))
     for cond, col in ((v < -0.5, (110, 176, 92)), ((v >= -0.5) & (v < 0.3), (74, 140, 70)), (v >= 0.3, (48, 102, 56))):
@@ -261,38 +266,48 @@ DRAW = {'pine': draw_pine, 'oak': draw_oak, 'bush': draw_bush, 'rock': draw_rock
 
 # ---------------------------------------------------------------- espada (POV)
 def draw_sword(img, ox, oy):
-    hx, hy = 70 + ox, 152 + oy                         # mão
+    hx, hy = 70 + ox, 152 + oy                         # mão (em px da tela base 90x160)
     tx, ty = 53 + ox, 84 + oy                          # ponta
     ax, ay = tx - hx, ty - hy
     L = math.hypot(ax, ay)
     ux, uy = ax / L, ay / L                            # ao longo da lâmina
     px_, py_ = -uy, ux                                 # atravessado
-    dx, dy = XX - hx, YY - hy
+    dx, dy = XX / RES - hx, YY / RES - hy
     u = dx * ux + dy * uy                              # 0 na mão, L na ponta
     v = dx * px_ + dy * py_
     blade0 = 15
     half = np.where(u > L - 7, 2.6 * (L - u) / 7, 2.6)
     m = (u >= blade0) & (u <= L) & (np.abs(v) <= half)
-    rim = (u >= blade0 - 0.5) & (u <= L + 0.8) & (np.abs(v) <= half + 1.0) & ~m
+    ow = 1.0 / RES + 0.05
+    rim = (u >= blade0 - ow) & (u <= L + ow) & (np.abs(v) <= half + ow) & ~m
     img[rim] = (28, 30, 42)
     img[m & (v < -0.9)] = (236, 242, 250)
     img[m & (v >= -0.9) & (v < 0.6)] = (184, 194, 212)
     img[m & (v >= 0.6)] = (118, 126, 150)
     img[m & (np.abs(v) < 0.5) & (u > blade0 + 4) & (u < L - 10)] = (150, 160, 182)   # canaleta
+    img[m & (v < -1.7) & (u > blade0 + 2) & (u < L - 4)] = (252, 254, 255)          # fio brilhando
     g = (u >= blade0 - 3) & (u < blade0) & (np.abs(v) <= 8)                         # guarda
-    img[(u >= blade0 - 4) & (u < blade0 + 1) & (np.abs(v) <= 9) & ~g] = (40, 30, 24)
+    img[(u >= blade0 - 3 - ow) & (u < blade0 + ow) & (np.abs(v) <= 8 + ow) & ~g] = (40, 30, 24)
     img[g] = (214, 172, 72)
     img[g & (u < blade0 - 1.5)] = (150, 108, 44)
+    img[g & (u >= blade0 - 1.0) & (np.abs(v) < 7)] = (246, 214, 120)
+    img[((u - (blade0 - 1.5)) ** 2 + v ** 2) <= 1.2] = (200, 50, 60)                # pedra na guarda
     gr = (u >= 2) & (u < blade0 - 3) & (np.abs(v) <= 1.8)                            # cabo
     img[gr] = (96, 60, 36)
     img[gr & ((np.floor(u) % 3) == 0)] = (64, 40, 26)
     # mão (luva) e manga
-    hand = ((dx * ux + dy * uy - 6) ** 2 / 30 + (dx * px_ + dy * py_ - 1) ** 2 / 26) <= 1
-    img[hand] = (132, 88, 54)
-    img[hand & (v < -1.5)] = (168, 118, 74)
-    for k in range(3):
-        kn = ((u - (3 + k * 3)) ** 2 + (v + 3.5) ** 2) <= 1.4
-        img[kn & hand] = (186, 136, 88)
+    ow2 = 1.0 / RES + 0.05
+    hand = (u >= 1.2) & (u < 11.6) & (v > -4.6) & (v < 3.2)                       # dedos fechados no cabo
+    hand_o = (u >= 1.2 - ow2) & (u < 11.6 + ow2) & (v > -4.6 - ow2) & (v < 3.2 + ow2) & ~hand
+    img[hand_o] = (40, 26, 18)
+    img[hand] = (136, 90, 56)
+    img[hand & (v < -2.2)] = (172, 122, 78)                                          # nós dos dedos (luz)
+    img[hand & (v > 1.6)] = (104, 66, 40)
+    fb = ((u - 1.2) % 2.6) < (0.55 if RES > 1 else 1.0)                              # separação entre dedos
+    img[hand & fb & (u > 2.5)] = (70, 44, 28)
+    thumb = ((u - 9.6) ** 2 / 7 + (v + 4.9) ** 2 / 2.4) <= 1                          # polegar por cima
+    img[thumb] = (160, 110, 70)
+    img[thumb & (u > 10.6)] = (184, 134, 90)
     sleeve = (u < 2) & (u > -40) & (np.abs(v + 1) <= 6 - u * 0.12)
     img[sleeve & ~hand] = (52, 62, 112)
     img[sleeve & ~hand & (v < -3)] = (72, 84, 140)
@@ -306,7 +321,7 @@ def scene(t):
     travel = s * STEP_LEN
     ph = s - math.floor(s)
     moving = T_WALK0 < t < T_WALK1
-    bob = int(round(abs(math.sin(ph * math.pi)) * 1.6)) if moving else 0
+    bob = int(round(abs(math.sin(ph * math.pi)) * 1.6 * RES)) if moving else 0
     hor = HOR0 + bob
     img = np.zeros((CH, CW, 3), np.float32)
     # céu
@@ -314,30 +329,34 @@ def scene(t):
     sky = SKY_TOP * (1 - q) + SKY_HOR * q
     img[:] = sky
     # raio de sol
-    sun_x, sun_y = 64, 22
-    d = np.sqrt((XX - sun_x) ** 2 + (YY - sun_y) ** 2)
+    sun_x, sun_y = 64 * RES, 22 * RES
+    d = np.sqrt((XX - sun_x) ** 2 + (YY - sun_y) ** 2) / RES
     glow = np.clip(1 - d / 26, 0, 1) ** 2
     img += (glow[..., None] * np.array((60, 50, 20))) * (BAYF[..., None] < 0.8)
     img[d < 4.5] = (255, 246, 200)
     # cordilheiras de árvores ao fundo (deslocam com a curva)
-    shift = int(round(curve(travel + 30) * 6))
+    shift = int(round(curve(travel + 30) * 6 * RES))
     for ridge, col, off in ((RIDGE_FAR, (150, 182, 168), 0), (RIDGE_NEAR, (104, 142, 118), 0)):
         for x in range(CW):
-            hh = ridge[(x + shift + 20) % len(ridge)]
+            hh = ridge[(x + shift + 20 * RES) % len(ridge)]
             y0 = int(hor + hh - 1)
             img[max(0, y0):hor, x] = col
     # objetivo no fim da trilha: torre com luz pulsando, no meio da névoa
-    gx = int(CX + (curve(travel + 60) - curve(travel)) * 5)
+    R_ = RES
+    gx = int(CX + (curve(travel + 60) - curve(travel)) * 5 * R_)
     pulse = 0.6 + 0.4 * math.sin(t * 3)
-    for y in range(hor - 17, hor):
-        w = 1 if y < hor - 11 else (2 if y < hor - 5 else 3)
+    for y in range(hor - 17 * R_, hor):
+        k_ = (hor - y) / R_
+        w = (1 if k_ > 11 else (2 if k_ > 5 else 3)) * R_
         for x in range(gx - w, gx + w + 1):
             img[y, x] = img[y, x] * 0.3 + np.array((70, 86, 100)) * 0.7
-    img[hor - 19:hor - 17, gx] = (70, 86, 100)
-    gl = np.clip(1 - np.sqrt((XX - gx) ** 2 + ((YY - (hor - 15)) * 1.1) ** 2) / 13, 0, 1) ** 2 * pulse
+            if (x + y) % 5 == 0 and k_ > 2:
+                img[y, x] = img[y, x] * 0.4 + np.array((90, 108, 122)) * 0.6
+    img[hor - 20 * R_:hor - 17 * R_, gx:gx + R_] = (70, 86, 100)
+    gl = np.clip(1 - np.sqrt((XX - gx) ** 2 + ((YY - (hor - 15 * R_)) * 1.1) ** 2) / (13 * R_), 0, 1) ** 2 * pulse
     img = img * (1 - gl[..., None] * 0.8) + np.array((150, 255, 230)) * gl[..., None] * 0.8
-    img[hor - 16:hor - 13, gx] = (230, 255, 248)
-    img[hor - 15, gx - 1:gx + 2] = (230, 255, 248)
+    img[hor - 16 * R_:hor - 13 * R_, gx:gx + R_] = (230, 255, 248)
+    img[hor - 15 * R_:hor - 14 * R_, gx - R_:gx + 2 * R_] = (230, 255, 248)
     # chão (trilha + grama)
     rows = np.arange(hor + 1, CH)
     dz = CAMH * FOC / (rows - hor)                    # distância de cada linha
@@ -356,10 +375,19 @@ def scene(t):
     stone = np.stack([128 + 30 * hsh, 124 + 28 * hsh, 118 + 26 * hsh], -1)
     moss = hsh > 0.86
     stone[moss] = (96, 128, 80)
+    hi = (fv >= 0.14) & (fv < 0.26) & (fu >= 0.12)
+    stone[hi & ~moss] += 18
+    lo = (fu > 0.86) & (fv >= 0.14)
+    stone[lo & ~moss] -= 16
+    crack = h2(coli + 777, rowi + 333) > 0.8
+    stone[crack & (np.abs(fu - fv) < 0.05)] = (92, 88, 84)
     mortar = (fu < 0.12) | (fv < 0.14)
     stone[mortar] = (78, 76, 72)
     gstripe = (np.floor(ZW / 1.4) % 2) == 0
     grass = np.where(gstripe[..., None], np.array((92, 158, 70)), np.array((80, 142, 62))).astype(np.float32)
+    gn = h2(np.floor(rel * 10).astype(np.int64) + 300, np.floor(ZW * 10).astype(np.int64) + 300)
+    grass[gn > 0.72] *= 1.1
+    grass[gn < 0.2] *= 0.88
     fl = h2(np.floor(rel * 4).astype(np.int64) + 9000, np.floor(ZW * 4).astype(np.int64) + 9000)
     grass[fl > 0.985] = (240, 226, 120)
     grass[(fl > 0.97) & (fl <= 0.985)] = (122, 186, 92)
@@ -386,7 +414,7 @@ def scene(t):
     # luz entre as árvores (feixes)
     # espada
     sw = math.sin(ph * 2 * math.pi) if moving else 0
-    draw_sword(img, int(round(sw * 1.5)), int(round(abs(sw) * 2)) if moving else int(round(math.sin(t * 2) * 0.6)))
+    draw_sword(img, sw * 1.5, abs(sw) * 2 if moving else math.sin(t * 2) * 0.6)
     return np.clip(img, 0, 255).astype(np.uint8)
 
 
