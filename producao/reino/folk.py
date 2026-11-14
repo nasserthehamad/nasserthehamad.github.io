@@ -71,6 +71,8 @@ ROLES = {
     'banqueir': dict(tunic=(52, 96, 76), buttons=True, glasses=True, item='coins'),
     'taverna': dict(tunic=(150, 66, 56), apron=(232, 222, 200), hat='bandana', item='mug'),
     'santa': dict(tunic=(240, 240, 250), pants=(200, 210, 236), hat='halo', item='book'),
+    # Ep. 6
+    'viajant': dict(tunic=(56, 60, 86), pants=(38, 38, 54), hat='hood', cape=(40, 42, 64)),
 }
 
 

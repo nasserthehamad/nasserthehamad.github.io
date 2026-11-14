@@ -389,6 +389,24 @@ caneca) e santa (roupa branca e auréola). `NEW_EP5` e `EP5_CHANGES` (Luiza vira
 **Fios para o Ep. 6:** de quem são as pegadas que entraram na taverna, quem morava nas ruínas e por que elas têm o símbolo
 da pedra, e quem começou a briga.
 
+## Ep. 6, "O Viajante" (14/11, para 19h; o perfil tinha 77 seguidores)
+Sem voz, 26 s. Código: `producao/reino/ep6.py` (`N=<seguidores> PREVN=<seguidores no ep. anterior>`) e capa `capa6.py`.
+Arquivos: `videos/brasa-ep6.mp4` e `producao/capas/capa-brasa-ep6.jpg`. Feito com a lição do Ep. 5: **ação no 1º segundo**.
+
+Roteiro:
+1. (0 s) A porta da taverna estoura com luz e poeira: "AS PEGADAS ERAM DELE." Sai um **viajante encapuzado**
+   (boneco novo `viajante` em `folk.py`: manto escuro, capuz e capa). A Miyuki e o guarda cubo ficam com "!".
+2. Close nele: "NO PESCOÇO, O MESMO SÍMBOLO DA PEDRA." (colar com a runa, brilhando) / "ELE VEIO DA VILA EM RUÍNAS."
+3. "NA MESMA NOITE, A EXPEDIÇÃO VOLTOU…" Rafaela, Andréa e Alexandra descem da ponte, "…E A PEDRA BRILHOU JUNTO COM O COLAR."
+4. Palco: "CHEGARAM 4 MORADORES NOVOS… …MAS NINGUÉM SABE O NOME DELES." São os 4 seguidores novos desde o Ep. 5
+   (73 → 77) que não comentaram nome; crachá "??? / SEM NOME". Ninguém novo pediu personagem entre o Ep. 5 e o Ep. 6.
+5. Tochas aparecem nas montanhas além do rio: "O VIAJANTE AVISOU: \"CONSTRUAM O CASTELO. ELES ESTÃO VINDO.\"" +
+   "FALTAM 23 MORADORES." A meta dos 100 vira ameaça da história (sem monstro na tela: "ainda é cedo para monstros").
+6. Final: "QUEM NÃO SEGUE NÃO MORA NA VILA." + barra 77/100 + "COMENTA TEU NOME E TUA FUNÇÃO".
+
+**Fios para o Ep. 7:** quem são "eles" (as tochas), o nome do viajante, os 4 sem nome ganhando crachá, o juramento do
+Samuel (@samuelaquino6147: "tudo que eu achar será distribuído para todos") pode virar a mina que ajuda a erguer o castelo.
+
 ## Bestiário de Brasa (série irmã, desde 12/11)
 As criaturas da floresta do outro lado da ponte saem da série **Bestiário de Brasa**, a "Roleta do Nome", às 19h
 (bíblia: `claude/series/roleta-do-nome.md`). Cada nome comentado lá vira uma criatura com raridade e poder.
