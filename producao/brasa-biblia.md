@@ -355,6 +355,8 @@ Com 4h no ar (16h20): **118 views** (por hora: 42, 29, 25, 20), 13 curtidas, 2 c
   Na 1ª hora quem assistia era morador; depois veio gente de fora pelo Para Você (81%), e 56% saem antes dos 3 s.
 - Aprendizados: (1) almoço rende menos que 19h pro Brasa; (2) a abertura com o castelo e "ESTE REINO TEM 73 MORADORES"
   não segura quem não conhece. **No Ep. 6, abrir com ação (briga, pegadas, algo acontecendo) no 1º segundo.**
+**Promoção paga (14/11, ~09h45, feita pelo Nasser no app).** Base antes: 214 views, 14 curtidas, 4 comentários,
+2 compartilhamentos, perfil com 76 seguidores, tempo médio 9,0 s, 38% aos 3 s. O Claude acompanha a cada 2 h.
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
 Roteiro:
