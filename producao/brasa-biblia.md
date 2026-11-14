@@ -363,6 +363,7 @@ Com 4h no ar (16h20): **118 views** (por hora: 42, 29, 25, 20), 13 curtidas, 2 c
 - 11h49: 1.014 views, 0 seguidor novo. 13h51: **2.430 views** (pico de 1.134 numa hora, depois 389 e 167), 15 curtidas (+1),
   4 comentários (nenhum novo), perfil com 77 (+1 no dia, não atribuído ao vídeo). Tempo médio 2,5 s, 15% aos 3 s.
 - Se for promover de novo, testar o objetivo **seguidores** em vez de visualizações, porque o que conta no Brasa é virar morador.
+- **Balanço (Nasser: "foi uma merda"):** R$ 19 → ~2.200 views pagas até 13h51 (menos de R$ 1 por mil) e **0 seguidor**. Acompanhamento encerrado às 15h53 (o navegador do app estava fora; a entrega já vinha caindo). Próxima promoção só com objetivo seguidores/visitas ao perfil, num vídeo que segure ≥50% aos 3 s na 1ª hora, teste de R$ 10–20.
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
 Roteiro:
