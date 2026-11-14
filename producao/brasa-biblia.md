@@ -357,6 +357,10 @@ Com 4h no ar (16h20): **118 views** (por hora: 42, 29, 25, 20), 13 curtidas, 2 c
   não segura quem não conhece. **No Ep. 6, abrir com ação (briga, pegadas, algo acontecendo) no 1º segundo.**
 **Promoção paga (14/11, ~09h45, feita pelo Nasser no app).** Base antes: 214 views, 14 curtidas, 4 comentários,
 2 compartilhamentos, perfil com 76 seguidores, tempo médio 9,0 s, 38% aos 3 s. O Claude acompanha a cada 2 h.
+- Valor e objetivo: **R$ 19 por ~20.000 visualizações** (objetivo: visualizações).
+- 11h07: 581 views (+367 em ~1h20; última hora com 298), 0 seguidor novo, 0 curtida nova. Tempo médio caiu para 4,2 s
+  e só 22% passam dos 3 s (antes 38%): o público pago é de baixa intenção e passa direto.
+- Se for promover de novo, testar o objetivo **seguidores** em vez de visualizações, porque o que conta no Brasa é virar morador.
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
 Roteiro:
