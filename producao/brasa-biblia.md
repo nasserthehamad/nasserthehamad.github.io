@@ -360,6 +360,8 @@ Com 4h no ar (16h20): **118 views** (por hora: 42, 29, 25, 20), 13 curtidas, 2 c
 - Valor e objetivo: **R$ 19 por ~20.000 visualizações** (objetivo: visualizações).
 - 11h07: 581 views (+367 em ~1h20; última hora com 298), 0 seguidor novo, 0 curtida nova. Tempo médio caiu para 4,2 s
   e só 22% passam dos 3 s (antes 38%): o público pago é de baixa intenção e passa direto.
+- 11h49: 1.014 views, 0 seguidor novo. 13h51: **2.430 views** (pico de 1.134 numa hora, depois 389 e 167), 15 curtidas (+1),
+  4 comentários (nenhum novo), perfil com 77 (+1 no dia, não atribuído ao vídeo). Tempo médio 2,5 s, 15% aos 3 s.
 - Se for promover de novo, testar o objetivo **seguidores** em vez de visualizações, porque o que conta no Brasa é virar morador.
 Arquivos: `videos/brasa-ep5.mp4` e `producao/capas/capa-brasa-ep5.jpg`.
 
