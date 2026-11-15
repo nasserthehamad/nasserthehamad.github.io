@@ -13,6 +13,8 @@ não chegou a ser postado.
     brasão com coroa. Uma chama com olhos foi descartada por lembrar o Calcifer.
 - **Postagem:** pelo app, ou pelo TikTok Studio na web, no navegador do app do Claude (desde 11/11; o Nasser só escolhe o
   arquivo). Pelo Metricool o vídeo não é distribuído.
+  - **Pedido do Nasser (15/11): legenda e comentário pra fixar sempre em bloco de código**, pra copiar fácil no celular.
+    Quando ele for postar pelo celular: mandar vídeo + capa (e salvar na pasta Downloads) e os dois textos em blocos separados.
 - **Métricas:** o Claude lê direto no TikTok Studio (navegador do app, conta logada). Dados brutos em
   `producao/metricas/tiktok-AAAA-MM-DD.json` no GitHub.
 
