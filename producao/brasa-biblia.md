@@ -413,6 +413,14 @@ Não foi postado no sábado; refeito no domingo 15/11 com 80 seguidores. Coment�
 - 11h19: o pixoto respondeu "segui, eu posso ser cidadão? meu nome se eu for vai ser pixoto" → entrou **já no Ep. 6**: um dos 7
   novos no palco ganhou o crachá "PIXOTO · CIDADÃO" e a legenda virou "…E SÓ O PIXOTO DISSE O NOME." (os outros 6 seguem "???").
 
+**Publicado em 15/11 às 11h57** pelo Nasser (ID 7708412361970928904). Com ~7 h (18h45): 118 views (por hora 13, 30, 30, 19,
+13, 6, 4), 10 curtidas, 1 comentário, 0 seguidor novo (perfil parado em 80). **86% passam do 1º segundo (o melhor da série;
+a porta estourando funcionou)**, mas só 42% chegam aos 3 s e 12% aos 10 s; tempo médio 6,0 s.
+- @rafaeltg280 (Valdemir, vaqueiro, Ep. 2): "tô gostando, o foda é que a maioria vai ser figurante… que história vai
+  acontecer com o mano que é pastor de vacas?" Resposta: "kkk figurante nada, quem passa o dia andando a cavalo é justamente
+  quem vê as tochas primeiro. o valdemir vaqueiro vai ser o batedor da vila no ep 7". **Prometido: Valdemir batedor no Ep. 7.**
+- Aprendizado: os moradores querem papel na história, não só crachá. Dar destaque a 1–2 moradores por episódio.
+
 **Fios para o Ep. 7:** quem são "eles" (as tochas), o nome do viajante, os 4 sem nome ganhando crachá, o juramento do
 Samuel (@samuelaquino6147: "tudo que eu achar será distribuído para todos") pode virar a mina que ajuda a erguer o castelo.
 
