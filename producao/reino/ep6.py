@@ -29,6 +29,12 @@ PEOPLE, IDX, ROLE, CROWD, NP = G.PEOPLE, G.IDX, G.ROLE, G.CROWD, G.NP
 EXPED = G.EXPED
 NEWBIES = [i for i in range(NP) if PEOPLE[i][0].startswith('anon') and int(PEOPLE[i][0][4:]) >= PREVN - len(G.NAMED)]
 NNEW = len(NEWBIES)
+# quem pediu nome entre o Ep. 5 e o Ep. 6 assume o lugar de um dos novos sem nome
+NAMED6 = [('pixoto', 'cidadão')] if os.environ.get('SEMNOME') is None else []
+for _k, (_n, _r) in enumerate(NAMED6[:NNEW]):
+    PEOPLE[NEWBIES[_k]] = (_n, _r)
+    IDX[_n] = NEWBIES[_k]; ROLE[_n] = _r
+TAG6 = {'pixoto': 'CIDADÃO'}
 
 # ---------------------------------------------------------------- tempo
 S1, S2, S3, S4, EN = 4.0, 8.5, 13.0, 17.0, 21.5
@@ -192,6 +198,8 @@ def village(t):
         i, x, y, fr = p
         n, r = PEOPLE[i]
         rr = r if r else ('moradora' if n == 'Lila' else 'morador')
+        if n in TAG6 and S3 + 1.9 <= t < S4:              # brilho em quem disse o nome
+            Q.sparkles(img, x, y - 20, S3 + 1.9, t, dur=1.2)
         W.ground_shadow(img, x, y)
         W.blit(img, F.folk(n, rr, fr), x, y)
         if i == dog_i:
@@ -258,6 +266,8 @@ def village(t):
                 W.qmark(out, int(x) - 3, int(y) - 41, bang=True)
     if S3 + 2.0 <= t < S4:
         for i in NEWBIES:
+            if PEOPLE[i][0] in TAG6:
+                continue
             x, y = [p[1:3] for p in ppl if p[0] == i][0]
             W.qmark(out, int(x) - 3, int(y) - 41)
     return out
@@ -290,7 +300,9 @@ CAPS = [
     (S2, S2 + 2.3, 270, [(S2, [('NA MESMA NOITE,', WHITE)], 128), (S2 + 0.3, [('A EXPEDIÇÃO VOLTOU…', GOLD)], 112)]),
     (S2 + 2.3, S3, 270, [(S2 + 2.3, [('…E A PEDRA BRILHOU', WHITE)], 116), (S2 + 2.6, [('JUNTO COM O COLAR.', TEAL)], 116)]),
     (S3, S3 + 1.9, 270, [(S3, [(f'CHEGARAM {NNEW}', WHITE)], 140), (S3 + 0.3, [('MORADORES NOVOS…', GOLD)], 128)]),
-    (S3 + 1.9, S4, 270, [(S3 + 1.9, [('…MAS NINGUÉM SABE', WHITE)], 120), (S3 + 2.2, [('O NOME DELES.', GOLD)], 140)]),
+    ((S3 + 1.9, S4, 270, [(S3 + 1.9, [('…E SÓ O ', WHITE), (NAMED6[0][0].upper(), GOLD)], 130),
+                          (S3 + 2.2, [('DISSE O NOME.', WHITE)], 130)]) if NAMED6 else
+     (S3 + 1.9, S4, 270, [(S3 + 1.9, [('…MAS NINGUÉM SABE', WHITE)], 120), (S3 + 2.2, [('O NOME DELES.', GOLD)], 140)])),
     (S4, EN, 270, [(S4, [('O VIAJANTE AVISOU:', WHITE)], 116), (S4 + 0.8, [('"CONSTRUAM O CASTELO.', GOLD)], 106),
                    (S4 + 2.0, [('ELES ESTÃO VINDO."', RED)], 120)]),
     (S4 + 3.0, EN, 1090, [(S4 + 3.0, [('FALTAM ', WHITE), (f'{FALTAM}', GOLD), (' MORADORES.', WHITE)], 100)]),
@@ -335,7 +347,11 @@ def overlay(state):
             x0, y0, s = shot(S3 + 1.0)
             for j, i in enumerate(NEWBIES[:4]):
                 cx = (SLOTS[min(4, NNEW)][j] - x0) * s
-                Q.tag(d, cx, (STAGE_Y - y0) * s + 40, '???', 'SEM NOME')
+                n_ = PEOPLE[i][0]
+                if n_ in TAG6:
+                    Q.tag(d, cx, (STAGE_Y - y0) * s + 40, F.shown(n_).upper(), TAG6[n_])
+                else:
+                    Q.tag(d, cx, (STAGE_Y - y0) * s + 40, '???', 'SEM NOME')
         elif k == 'bar':
             x0, y0, x1, y1 = 170, 650, 910, 760
             E.panel(d, (x0, y0, x1, y1))

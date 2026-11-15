@@ -106,6 +106,7 @@ Quem comentou sem pedir personagem, como @lorena_ferreira167 ("six seven"), não
 | @leitoradiscreta | Vitória | banqueira (Ep. 5) |
 | @orenjimsst | Meize | artista da vila (Ep. 5) |
 | @eninh.a | Miyuki | taverneira (Ep. 5) |
+| @pixoto18 | pixoto | cidadão (Ep. 6) |
 
 **Erros que essa tabela evita:** a Lívia (@inuyashazinho) foi tratada como nova no Ep. 4, e a Luiza (@sleep_moon12) no
 Ep. 5 ("aeeee" respondido com convite). As duas receberam uma 2ª resposta corrigindo.
@@ -408,7 +409,9 @@ Roteiro:
 6. Final: "QUEM NÃO SEGUE NÃO MORA NA VILA." + barra 80/100 + "COMENTA TEU NOME E TUA FUNÇÃO".
 
 Não foi postado no sábado; refeito no domingo 15/11 com 80 seguidores. Comentários novos no Ep. 5 (da promoção), respondidos:
-@pixoto18 "posso Entrar?" e @miguelcamargosilv3 (está fazendo um jogo parecido com os amigos). Nenhum dos dois é morador ainda.
+@pixoto18 "posso Entrar?" e @miguelcamargosilv3 (está fazendo um jogo parecido com os amigos).
+- 11h19: o pixoto respondeu "segui, eu posso ser cidadão? meu nome se eu for vai ser pixoto" → entrou **já no Ep. 6**: um dos 7
+  novos no palco ganhou o crachá "PIXOTO · CIDADÃO" e a legenda virou "…E SÓ O PIXOTO DISSE O NOME." (os outros 6 seguem "???").
 
 **Fios para o Ep. 7:** quem são "eles" (as tochas), o nome do viajante, os 4 sem nome ganhando crachá, o juramento do
 Samuel (@samuelaquino6147: "tudo que eu achar será distribuído para todos") pode virar a mina que ajuda a erguer o castelo.
