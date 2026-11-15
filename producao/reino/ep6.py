@@ -100,8 +100,11 @@ def people_now(t):
             if t < S3:
                 continue
             j = NEWBIES.index(i)
-            sx = SLOTS[min(4, NNEW)][j % 4]
-            res.append((i,) + walk((180 + (j - 1.5) * 8, 652), (sx, STAGE_Y), S3 + 0.4 + 0.25 * j, 0.9, t))
+            if j < 4:                                     # fila da frente, com crachá
+                sx, sy = SLOTS[min(4, NNEW)][j], STAGE_Y
+            else:                                         # quem sobrar fica atrás, entre os da frente
+                sx, sy = SLOTS[min(4, NNEW)][(j - 4) % 4] + 20, STAGE_Y - 14
+            res.append((i,) + walk((180 + (j - 1.5) * 8, 652), (sx, sy), S3 + 0.4 + 0.2 * j, 0.9, t))
             continue
         if n == 'Miyuki':
             res.append((i, MIY[0], MIY[1], 0)); continue
@@ -254,7 +257,7 @@ def village(t):
                 x, y, _ = exped_pos(n, t)
                 W.qmark(out, int(x) - 3, int(y) - 41, bang=True)
     if S3 + 2.0 <= t < S4:
-        for i in NEWBIES[:4]:
+        for i in NEWBIES:
             x, y = [p[1:3] for p in ppl if p[0] == i][0]
             W.qmark(out, int(x) - 3, int(y) - 41)
     return out
