@@ -73,6 +73,8 @@ ROLES = {
     'santa': dict(tunic=(240, 240, 250), pants=(200, 210, 236), hat='halo', item='book'),
     # Ep. 6
     'viajant': dict(tunic=(56, 60, 86), pants=(38, 38, 54), hat='hood', cape=(40, 42, 64)),
+    # Ep. 7
+    'espadach': dict(tunic=(168, 44, 52), pants=(52, 44, 48), item='sword', cape=(116, 32, 40)),
 }
 
 

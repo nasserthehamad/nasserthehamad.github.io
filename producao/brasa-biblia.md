@@ -469,3 +469,28 @@ Todo mundo que se apresenta ganha alguma coisa. O nível muda conforme o número
 2. Listar os fundadores na ordem dos comentários e escrever a história do episódio com eles.
 3. Atualizar o número de seguidores e renderizar.
 4. Fixar o comentário de exemplo e responder cada morador ("Bem-vindo(a) a Brasa, Fulano!").
+
+## Ep. 7, "O Batedor" (feito em 16/11 com 83 seguidores, pra sair em 17/11 às 19h)
+Sem voz, 25,8 s. Código: `producao/reino/ep7.py` (`N=<seguidores> PREV7=<seguidores no ep. 6>`, `CAPA=1` pra capa) e o
+cavalo novo em `producao/reino/horse.py` (de lado, 4 quadros de galope, monta qualquer boneco do `folk.py` na sela).
+Primeiro episódio feito com a **receita de 16/11** (ver a análise no doc do canal):
+- a promessa "NESTE REINO, CADA SEGUIDOR VIRA MORADOR." na tela no 1º quadro, por cima de ação (o galope);
+- uma história que dá pra entender sem ter visto os outros episódios: sem citar runa, pegadas nem viajante;
+- 2 moradores com papel de verdade: o Valdemir (prometido como batedor) e o Edilson (estreia).
+
+Roteiro:
+1. (0 s) O Valdemir vaqueiro vem a cavalo pela ponte, com centenas de tochas descendo as montanhas atrás dele (filas em
+   zigue-zague, como um exército). Crachá "VALDEMIR · VAQUEIRO" acompanha ele. "NESTE REINO, CADA SEGUIDOR VIRA MORADOR."
+   → "O VAQUEIRO VIU TOCHAS NA MONTANHA… CENTENAS DELAS."
+2. (4,2 s) Ele chega na praça, corneta de alarme, e o "!" se espalha pela vila: "ELE CORREU PRA AVISAR A VILA." / "E A VILA
+   INTEIRA ACORDOU."
+3. (7,8 s) Plano aberto nas montanhas: "PRA AGUENTAR O ATAQUE, A VILA PRECISA DE 100 MORADORES." / "E CADA SEGUIDOR É UM
+   MORADOR." + "HOJE SÃO 83."
+4. (12,3 s) Palco: "MAS HOJE CHEGOU REFORÇO… …O EDILSON, ESPADACHIM." (boneco novo `espadachim`: túnica e capa vermelhas,
+   espada). Os outros 2 novos (80 → 83) ficam com "??? / SEM NOME".
+5. (16,8 s) O Valdemir (a cavalo) e o Edilson de guarda na ponte, com crachá: "ELE E O VALDEMIR FICARAM DE GUARDA NA PONTE."
+   A margem de lá do rio se enche de tochas, com reflexo na água: "AS TOCHAS JÁ CHEGARAM NO RIO." + "FALTAM 17 MORADORES."
+6. (21,3 s) Final de sempre: "QUEM NÃO SEGUE NÃO MORA NA VILA." + barra 83/100 + "COMENTA TEU NOME E TUA FUNÇÃO".
+Som: música 8-bit de sempre, galope, relincho, corneta, burburinho, tambores ao longe, "shing" da espada. Sem monstro na tela.
+Capa: o galope com "EPISÓDIO 7 · O BATEDOR / BRASA / ELES ESTÃO VINDO".
+**Antes de postar, renderizar de novo com o número de seguidores do dia** (`N=...`, leva ~3 min).
