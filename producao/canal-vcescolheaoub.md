@@ -92,6 +92,37 @@ não chegou a ser postado.
   - Média de 10 s assistidos de 25; 7% veem até o fim.
   - Suspeita: o começo com cartas pequenas prende pouco. No #002, abrir com o ovo/criatura e encurtar o sorteio para ~2,5 s.
 
+## Análise de 16/11 (19 vídeos, 83 seguidores)
+| Vídeo | Views | Fica 3 s | Fica 10 s | Tempo médio | Seguidores | Coment. |
+| --- | --- | --- | --- | --- | --- | --- |
+| Brasa 1 (26 s) | 585 | 50% | 22% | 10,3 s | **40** | 24 |
+| Brasa 2 (41 s) | 743 | 50% | 27% | 10,7 s | 13 | 32 |
+| Brasa 3 (44 s) | 655 | 49% | 28% | 13,2 s | 7 | 22 |
+| Brasa 4 (33 s) | 632 | 47% | 25% | 9,3 s | 6 | 11 |
+| Brasa 5 (26 s, promovido) | 11,7 mil | 20% | 5% | 3,2 s | 6 | 8 |
+| Brasa 6 (26 s) | 282 | 35% | 8% | 4,5 s | 0 | 3 |
+| Fogueira (25 s) | 1.005 | **60%** | **41%** | 11,3 s | 0 | 1 |
+| 10.000 Passos (17 s) | 673 | 46% | 21% | 5,3 s | 0 | 0 |
+| Bestiário (25 s) | 192 | 31% | 14% | 5,6 s | 1 | 1 |
+
+**O que funciona:**
+- A promessa "segue que tu vira morador": o Ep. 1, que só falava isso, trouxe 40 dos 83 seguidores.
+- Moradores comentam e voltam: os que mais comentam são justamente os que aparecem no vídeo.
+- O "será que…?" com física (a fogueira) segura gente de fora como nenhum outro: 60% aos 3 s, e ganhou um 2º lote do
+  Para Você.
+
+**O que não funciona:**
+- **Cada episódio do Brasa converte menos** (68 → 17 → 11 → 9,5 → 0 seguidores por mil views). A história ficou de
+  "quem já mora": viajante, runa, pegadas não dizem nada pra quem chega agora, e a promessa sumiu do começo. O Ep. 6
+  perdeu metade das pessoas entre o 1º e o 3º segundo.
+- **A fogueira prende, mas não pede nada:** sem nome e sem promessa na tela, deu 0 seguidor.
+- **Promoção com objetivo de views:** 11,7 mil views de gente que sai no 1º segundo, só 6 seguidores.
+- **Séries paralelas** (Passos, Bestiário, memes): ninguém comenta, 0–1 seguidor, e dividem o perfil.
+
+**Próximo teste:** juntar os dois. O gancho da fogueira/cercado no 1º segundo e a promessa do Ep. 1 na tela ("comenta teu
+nome que tu vira ovelha/morador"), com os nomes de quem comentou aparecendo no vídeo seguinte. Nos episódios do Brasa,
+repetir a promessa nos primeiros 2 s e fazer cada um entendível sem ter visto os anteriores.
+
 ## Tendências do TikTok (13/11)
 **No próprio TikTok (Studio → Inspiração, filtro Brasil, 12h):** ENEM domina ("Chego no Enem" 79M, "redação sobre SUS" 54M,
 "Comida pro ENEM" 33M), depois Vasco x Palmeiras, F1 em Interlagos e Teleton. Na aba "Recomendado" (contas parecidas com a
