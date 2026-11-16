@@ -5,6 +5,13 @@
 O plano de 08/11 ("Golpe ou não?" e "Escolhe e paga o preço", Claude Doc https://claude.ai/artifact/N2nV84GJFyGFRKWJogUzGS)
 não chegou a ser postado.
 
+**Perfil só do Brasa (16/11, pedido do Nasser):** tudo que não é do Brasa virou "Somente eu" pelo TikTok Studio.
+- **Privados (10):** 10.000 Passos Dia 1, os 5 da Marmita (incluindo o final, que só citava o Brasa no fim) e os 4 da Porta.
+- **Públicos (9):** Brasa Ep. 1 a 6, Bestiário #001 (Florora), a fogueira e o cercado das ovelhas.
+- A série 10.000 Passos fica parada.
+- No Studio a lista é virtual: depois de trocar a privacidade, o seletor às vezes volta a mostrar "Todos". Pra conferir,
+  recarregar a página e rolar até o fim.
+
 - **Conta:** pessoal, pública. O @vcescolheaoub continua.
   - **Nome exibido:** vai virar **"Reino de Brasa"** (escolha do Nasser em 12/11). O TikTok só libera trocar o nome depois de
     12/11, e a troca é uma vez a cada 7 dias. Trocar a partir de 13/11.
