@@ -107,6 +107,7 @@ Quem comentou sem pedir personagem, como @lorena_ferreira167 ("six seven"), não
 | @orenjimsst | Meize | artista da vila (Ep. 5) |
 | @eninh.a | Miyuki | taverneira (Ep. 5) |
 | @pixoto18 | pixoto | cidadão (Ep. 6) |
+| @lucas.soares.camp4 | Edilson ("Edilson espada") | espadachim (fila do Ep. 7) |
 
 **Erros que essa tabela evita:** a Lívia (@inuyashazinho) foi tratada como nova no Ep. 4, e a Luiza (@sleep_moon12) no
 Ep. 5 ("aeeee" respondido com convite). As duas receberam uma 2ª resposta corrigindo.
@@ -420,6 +421,13 @@ a porta estourando funcionou)**, mas só 42% chegam aos 3 s e 12% aos 10 s; temp
   acontecer com o mano que é pastor de vacas?" Resposta: "kkk figurante nada, quem passa o dia andando a cavalo é justamente
   quem vê as tochas primeiro. o valdemir vaqueiro vai ser o batedor da vila no ep 7". **Prometido: Valdemir batedor no Ep. 7.**
 - Aprendizado: os moradores querem papel na história, não só crachá. Dar destaque a 1–2 moradores por episódio.
+- 16/11 07h: Ep. 6 com 178 views, 13 curtidas; perfil com 83. Respostas novas:
+  - @lucas.soares.camp4 (Lucas): "me coloca, meu nome pode ser Edilson espada" → "anotado, edilson espada kkk tu entra no ep 7 de
+    espadachim. só segue o perfil, que quem não segue não mora na vila". **Fila do Ep. 7: Edilson, espadachim.**
+  - @leitoradiscreta (Vitória, já moradora) comentou de novo "Vitória, banqueira" → "tu já é moradora, vitória kkk a banqueira
+    apareceu no palco do ep 5… e com o castelo vindo aí, o cofre do reino vai precisar de ti".
+  - @sleep_moon12 (Luiza) no vídeo da fogueira: "acendeu" → "acendeu no último segundo kkk com uma santa na vila torcendo não
+    tinha como dar errado".
 
 **Fios para o Ep. 7:** quem são "eles" (as tochas), o nome do viajante, os 4 sem nome ganhando crachá, o juramento do
 Samuel (@samuelaquino6147: "tudo que eu achar será distribuído para todos") pode virar a mina que ajuda a erguer o castelo.
