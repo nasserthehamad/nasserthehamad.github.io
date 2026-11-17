@@ -19,7 +19,8 @@ FW, FH, FPS, S = 1080, 1920, 30, 3
 CW, CH = 360, 640
 SEED = int(os.environ.get('SEED', '79'))
 GP = [41, 34, 32, 37, 51, 50, 53, 31]
-LIMIT, SPARE = 22.0, 0.08
+LIMIT = 22.0
+SPARE = float(os.environ.get('SPARE', '0.34'))   # sobra no cronômetro: varia de episódio pra episódio (0,05–0,50)
 OUTDIR = os.path.join(HERE, 'out')
 os.makedirs(OUTDIR, exist_ok=True)
 OUT = os.environ.get('OUT', os.path.join(OUTDIR, 'porco.mp4'))
@@ -424,7 +425,7 @@ def overlay(im, t):
         E.draw_line(d, FW / 2, 120, [('ESCAPOU!', GOLD)], int(170 + 70 * q), stroke=14)
         E.draw_line(d, FW / 2, 410, [(fmt(SPARE), GREEN)], 150, stroke=10)
         if t > T_ESC + 0.5:
-            E.draw_line(d, FW / 2, 572, [('COM ', WHITE), ('0,08', GREEN), (' DE SOBRA', WHITE)], 70, stroke=6)
+            E.draw_line(d, FW / 2, 572, [('COM ', WHITE), (f'{SPARE:.2f}'.replace('.', ','), GREEN), (' DE SOBRA', WHITE)], 70, stroke=6)
 
 
 VIG = np.clip((np.hypot((xx - CX) / 200, (yy - 330) / 360) - 0.7) / 0.6, 0, 1).astype(np.float32)

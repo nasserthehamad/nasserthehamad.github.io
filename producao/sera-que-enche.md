@@ -159,7 +159,9 @@ algumas apenas".
 - **Física simples com sorte:** a coisa vai escalando sozinha, sem pedir nada pra quem assiste.
 - **Uma contagem na tela:** cronômetro, contador ou cercas que faltam.
   - Nos últimos 6 s: contagem vermelha, coração, tique-taque e a borda da tela pulsando.
-- **Final no limite:** dá certo no último instante (0,08 s de sobra). Pedido do Nasser: "tem que conseguir no fim certo".
+- **Final no limite:** dá certo no último instante. Pedido do Nasser: "tem que conseguir no fim certo".
+  - A sobra **varia de um episódio pro outro, entre 0,05 e 0,50 s** (pedido de 17/11), pra não ficar sempre 0,08.
+  - Fogueira: 0,08. Porco: 0,34. No `porco.py` é `SPARE=`.
 - **Som:** cada batida é uma nota. Melodia só de domínio público.
 - **Loop:** o fim emenda no começo.
 - **O Brasa fica de cenário:** grama do reino e moradores olhando, que pulam com "!" no fim. Nada de pedir nome no vídeo:
@@ -176,9 +178,9 @@ Ideia do Nasser em cima do formato viral "Will the ball escape?" (vídeos com 38
 - **Largura das porteiras:** `[41, 34, 32, 37, 51, 50, 53, 31]` px, calibrada pra cada cerca levar ~2,5 s. A última
   porteira é a mais estreita, pra dar suspense.
 - **O sorteio 79:**
-  - as cercas caem aos 0,8 s, 2,9, 5,5, 8,3, 10,6, 13,6 e 16,8;
-  - a última segura 5 s e o porco escapa aos 21,92 s do cronômetro de 22, com **0,08 de sobra**;
-  - o tempo foi esticado 2% (`WARP`) pra cair exato.
+  - as cercas caem aos 0,8 s, 2,9, 5,4, 8,2, 10,5, 13,5 e 16,6;
+  - a última segura 5 s e o porco escapa aos 21,66 s do cronômetro de 22, com **0,34 de sobra**;
+  - o tempo foi esticado 0,7% (`WARP`) pra cair exato.
 - **Som:**
   - **cada batida na cerca toca a próxima nota de "Für Elise"** (Beethoven, domínio público, timbre de piano ou caixinha
     de música; o tema A, depois o B); são 123 batidas;
@@ -193,7 +195,7 @@ Ideia do Nasser em cima do formato viral "Will the ball escape?" (vídeos com 38
     pulando.
 - **Lama** no chiqueiro, com poças e palha.
 - **Loop:** as cercas voltam de dentro pra fora e o porco reaparece no meio.
-- **Arquivos:** `brasa-porco.mp4` (25,4 s) e `capa-porco.jpg`.
+- **Arquivos:** `brasa-porco.mp4` (25,2 s) e `capa-porco.jpg`.
 - **Rodar:** `SEED=79 python3 porco.py`. `PLAN=1` imprime a linha do tempo, `STILLS=6,b-0.5` gera quadros de conferência e
   `CAPA=1` gera a capa. Pra outro sorteio, rodar o `search.py` (procura fuga entre 20,6 e 23,2 s com a última cerca
   ≥ 4 s).
