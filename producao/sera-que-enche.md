@@ -200,6 +200,38 @@ Ideia do Nasser em cima do formato viral "Will the ball escape?" (vídeos com 38
   `CAPA=1` gera a capa. Pra outro sorteio, rodar o `search.py` (procura fuga entre 20,6 e 23,2 s com a última cerca
   ≥ 4 s).
 
+## Versão 5: "Será que as abelhas enchem a colmeia?" (17/11)
+- **A física** (`producao/abelha/sim_abelha.py`):
+  - um favo grande hexagonal com 271 alvéolos;
+  - as abelhas voam com velocidade constante (115 px/s) com um leve zigue-zague, e quicam na borda e umas nas outras;
+  - **todo alvéolo que uma abelha sobrevoa enche de mel**, e a cada 25 cheios nasce mais uma abelha (11 no fim);
+  - depois de 60% cheio, as abelhas "sentem" o alvéolo vazio mais perto (puxão leve), pra cauda não ficar infinita.
+- **O sorteio 130:**
+  - 50% de mel aos 9,1 s e 90% aos 13,9 s;
+  - faltam 3 aos 17,8 s, e o **último favo segura uns 4 s** ("FALTAM 1 FAVO", com os vazios piscando);
+  - enche aos 21,81 s, com **0,19 de sobra**.
+- **Som:**
+  - **cada alvéolo cheio toca a próxima nota de "O Voo do Besouro"** (Rimsky-Korsakov, domínio público), num timbre de
+    corda dedilhada;
+  - no começo as notas vêm rápidas, como a corrida cromática da música, e no fim ficam soltas, o que dá suspense;
+  - zumbido que cresce com o número de abelhas, "bzzt" quando nasce uma, toquinho de madeira nas batidas da borda;
+  - nos últimos 6 s: tique-taque e coração;
+  - no fim: acorde de Lá maior e fanfarra.
+- **Na tela:**
+  - "SERÁ QUE AS ABELHAS ENCHEM A COLMEIA?", o cronômetro e "MEL: N%" (vira "FALTAM N FAVOS" quando faltam 9);
+  - nos primeiros 4 s: "A CADA 25 FAVOS, NASCE UMA ABELHA";
+  - no fim: "ENCHEU!", "00,19" verde, o mel brilhando e as abelhas saindo em espiral.
+- **Cenário:** grama cheia de flores e os 4 moradores olhando.
+- **Loop:** o mel esvazia na ordem contrária e a primeira abelha volta pro meio.
+- **Arquivos:** `brasa-abelhas.mp4` (25,3 s) e `capa-abelhas.jpg`.
+- **Rodar:** `python3 abelha.py` (padrões `SEED=130 SPARE=0.19`). `PLAN=1`, `STILLS=`, `CAPA=1`. Pra outro sorteio:
+  `python3 search.py 115 25 0.9 1.2`.
+
+## Próximas ideias da série (lista de 17/11)
+Bola de neve vira boneco (Jingle Bells, bom pra dezembro) · Ferreiro forja a espada (Na Gruta do Rei da Montanha) · Fogo
+derrete o gelo (Dança da Fada Açucarada) · Galinhas voltam pro galinheiro (Ode à Alegria) · Vila acende as lanternas
+(Canon em Ré).
+
 ## Monetização (15/11)
 - O Creator Rewards só paga vídeo com **1 minuto ou mais**. Outros requisitos: 18+, **10 mil seguidores** e 100 mil views em 30 dias.
 - Só contam vídeos postados depois da aprovação. Views qualificadas: vindas do Para Você, com mais de 5 s assistidos.
