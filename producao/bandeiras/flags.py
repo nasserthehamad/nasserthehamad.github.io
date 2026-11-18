@@ -250,3 +250,82 @@ def ball(flag, shade=True):
     out[m] = a[m]
     out[ring] = (30, 22, 26)
     return np.clip(out, 0, 255).astype(np.uint8), (m | ring)
+
+
+# ---------------------------------------------------------------- +16 pra chegar em 48 (18/11)
+def venezuela():
+    a = hstripes([(255, 204, 0), (0, 36, 125), (207, 20, 43)])
+    for k in range(7):
+        ang = math.pi * (0.15 + 0.7 * k / 6)
+        a[int(round(11.5 - 5.5 * math.sin(ang))), int(round(11 - 5.5 * math.cos(ang)))] = W_
+    return a
+
+
+def equador():
+    a = hstripes([(255, 221, 0), (3, 78, 162), (237, 28, 36)], [2, 1, 1])
+    disc(a, 11, 10.5, 2.6, (120, 90, 40))
+    return a
+
+
+def costarica():
+    return hstripes([(0, 43, 127), W_, (206, 17, 38), W_, (0, 43, 127)], [1, 1, 2, 1, 1])
+
+
+def escocia():
+    a = blank((0, 94, 184))
+    a[(np.abs(xx - yy) < 2.2) | (np.abs(xx + yy - N) < 2.2)] = W_
+    return a
+
+
+def dinamarca():
+    a = blank((200, 16, 46))
+    rect(a, 6, 0, 10, N, W_); rect(a, 0, 9, N, 13, W_)
+    return a
+
+
+def noruega():
+    a = blank((186, 12, 47))
+    rect(a, 5, 0, 11, N, W_); rect(a, 0, 8, N, 14, W_)
+    rect(a, 6.5, 0, 9.5, N, (0, 32, 91)); rect(a, 0, 9.5, N, 12.5, (0, 32, 91))
+    return a
+
+
+def grecia():
+    a = blank(W_)
+    for k in range(9):
+        if k % 2 == 0:
+            a[(yy >= k * N / 9) & (yy < (k + 1) * N / 9)] = (13, 94, 175)
+    rect(a, 0, 0, 10, 10, (13, 94, 175)); rect(a, 4, 0, 6, 10, W_); rect(a, 0, 4, 10, 6, W_)
+    return a
+
+
+def egito():
+    a = hstripes([(206, 17, 38), W_, K_])
+    disc(a, 11, 11, 2.0, (192, 147, 0))
+    return a
+
+
+def costadomarfim():
+    return vstripes([(247, 127, 0), W_, (0, 158, 96)])
+
+
+def australia():
+    a = blank((0, 0, 139))
+    rect(a, 0, 0, 11, 11, (0, 0, 139))
+    a[(yy < 11) & (xx < 11) & ((np.abs(xx - yy) < 1.0) | (np.abs(xx + yy - 11) < 1.0))] = W_
+    rect(a, 4.5, 0, 6.5, 11, W_); rect(a, 0, 4.5, 11, 6.5, W_)
+    rect(a, 5, 0, 6, 11, (200, 16, 46)); rect(a, 0, 5, 11, 6, (200, 16, 46))
+    star(a, 5.5, 16.5, 2.4, W_)
+    for (cx, cy) in ((16, 6), (18.5, 10), (15, 13.5), (17, 17.5)):
+        star(a, cx, cy, 1.3, W_)
+    return a
+
+
+COUNTRIES += [
+    ('VENEZUELA', venezuela), ('EQUADOR', equador), ('BOLÍVIA', lambda: hstripes([(213, 43, 30), (249, 228, 0), (0, 122, 51)])),
+    ('COSTA RICA', costarica), ('IRLANDA', lambda: vstripes([(22, 155, 98), W_, (255, 136, 62)])), ('ESCÓCIA', escocia),
+    ('DINAMARCA', dinamarca), ('NORUEGA', noruega), ('GRÉCIA', grecia),
+    ('ÁUSTRIA', lambda: hstripes([(237, 41, 57), W_, (237, 41, 57)])),
+    ('ROMÊNIA', lambda: vstripes([(0, 43, 127), (252, 209, 22), (206, 17, 38)])), ('EGITO', egito), ('GANA', gana),
+    ('COSTA DO MARFIM', costadomarfim), ('AUSTRÁLIA', australia), ('INDONÉSIA', lambda: hstripes([(206, 17, 38), W_])),
+]
