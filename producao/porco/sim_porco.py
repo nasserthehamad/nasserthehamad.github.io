@@ -17,7 +17,7 @@ def ring_angle(k, t, phase):
     return phase[k] + w * t
 
 
-def simulate(seed=1, speed=150.0, gap_px=None, tmax=60.0, start_ang=None):
+def simulate(seed=1, speed=150.0, gap_px=None, tmax=60.0, start_ang=None, n_split=3):
     rng = np.random.default_rng(seed)
     phase = rng.uniform(0, 2 * math.pi, NR)
     C = np.array([CX, CY])
@@ -61,10 +61,13 @@ def simulate(seed=1, speed=150.0, gap_px=None, tmax=60.0, start_ang=None):
                 if abs(dd) < g - RS / R * 0.9 and not broke:
                     # passou na porteira: a cerca estoura e ele vira dois
                     breaks.append((t, active, float(pos[i, 0]), float(pos[i, 1])))
-                    b = math.atan2(vel[i, 1], vel[i, 0]) + rng.choice([-1, 1]) * rng.uniform(0.5, 0.9)
-                    pos = np.vstack([pos, pos[i] - rel[i] / rr[i] * 3])
-                    vel = np.vstack([vel, [math.cos(b) * speed, math.sin(b) * speed]])
-                    born.append(t)
+                    h0 = math.atan2(vel[i, 1], vel[i, 0])
+                    sgn = rng.choice([-1, 1])
+                    for m_ in range(n_split - 1):          # vira n_split: os novos saem abrindo em leque
+                        b = h0 + sgn * (1 if m_ % 2 == 0 else -1) * rng.uniform(0.5, 0.9) * (1 + m_ // 2)
+                        pos = np.vstack([pos, pos[i] - rel[i] / rr[i] * (3 + 2 * m_)])
+                        vel = np.vstack([vel, [math.cos(b) * speed, math.sin(b) * speed]])
+                        born.append(t)
                     broke = True
                     if active == NR - 1:
                         esc_t = t

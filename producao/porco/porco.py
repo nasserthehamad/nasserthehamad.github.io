@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Será que enche? #3 — "Será que o porco escapa?": 8 cercas pintadas, uma dentro da outra, girando, cada uma com uma
-porteira aberta. Quando um porco passa pela porteira, a cerca estoura e ele vira dois. Cada batida na cerca toca a
+porteira aberta. Quando um porco passa pela porteira, a cerca estoura e ele vira três. Cada batida na cerca toca a
 próxima nota de "Für Elise" (Beethoven, domínio público). Cronômetro de 22 s: escapa com 0,08 de sobra. Sem narração.
 Uso: SEED=79 python3 porco.py   (PLAN=1 · STILLS=1,8,b-1,b+0.5 · CAPA=1)"""
 import os, sys, math, random, subprocess, wave
@@ -18,8 +18,8 @@ from melody import schedule, FUR_ELISE
 
 FW, FH, FPS, S = 1080, 1920, 30, 3
 CW, CH = 360, 640
-SEED = int(os.environ.get('SEED', '79'))
-GP = [41, 34, 32, 37, 51, 50, 53, 31]
+SEED = int(os.environ.get('SEED', '666'))
+GP = [41, 27.5, 29, 30, 30.5, 37, 40, 25]       # porteiras calibradas pro 'vira três'
 LIMIT = 22.0
 SPARE = float(os.environ.get('SPARE', '0.34'))   # sobra no cronômetro: varia de episódio pra episódio (0,05–0,50)
 OUTDIR = os.path.join(HERE, 'out')
@@ -420,7 +420,7 @@ def overlay(im, t):
         E.draw_line(d, FW / 2, 572, [('FALTAM ', WHITE), (f'{left}', GOLD), (' CERCAS' if left != 1 else ' CERCA', WHITE)], 70,
                     stroke=6)
         if t < 4.0 or t >= END - 0.4:
-            E.draw_line(d, FW / 2, 1735, [('PASSOU NA PORTEIRA, ', WHITE), ('VIROU DOIS', TEAL)], 60, stroke=6)
+            E.draw_line(d, FW / 2, 1735, [('PASSOU NA PORTEIRA, ', WHITE), ('VIROU TRÊS', TEAL)], 60, stroke=6)
     else:
         q = min(1.0, (t - T_ESC) / 0.12)
         E.draw_line(d, FW / 2, 120, [('ESCAPOU!', GOLD)], int(170 + 70 * q), stroke=14)

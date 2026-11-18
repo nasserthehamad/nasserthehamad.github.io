@@ -200,6 +200,12 @@ Ideia do Nasser em cima do formato viral "Will the ball escape?" (vídeos com 38
   `CAPA=1` gera a capa. Pra outro sorteio, rodar o `search.py` (procura fuga entre 20,6 e 23,2 s com a última cerca
   ≥ 4 s).
 
+**Atualização de 18/11 (pedido do Nasser): cada porco que passa pela porteira vira TRÊS** (`n_split=3`).
+- Porteiras recalibradas: `[41, 27.5, 29, 30, 30.5, 37, 40, 25]`.
+- Sorteio **666**: as cercas caem aos 1,1 s, 2,7, 5,0, 7,3, 9,7, 12,8 e 15,6, e a última segura 6 s.
+- Escapa com 0,34 de sobra (`WARP` 0,96), com 22 porcos na última cerca.
+- Frase na tela: "PASSOU NA PORTEIRA, VIROU TRÊS". A música já sai no ritmo.
+
 ## Versão 5: "Será que as abelhas enchem a colmeia?" (17/11)
 - **A física** (`producao/abelha/sim_abelha.py`):
   - um favo grande hexagonal com 271 alvéolos;
