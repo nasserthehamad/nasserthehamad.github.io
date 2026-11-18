@@ -14,6 +14,7 @@ import ep1hd as E
 import folk as F
 import world2 as W
 from sim_porco import simulate, CX, CY, NR, RADII, RS, ring_angle
+from melody import schedule, FUR_ELISE
 
 FW, FH, FPS, S = 1080, 1920, 30, 3
 CW, CH = 360, 640
@@ -511,24 +512,21 @@ def audio(path):
     s = np.zeros(n)
     rr = random.Random(SEED)
     s += E.lp(E.noise(n, 3), 0.02) * 0.04
-    # uma nota de Für Elise a cada batida na cerca
-    last, j = -1.0, 0
-    for (tb, i, x, y, act) in SIM['bounces']:
-        tv = tb / WARP
-        if tv >= T_ESC or tv - last < 0.07:
-            continue
-        last = tv
-        E.add(s, tv, keynote(FUR[j % len(FUR)]), 0.3)
-        E.add(s, tv, wood(int(0.03 * SR), 900, 0.004), 0.05)
-        j += 1
+    # Für Elise puxada pelas batidas na cerca (cada batida libera uma nota; a nota toca no ritmo da música)
+    bts = [tb / WARP for (tb, i, x, y, act) in SIM['bounces'] if tb / WARP < T_ESC]
+    for tv in bts:
+        E.add(s, tv, wood(int(0.03 * SR), 900, 0.004), 0.04)
+    for tv, m, role in schedule(FUR_ELISE, bts, 0.14, T_ESC):
+        if role == 'm':
+            E.add(s, tv, keynote(m, 0.6), 0.34)
+        else:
+            E.add(s, tv, keynote(m, 0.7), 0.2)
     # cerca estourando: craque de madeira + baixo + oinc do porco novo
     for k, tv in enumerate(BREAK_T):
         nn = int(0.4 * SR)
         tt = np.arange(nn) / SR
         crack = E.lp(E.noise(nn, 40 + k), 0.3) * np.exp(-tt / 0.07)
         E.add(s, tv, crack, 0.55 if k < NR - 1 else 1.0)
-        for m in ((45, 0.35), (57, 0.25)):
-            E.add(s, tv, keynote(m[0], 0.9), m[1])
         for q in range(5):
             E.add(s, tv + rr.uniform(0, 0.12), wood(int(0.05 * SR), rr.uniform(500, 1100), 0.01), 0.15)
         if k < NR - 1:

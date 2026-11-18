@@ -14,6 +14,8 @@ import ep1hd as E
 import folk as F
 import world2 as W
 from sim_abelha import simulate, CX, CY, RB, CELL, CELLS, RS, NORMALS, APO
+sys.path.insert(0, '/home/claude/porco')
+from melody import schedule
 
 FW, FH, FPS, S = 1080, 1920, 30, 3
 CW, CH = 360, 640
@@ -439,15 +441,10 @@ def audio(path):
     ph = np.cumsum(f0) / SR
     buzz = (2 * (ph % 1) - 1) * 0.6 + (2 * ((ph * 1.007) % 1) - 1) * 0.4
     s += E.lp(buzz, 0.12) * np.sqrt(nb) * 0.045
-    # O Voo do Besouro: uma nota por alvéolo cheio
-    last, j = -1.0, 0
-    for (tf, c, nf) in SIM['fills']:
-        tv = tf / WARP
-        if tv - last < 0.05:
-            continue
-        last = tv
-        E.add(s, tv, pluck(BUMBLE[j % len(BUMBLE)]), 0.22)
-        j += 1
+    # O Voo do Besouro puxado pelos favos (cada favo libera uma nota; a nota toca no ritmo da música)
+    fts = [tf / WARP for (tf, c, nf) in SIM['fills'] if tf / WARP < T_FULL]
+    for tv, m, role in schedule([[(m, 'm')] for m in BUMBLE], fts, 0.085, T_FULL, lead=8, max_speed=1.5, max_backlog=10):
+        E.add(s, tv, pluck(m), 0.24)
     for (tb, i, x, y) in SIM['bounces']:
         tv = tb / WARP
         if tv < T_FULL:

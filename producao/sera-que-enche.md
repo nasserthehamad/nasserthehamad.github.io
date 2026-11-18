@@ -227,6 +227,20 @@ Ideia do Nasser em cima do formato viral "Will the ball escape?" (vídeos com 38
 - **Rodar:** `python3 abelha.py` (padrões `SEED=130 SPARE=0.19`). `PLAN=1`, `STILLS=`, `CAPA=1`. Pra outro sorteio:
   `python3 search.py 115 25 0.9 1.2`.
 
+## Música puxada pelas batidas (17/11, depois do "nem dá pra entender a Für Elise")
+- **O problema:** a nota tocava exatamente na hora de cada batida. Como as batidas vêm em intervalos irregulares, a melodia
+  virava nota solta. Além disso, as notas da mão esquerda estavam misturadas na mesma linha.
+- **A solução** (`producao/porco/melody.py`, função `schedule`):
+  - cada batida libera a próxima nota, mas a nota toca **no ritmo da música** (semicolcheia de 0,14 s na Für Elise e de
+    0,085 s no Besouro);
+  - batidas rápidas fazem fila, e a música acelera até 1,5–1,7x;
+  - batidas lentas fazem a música esperar;
+  - a melodia pode andar até 5 notas na frente das batidas, pra frase de abertura sair inteira no ritmo;
+  - o **acompanhamento da mão esquerda** (Lá–Mi–Lá e Mi–Mi–Sol#) segue o relógio da música sem gastar batida.
+- A Für Elise está escrita na seção A, em semicolcheias (`FUR_ELISE`).
+- Conferido por análise de tom no áudio final: Mi Ré# Mi Ré# Mi Si Ré Dó Lá · Dó Mi Lá Si · Mi Sol# Si Dó.
+- **Usar esse `schedule` em todo vídeo novo da série.**
+
 ## Próximas ideias da série (lista de 17/11)
 Bola de neve vira boneco (Jingle Bells, bom pra dezembro) · Ferreiro forja a espada (Na Gruta do Rei da Montanha) · Fogo
 derrete o gelo (Dança da Fada Açucarada) · Galinhas voltam pro galinheiro (Ode à Alegria) · Vila acende as lanternas
