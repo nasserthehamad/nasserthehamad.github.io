@@ -123,6 +123,34 @@ não chegou a ser postado.
 nome que tu vira ovelha/morador"), com os nomes de quem comentou aparecendo no vídeo seguinte. Nos episódios do Brasa,
 repetir a promessa nos primeiros 2 s e fazer cada um entendível sem ter visto os anteriores.
 
+## "Flopamos?" — situação em 19/11 (85 seguidores)
+Números diários da conta no Studio. 18/11 e 19/11 ainda não estavam calculados.
+
+| Dia | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Views | 927 | 1.091 | 958 | 741 | 939 | 1.302 | 899 | 913 | 8.146* | 5.245* | 1.074 | 671 |
+| Seguidores novos | 5 | 0 | 2 | 1 | 26 | 31 | 2 | 7 | 5 | 1 | 3 | 0 |
+| Visitas ao perfil | 60 | 34 | 33 | 30 | 70 | 87 | 28 | 32 | 52 | 28 | 19 | 8 |
+
+\* promoção paga do Brasa Ep. 5.
+
+**Leitura: o canal não flopou, estagnou.**
+- Não é shadowban. Cada vídeo novo ainda ganha o primeiro lote do Para Você: a copa de lava fez 126 views em 12 h, e as
+  views voltaram de manhã depois de zerar de madrugada.
+- Nenhum vídeo passa desse primeiro lote (200–1.000 views). As views por dia ficam em ~700–1.300 desde 06/11.
+- O que caiu foi a conversão:
+  - 57 dos 85 seguidores vieram em 10–11/11, com o Brasa Ep. 1 ("segue que tu vira morador").
+  - Desde então são 0 a 7 seguidores por dia.
+  - As visitas ao perfil caíram de 70–87 para 8 por dia.
+  - Os vídeos de física seguram mais gente, mas não pedem nada.
+
+**Proposta de 19/11:** copa/corrida com o nome de quem comentou em cada bolinha, pedindo "comenta teu nome e entra na
+próxima copa". Junta a retenção da física com o motivo para comentar e seguir.
+
+**Como puxar isso no Studio:** pedir `{insigh_type:'vv_history'|'net_follower_history'|'pv_history'|'reached_audience_history'|'follower_num_history', days:N, end_days:0}`
+no mesmo endpoint de insight. Cada item vem como `{status, value}` em ordem de data, e os últimos 1–2 dias chegam com
+`status: 2` (ainda não calculados).
+
 ## Tendências do TikTok (13/11)
 **No próprio TikTok (Studio → Inspiração, filtro Brasil, 12h):** ENEM domina ("Chego no Enem" 79M, "redação sobre SUS" 54M,
 "Comida pro ENEM" 33M), depois Vasco x Palmeiras, F1 em Interlagos e Teleton. Na aba "Recomendado" (contas parecidas com a
