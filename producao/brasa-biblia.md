@@ -532,4 +532,4 @@ nome (???) passam a ser esses fugitivos, até comentarem o nome.
 **Fios para o Ep. 9:** quem é "ele", o nome do encapuzado que atravessou, o que a Raviela (que jurou derrotar o inimigo)
 vai fazer, e se o viajante do Ep. 6 conhece essa gente.
 Arquivos: `videos/brasa-ep8.mp4` e `producao/capas/capa-brasa-ep8.jpg`.
-
+**Publicado em 21/11 às 11h09** pelo Nasser, com a legenda sugerida (ID 7710626606196231431). A capa não entrou: a miniatura ficou com o 1º quadro.

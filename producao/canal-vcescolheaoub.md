@@ -15,7 +15,9 @@ não chegou a ser postado.
 - **Conta:** pessoal, pública. O @vcescolheaoub continua.
   - **Nome exibido:** vai virar **"Reino de Brasa"** (escolha do Nasser em 12/11). O TikTok só libera trocar o nome depois de
     12/11, e a troca é uma vez a cada 7 dias. Trocar a partir de 13/11.
-  - **Bio (desde 12/11):** "🔥 Cada seguidor vira morador de Brasa / 🎰 Comenta seu nome: vira criatura".
+  - **Bio (desde 21/11, escolha do Nasser):** "um reino que cresce a cada seguidor / comenta teu nome e entra na história", sem emoji.
+    A anterior (12/11) ainda falava do Bestiário: "🔥 Cada seguidor vira morador de Brasa / 🎰 Comenta seu nome: vira criatura".
+    Trocar a bio pelo navegador: Editar Perfil → Descrição → Salvar. A página recarrega e às vezes ainda mostra a bio antiga; conferir de novo depois de recarregar.
   - **Foto:** o logo "chama com castelo" (pixel art; `producao/logo/logo-a.png`). Também foram feitos um "B" com chama e um
     brasão com coroa. Uma chama com olhos foi descartada por lembrar o Calcifer.
 - **Postagem:** pelo app, ou pelo TikTok Studio na web, no navegador do app do Claude (desde 11/11; o Nasser só escolhe o
