@@ -75,6 +75,9 @@ ROLES = {
     'viajant': dict(tunic=(56, 60, 86), pants=(38, 38, 54), hat='hood', cape=(40, 42, 64)),
     # Ep. 7
     'espadach': dict(tunic=(168, 44, 52), pants=(52, 44, 48), item='sword', cape=(116, 32, 40)),
+    # Ep. 8
+    'vigia': dict(tunic=(64, 96, 112), pants=(50, 54, 66), item='spyglass', cape=(46, 70, 84)),
+    'refugiad': dict(tunic=(104, 92, 78), pants=(62, 54, 48), hat='hood', item='torch', cape=(84, 72, 60)),
 }
 
 
@@ -89,7 +92,7 @@ def role_spec(role):
 def gender(role):
     """'f' / 'm' pela forma que a pessoa escreveu a função; None se for neutra (ex.: guarda)."""
     w = norm(role).split()[0] if role.strip() else ''
-    if w in ('guarda', 'artista', 'atleta', 'dentista', 'chef'):
+    if w in ('guarda', 'artista', 'atleta', 'dentista', 'chef', 'vigia'):
         return None
     if w.endswith('a'):
         return 'f'
@@ -100,7 +103,7 @@ def gender(role):
 
 def feminine(role):
     r = norm(role).split()[0] if role.strip() else ''
-    return r.endswith('a') and r not in ('guarda',)
+    return r.endswith('a') and r not in ('guarda', 'vigia')
 
 
 def make_folk(name, role, frame=0, hair_style=None):
@@ -548,6 +551,14 @@ def make_folk(name, role, frame=0, hair_style=None):
                 if (x - 16) ** 2 / 9 + (y - hy + 3) ** 2 / 9 <= 1:
                     px(x, y, (200, 110, 80) if x < 17 else (170, 86, 60))
         px(13, hy, (240, 236, 220)); px(12, hy + 1, (240, 236, 220)); px(13, hy + 1, (240, 236, 220))
+    elif it == 'spyglass':
+        for k in range(7):
+            x, y = 13 + k, hy - k
+            px(x, y, (214, 172, 70) if k % 3 else (150, 110, 40)); px(x, y - 1, (240, 206, 110) if k < 5 else (150, 110, 40))
+        px(20, hy - 8, (120, 180, 210))
+    elif it == 'torch':
+        for y in range(hy - 8, hy + 3):
+            px(14, y, wood if y > hy - 6 else (90, 60, 41))
     elif it == 'leash':
         for k in range(6):
             px(13 + k, hy + 1 + k // 2, (180, 60, 50))

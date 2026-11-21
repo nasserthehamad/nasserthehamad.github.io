@@ -108,6 +108,7 @@ Quem comentou sem pedir personagem, como @lorena_ferreira167 ("six seven"), não
 | @eninh.a | Miyuki | taverneira (Ep. 5) |
 | @pixoto18 | pixoto | cidadão (Ep. 6) |
 | @lucas.soares.camp4 | Edilson ("Edilson espada") | espadachim (fila do Ep. 7) |
+| @germano_gabi | Gabi (perfil "Heheboy") | vigia (Ep. 8; segue desde 20/11) |
 
 **Erros que essa tabela evita:** a Lívia (@inuyashazinho) foi tratada como nova no Ep. 4, e a Luiza (@sleep_moon12) no
 Ep. 5 ("aeeee" respondido com convite). As duas receberam uma 2ª resposta corrigindo.
@@ -494,3 +495,41 @@ Roteiro:
 Som: música 8-bit de sempre, galope, relincho, corneta, burburinho, tambores ao longe, "shing" da espada. Sem monstro na tela.
 Capa: o galope com "EPISÓDIO 7 · O BATEDOR / BRASA / ELES ESTÃO VINDO".
 **Antes de postar, renderizar de novo com o número de seguidores do dia** (`N=...`, leva ~3 min).
+
+**Resultado do Ep. 7 (21/11):** 426 views, 30 curtidas e 1 comentário. Perfil com 86 seguidores.
+- @germano_gabi ("Heheboy") comentou "Gabi, vigia" em 19/11 e passou a seguir.
+- Resposta em 21/11: "gabi vigia na área kkk chegou na hora certa, a vila tá precisando de alguém de olho na ponte. tu
+  aparece no ep 8". O texto não usa artigo nem adjetivo, porque não dá pra saber se é ele ou ela.
+
+## Ep. 8, "A Margem" (feito em 21/11 com 86 seguidores)
+Sem voz, 26,8 s. Código: `producao/reino/ep8.py` (`N=<seguidores> PREV8=<seguidores no ep. 7>`, `CAPA=1` pra capa).
+- Pedido do Nasser: "o pessoal quer saber da história… não esqueça do foco, o público". Por isso a copa de lava com nomes
+  ficou pra depois, e o episódio responde o gancho do Ep. 7 com o máximo de moradores fazendo a própria função.
+- Bonecos novos em `folk.py`: `vigia` (capa azul e luneta; a função é neutra, sem "o/a") e `refugiado` (capuz marrom e
+  tocha).
+
+Roteiro:
+1. (0 s) A flecha de fogo do Cauã (arqueiro, na ponta do píer) já está no ar no 1º quadro. Ela acende uma fogueira na
+   outra margem, e a luz mostra dezenas de encapuzados com tochas. Legendas: "NESTE REINO, CADA SEGUIDOR VIRA MORADOR."
+   → "O CAUÃ ATIROU FOGO NA OUTRA MARGEM… …E ELES ESTAVAM LÁ."
+2. (3,8 s) A câmera passa pela vila inteira na beira do rio, com braseiros acesos: "A VILA INTEIRA FOI PRA BEIRA DO RIO."
+   + "ESTE REINO TEM 86 MORADORES."
+   - Os ferreiros afiam as espadas, com faíscas, e ganham crachá: Gabriel e João.
+   - As bruxas e os magos acendem luzes sobre o rio, com crachá: Oliveti, Cathe e Pepze.
+3. (9 s) "ESTREIA HOJE: GABI, VIGIA." A Gabi aparece numa torre de vigia nova, do lado direito da ponte, com lanterna.
+   Depois: "UM DELES ESTÁ ATRAVESSANDO SOZINHO." O Valdemir (a cavalo) e o Edilson reagem com "!".
+4. (12,6 s) "A RAVIELA E A ALEXANDRA FORAM ATÉ ELE." Elas vão de cavaleira e de diplomata. O encapuzado fala num balão
+   estilo RPG: "NÃO VIEMOS ATACAR." / "VIEMOS FUGIDOS."
+5. (17,4 s) Plano aberto: o céu atrás das montanhas fica vermelho, a tela treme e a vila inteira faz "!":
+   "\"ELE ESTÁ VINDO ATRÁS DE NÓS.\"" Não aparece monstro ("ainda é cedo para monstros").
+6. (20,4 s) "CADA SEGUIDOR NOVO DEIXA UM DELES ATRAVESSAR A PONTE." Outro encapuzado atravessa e sobe um "+1 MORADOR".
+7. (22,4 s) Final de sempre: "QUEM NÃO SEGUE NÃO MORA NA VILA." + barra 86/100 + "COMENTA TEU NOME E TUA FUNÇÃO".
+
+O que muda na história: as tochas não são o inimigo. São gente fugindo de "ele". A meta de 100 continua (é pra aguentar
+"ele"), e seguir o perfil vira parte da história, porque cada seguidor novo é um deles atravessando a ponte. Os novos sem
+nome (???) passam a ser esses fugitivos, até comentarem o nome.
+
+**Fios para o Ep. 9:** quem é "ele", o nome do encapuzado que atravessou, o que a Raviela (que jurou derrotar o inimigo)
+vai fazer, e se o viajante do Ep. 6 conhece essa gente.
+Arquivos: `videos/brasa-ep8.mp4` e `producao/capas/capa-brasa-ep8.jpg`.
+
