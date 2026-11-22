@@ -533,3 +533,14 @@ nome (???) passam a ser esses fugitivos, até comentarem o nome.
 vai fazer, e se o viajante do Ep. 6 conhece essa gente.
 Arquivos: `videos/brasa-ep8.mp4` e `producao/capas/capa-brasa-ep8.jpg`.
 **Publicado em 21/11 às 11h09** pelo Nasser, com a legenda sugerida (ID 7710626606196231431). A capa não entrou: a miniatura ficou com o 1º quadro.
+
+**Ep. 8 com ~2 h (21/11, 13h):** 31 views, 1 curtida, 0 comentários e 0 seguidores. 72% passam do 1º segundo, 41% dos 3 s
+e só 6% chegam aos 10 s (o pior 10 s da série). As pessoas saem na passagem pela vila (3–9 s), que só interessa a quem já
+é morador. Além disso, o vídeo saiu sábado de manhã.
+
+## Copa de Brasa (22/11)
+Os 62 moradores com nome viraram bolinhas com o rosto de cada um, no poço de lava (detalhes em
+`eliminatoria-bandeiras.md`). O sorteio é honesto e a física escolheu: **a Raviela foi campeã e lidera a guarda no Ep. 9.**
+A Izabelle chegou na final e o Rubens foi o 1º a cair. A chamada é "comenta teu nome e entra na próxima copa", que pode
+virar um formato fixo, alternando com os episódios.
+

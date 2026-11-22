@@ -66,3 +66,31 @@ Pedido do Nasser: "muitos países num circuito maior, com várias etapas, objeto
 - Revanche ("a Argentina pediu revanche").
 - Copa dos Estados (27 bandeiras dos estados).
 - Pedir nos comentários qual país entra na próxima.
+
+## Copa de Brasa (22/11): os moradores no poço de lava
+Pedido do Nasser em 22/11: "pesquisa o que mais dá views e cria algo baseado no brasa". Junta o que mais segurou gente de
+fora (a copa de lava: 19% ainda assistindo aos 30 s) com o que trouxe seguidor (o nome de cada um no vídeo, como no Ep. 1).
+- **Código:** `producao/bandeiras/copa_brasa.py` (mesma física da `sim_copa.py`, com 62 bolinhas e `gap=2.0` pra caberem)
+  e `avatares.py` (cada bolinha tem o rosto do boneco do morador, gerado pelo `folk.py`).
+- **Sorteio honesto:** os 62 moradores com nome são distribuídos nas bolinhas por um embaralhamento fixo
+  (`random.Random(2211)`) feito antes de ver o resultado. A física escolhe o campeão, ninguém escolhe.
+- **SEED 75:** a 1ª bolinha cai aos 0,38 s, a etapa 2 começa aos 12,5 s e a etapa 3 aos 18,8 s, a final dura 4 s
+  (23,2–27,1 s) e o vídeo tem 31,5 s. Nenhuma pausa entre eliminações passa de 1,4 s.
+- **Resultado:** o 1º a cair foi o Rubens. Na final, Raviela x Izabelle, e **a Raviela foi campeã**. Ela é a cavaleira que jurou
+  derrotar o inimigo, então **no Ep. 9 a Raviela lidera a guarda** (prometido na tela).
+- **Na tela:**
+  - no topo: "QUAL MORADOR SOBREVIVE?", "RESTAM N" e "TCHAU, NOME";
+  - na reta final (8 ou menos), o nome em cima de cada bolinha;
+  - embaixo, o tempo todo: "O CAMPEÃO LIDERA A GUARDA NO EP. 9";
+  - no fim: "CAMPEÃO! RAVIELA / LIDERA A GUARDA NO EP. 9 / COMENTA TEU NOME E ENTRA NA PRÓXIMA COPA".
+  - Os encapuzados do Ep. 8 assistem dos cantos.
+- **Arquivos:** `videos/copa-brasa.mp4` e `producao/capas/capa-copa-brasa.jpg` ("62 MORADORES / 1 POÇO DE LAVA /
+  QUEM SOBREVIVE?").
+
+**Pesquisa de 22/11 (o que dá view):**
+- Os artigos sobre o algoritmo de 2026 pesam conclusão, replay, comentário e compartilhamento acima de views. Eles também
+  dizem que séries ganham ligação entre os episódios e que a primeira hora pesa muito (são previsões, não dados do TikTok).
+- O relatório TikTok Next 2026 diz que os comentários viraram prova social e que a comunidade quer decidir os rumos.
+- Tendências de novembro: "soft-launch reveal" (mostrar a silhueta e só revelar no refrão), que serve pra revelar "ele"
+  mais pra frente, e formatos de "escolhe teu favorito" nos comentários.
+

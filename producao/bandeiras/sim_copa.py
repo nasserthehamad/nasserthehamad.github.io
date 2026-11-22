@@ -24,15 +24,15 @@ def seg_closest(p, a, b):
     return a + s[:, None] * ab, s
 
 
-def simulate(n=48, seed=1, speed=170.0, tmax=60.0, shrink_to=110.0, shrink_dur=6.0, lavas=(15.0, 24.0, 31.0)):
+def simulate(n=48, seed=1, speed=170.0, tmax=60.0, shrink_to=110.0, shrink_dur=6.0, lavas=(15.0, 24.0, 31.0), gap=4.0):
     L1, L2, L3 = lavas
     rng = np.random.default_rng(seed)
     C = np.array([CX, CY])
     A, Bp = np.array([CX, CY - HSEG]), np.array([CX, CY + HSEG])
     # posições iniciais: grade espalhada, longe da lava e das pás
     cand = []
-    for y in np.arange(CY - HSEG - RC0 + 16, CY + HSEG + RC0 - 16, 2 * RB + 4):
-        for x in np.arange(CX - RC0 + 16, CX + RC0 - 16, 2 * RB + 4):
+    for y in np.arange(CY - HSEG - RC0 + 16, CY + HSEG + RC0 - 16, 2 * RB + gap):
+        for x in np.arange(CX - RC0 + 16, CX + RC0 - 16, 2 * RB + gap):
             p = np.array([x, y])
             cp, _ = seg_closest(p[None], A, Bp)
             if np.hypot(*(p - cp[0])) > RC0 - RB - 6:
