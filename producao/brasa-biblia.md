@@ -544,3 +544,17 @@ Os 62 moradores com nome viraram bolinhas com o rosto de cada um, no poço de la
 A Izabelle chegou na final e o Rubens foi o 1º a cair. A chamada é "comenta teu nome e entra na próxima copa", que pode
 virar um formato fixo, alternando com os episódios.
 
+**Copa de Brasa publicada em 22/11 às 13h05** pelo Nasser (ID 7711027491434941714). Com ~8 h (21h30): 276 views, 12 curtidas,
+2 comentários, 1 salvamento e **3 seguidores novos**, o primeiro vídeo desde o Ep. 4 que trouxe seguidor. O perfil foi pra 89.
+Retenção: 43% aos 3 s, 14% aos 10 s, 7% aos 20 s; tempo médio 6,5 s. Segura menos que a copa das bandeiras (49/33/28%),
+mas converte. Novos seguidores vistos nas notificações: enderboy338 e "Um trem qualquer".
+- **A Raviela de verdade (@rainhab.s) comentou "EU GANHEI, MELHOR DO MUNDO".** Resposta: "ganhou mesmo kkk e o juramento tá
+  de pé, no ep 9 a guarda é tua, capitã raviela".
+- @kadubloxy ("Cadu²"), novo: "já coloca eu ai". Resposta: "bora kkk só fala teu nome e tua função no reino que tu entra no ep
+  9 e já ganha bolinha na próxima copa". **Fila do Ep. 9: Cadu, se disser a função.**
+- Ep. 8, @rafaeltg280 (Valdemir): "roteiro de cinema". Resposta: "valeu valdemir kkk e o ep 9 já tem capitã, a raviela ganhou a
+  copa de brasa. tu segura a ponte com ela".
+- Copa das bandeiras, @mdangell (Yuki, 21/11): "AH PORRRA!!!". Resposta: "kkk final tensa essa, yuki. agora saiu a copa de
+  brasa só com os moradores e tu tá lá dentro, vai ver até onde o veterinário chegou".
+- Ep. 8 em 22/11: 128 views, 8 curtidas, 1 comentário, 0 seguidores (28% aos 3 s, 5% aos 10 s).
+
