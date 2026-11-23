@@ -558,3 +558,25 @@ mas converte. Novos seguidores vistos nas notificações: enderboy338 e "Um trem
   brasa só com os moradores e tu tá lá dentro, vai ver até onde o veterinário chegou".
 - Ep. 8 em 22/11: 128 views, 8 curtidas, 1 comentário, 0 seguidores (28% aos 3 s, 5% aos 10 s).
 
+## Ep. 9, "A Capitã" (feito em 23/11 com 89 seguidores, pra sair às 19h)
+Sem voz, 20,8 s. Código: `producao/reino/ep9.py` (`N=<seguidores>`, `CAPA=1`). Ele reaproveita o cenário do Ep. 8 (a mesma
+noite na beira do rio) e muda as posições. Boneco novo no `folk.py`: `capitã` (armadura de cavaleira + capa vermelha).
+Feito com a lição do Ep. 8: nada de passagem lenta pela vila, ação e nome na tela o tempo todo, e uns 20 s.
+
+Roteiro:
+1. (0 s) A capa vermelha cai nos ombros da Raviela, com clarão dourado e brilho. Crachá "RAVIELA · CAPITÃ DA GUARDA".
+   Legendas: "NESTE REINO, CADA SEGUIDOR VIRA MORADOR." → "A RAVIELA GANHOU A COPA DE BRASA… …E VIROU CAPITÃ."
+2. (4 s) "ELA CHAMOU QUEM FOI MAIS LONGE NA COPA:" — os 5 seguintes da copa saem da multidão, um a cada 0,9 s, e ficam do
+   lado dela com medalha e crachá "TOP N DA COPA": Izabelle (2), Lorena (3), Pixoto (4), Cubo (5) e Miyuki (6). Embaixo:
+   "ESTE REINO TEM 89 MORADORES."
+3. (9,6 s) "E O ENCAPUZADO CONTOU QUEM É ELE:" e os balões estilo RPG: "ELE APAGA REINOS." / "SÓ NÃO ENTRA ONDE TEM 100."
+4. (14,4 s) O céu fica vermelho, a tela treme e a vila faz "!": "FALTAM 11 MORADORES."
+5. (16,4 s) Final de sempre, com a barra 89/100.
+- A fonte pixel não tem "º". Por isso as medalhas mostram só o número e o crachá diz "TOP N DA COPA".
+- O que muda na história: a meta de 100 agora tem um motivo claro ("ele" não entra onde tem 100), e a guarda é quem foi
+  mais longe na copa. Na próxima copa, quem chegar longe também ganha posto.
+Arquivos: `videos/brasa-ep9.mp4` e `producao/capas/capa-brasa-ep9.jpg` ("EPISÓDIO 9 · A CAPITÃ / BRASA / ELA GANHOU A COPA
+E VIROU CAPITÃ").
+
+**Almoço de 23/11:** "Será que as abelhas enchem a colmeia?", o vídeo pronto desde 17/11.
+

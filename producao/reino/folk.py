@@ -78,6 +78,8 @@ ROLES = {
     # Ep. 8
     'vigia': dict(tunic=(64, 96, 112), pants=(50, 54, 66), item='spyglass', cape=(46, 70, 84)),
     'refugiad': dict(tunic=(104, 92, 78), pants=(62, 54, 48), hat='hood', item='torch', cape=(84, 72, 60)),
+    # Ep. 9: a Raviela vira capitã (armadura de cavaleira + capa vermelha)
+    'capit': dict(tunic=(170, 176, 196), armor=True, hat='helmet_plume', item='sword', cape=(184, 36, 40)),
 }
 
 
